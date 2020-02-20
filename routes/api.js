@@ -12,16 +12,12 @@ router.get('/say', function(req, res, next) {
 
 router.get('/sayHello', function(req, res, next) {
   const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleText: {
-            text: "hello I'm Ryan"
-          }
-        }
-      ]
-    }
+    contents: [
+      {
+        type: "text",
+        text: "hello"
+      }
+    ]
   };
 
   res.status(200).send(responseBody);
