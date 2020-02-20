@@ -10,7 +10,7 @@ router.get('/say', function(req, res, next) {
   res.send('say with a resource');
 });
 
-router.get('/sayHello', function(req, res, next) {
+router.post('/sayHello', function(req, res) {
   const responseBody = {
     version: "2.0",
     template: {
