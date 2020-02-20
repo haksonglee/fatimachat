@@ -12,11 +12,16 @@ router.get('/say', function(req, res, next) {
 
 router.get('/sayHello', function(req, res, next) {
   const responseBody = {
-    version : "1.0",
-    data:  {
-        "name": "치즈 버거",
-        "money": "5,000원"
-      }
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          simpleText: {
+            text: "hello I'm Ryan"
+          }
+        }
+      ]
+    }
   };
 
   res.status(200).send(responseBody);
