@@ -30,6 +30,23 @@ apiRouter.post('/sayHello', function(req, res) {
   res.status(200).send(responseBody);
 });
 
+apiRouter.get('/say', function(req, res) {
+  const responseBody = {
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          simpleText: {
+            text: "hello I'm Ryan"
+          }
+        }
+      ]
+    }
+  };
+
+  res.status(200).send(responseBody);
+});
+
 apiRouter.post('/showHello', function(req, res) {
   console.log(req.body);
 
