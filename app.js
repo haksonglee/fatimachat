@@ -30,17 +30,11 @@ apiRouter.post('/sayHello', function(req, res) {
   res.status(200).send(responseBody);
 });
 
-apiRouter.get('/say', function(req, res) {
+apiRouter.post('/rep1', function(req, res) {
   const responseBody = {
     version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleText: {
-            text: "hello I'm Ryan"
-          }
-        }
-      ]
+    data: {
+      menu: "bulgogi"
     }
   };
 
