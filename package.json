@@ -10,5 +10,18 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "morgan": "~1.9.1"
-  }
+  },
+  "description": "hello my node.js",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haksonglee/fatimachat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haksonglee/fatimachat/issues"
+  },
+  "homepage": "https://github.com/haksonglee/fatimachat#readme"
 }
