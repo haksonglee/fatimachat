@@ -1,32 +1,55 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const app = express();
+const logger = require('morgan');
 const bodyParser = require('body-parser');
-var http = require('http');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
+const apiRouter = express.Router();
 
-
-var app = express();
-
-app.use(logger('dev'));
+app.use(logger('dev', {}));
 app.use(bodyParser.json());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/api', apiRouter);
 
-module.exports = app;
+apiRouter.post('/sayHello', function(req, res) {
+  const responseBody = {
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          simpleText: {
+            text: "hello I'm Ryan"
+          }
+        }
+      ]
+    }
+  };
 
-app.set('port', process.env.PORT || 3000);
+  res.status(200).send(responseBody);
+});
 
-http.createServer(app).listen(app.get('port'), function() {
-  console.log('express server starting...' + app.get('port'));
+apiRouter.post('/showHello', function(req, res) {
+  console.log(req.body);
+
+  const responseBody = {
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          simpleImage: {
+            imageUrl: "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg",
+            altText: "hello I'm Ryan"
+          }
+        }
+      ]
+    }
+  };
+
+  res.status(200).send(responseBody);
+});
+
+app.listen(3000, function() {
+  console.log('Example skill server listening on port 3000!');
 });
