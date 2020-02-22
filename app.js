@@ -50,7 +50,7 @@ apiRouter.post('/quickReplies', function(req, res) {
     template: {
       outputs: [
         {
-          simpletext:{
+          simpleText:{
             text:"hello"
           }
         }
