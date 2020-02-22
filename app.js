@@ -34,7 +34,9 @@ apiRouter.post('/rep1', function(req, res) {
   const responseBody = {
     version: "2.0",
     data: {
-      menu: "bulgogi"
+      menu: "bulgogi",
+      date: "2월 22일",
+      favorite: "*****"
     }
   };
 
