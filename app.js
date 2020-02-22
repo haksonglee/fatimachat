@@ -48,21 +48,18 @@ apiRouter.post('/quickReplies', function(req, res) {
   const responseBody = {
     version: "2.0",
     template: {
+      outputs: [
+        {
+          sipletext:{
+            text:"hello"
+          }
+        }
+      ],
       quickReplies: [
         {
-          type: "text",
           label: "처음으로",
-          message: "처음으로",
-          data: {}
-        },
-        {
-          type: "block",
-          label: "처음으로",
-          message: "처음으로",
-          data: {
-            blockId: "5e4a22e6ffa7480001f96311",
-            extra: {"": ""
-            }
+          action:"message",
+          messageText: "처음으로 선택"
           }
         }
     ]
