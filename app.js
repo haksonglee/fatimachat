@@ -59,7 +59,7 @@ apiRouter.post('/quickReplies', function(req, res) {
         {
           label: "처음으로",
           action:"message",
-          messageText: "처음으로 선택"
+          messageText: "처음으로"
         }
     ]
   }
