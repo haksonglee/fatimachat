@@ -46,7 +46,9 @@ apiRouter.post('/rep1', function(req, res) {
 
 apiRouter.post('/quickReplies', function(req, res) {
   const responseBody = {
-    quickReplies: [
+    version: "2.0",
+    template: {
+      quickReplies: [
       {
         type: "text",
         label: "처음으로",
@@ -57,10 +59,15 @@ apiRouter.post('/quickReplies', function(req, res) {
         type: "block",
         label: "처음으로",
         message: "처음으로",
-        data: {}
+        data: {
+          blockId: "5e4a22e6ffa7480001f96311",
+          extra: {"": ""
+          }
+        }
       }
     ]
-  };
+  }
+};
 
   res.status(200).send(responseBody);
 });
