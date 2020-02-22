@@ -44,6 +44,21 @@ apiRouter.post('/rep1', function(req, res) {
   res.status(200).send(responseBody);
 });
 
+apiRouter.post('/quickReplies', function(req, res) {
+  const responseBody = {
+    quickReplies: [
+      {
+        type: "text",
+        label: "quick",
+        message: "message",
+        data: {}
+      }
+    ]
+  };
+
+  res.status(200).send(responseBody);
+});
+
 apiRouter.post('/showHello', function(req, res) {
   console.log(req.body);
 
