@@ -49,7 +49,7 @@ apiRouter.post('/quickReplies', function(req, res) {
     quickReplies: [
       {
         type: "text",
-        label: "처음",
+        label: "처음으로",
         message: "처음으로",
         data: {}
       }
