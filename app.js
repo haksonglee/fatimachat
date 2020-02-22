@@ -52,6 +52,12 @@ apiRouter.post('/quickReplies', function(req, res) {
         label: "처음으로",
         message: "처음으로",
         data: {}
+      },
+      {
+        type: "block",
+        label: "처음으로",
+        message: "처음으로",
+        data: {}
       }
     ]
   };
