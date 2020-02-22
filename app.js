@@ -48,13 +48,6 @@ apiRouter.post('/quickReplies', function(req, res) {
   const responseBody = {
     version: "2.0",
     template: {
-      outputs:[
-        {
-          simpleText: {
-            text: "simpleTextxxx"
-          }
-        }
-      ],
       quickReplies: [
         {
           type: "text",
