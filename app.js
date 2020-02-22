@@ -31,6 +31,7 @@ apiRouter.post('/sayHello', function(req, res) {
 });
 
 apiRouter.post('/rep1', function(req, res) {
+  console.log(req.body)
   const responseBody = {
     version: "2.0",
     data: {
