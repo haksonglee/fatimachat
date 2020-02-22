@@ -31,13 +31,13 @@ apiRouter.post('/sayHello', function(req, res) {
 });
 
 apiRouter.post('/rep1', function(req, res) {
-  console.log(req.body)
+  console.log(req.body.action.params)
   const responseBody = {
     version: "2.0",
     data: {
       menu: "bulgogi",
       date: "2월 22일",
-      favorite: "*****"
+      favorite: req.body.action.params('파라1')
     }
   };
 
