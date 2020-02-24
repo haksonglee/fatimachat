@@ -3,7 +3,15 @@ const app = express();
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-const apiRouter = express.Router();
+//const apiRouter = express.Router();
+const simpletext_Router = require('./routes/simpletext');
+const webhook_Router = require('./routes/webhook');
+const image_Router = require('./routes/image');
+const card_Router = require('./routes/card');
+const cardimage_Router = require('./routes/cardimage');
+const cardlist_Router = require('./routes/cardlist');
+const knowledge_Router = require('./routes/knowlidge');
+const knowledge_Router = require('./routes/quickreplies');
 
 app.use(logger('dev', {}));
 app.use(bodyParser.json());
@@ -11,82 +19,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use('/api', apiRouter);
-
-apiRouter.post('/sayHello', function(req, res) {
-  const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleText: {
-            text: "hello I'm Ryan"
-          }
-        }
-      ]
-    }
-  };
-
-  res.status(200).send(responseBody);
-});
-
-apiRouter.post('/rep1', function(req, res) {
-  var params = req.body.action.params
-  const responseBody = {
-    version: "2.0",
-    data: {
-      menu: "bulgogi",
-      date: "2월 22일",
-      favorite: params['파라1']
-    }
-  };
-
-  res.status(200).send(responseBody);
-});
-
-apiRouter.post('/quickReplies', function(req, res) {
-  const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleText:{
-            text:"hello"
-          }
-        }
-      ],
-      quickReplies: [
-        {
-          label: "처음으로",
-          action:"message",
-          messageText: "처음으로"
-        }
-    ]
-  }
-};
-
-  res.status(200).send(responseBody);
-});
-
-apiRouter.post('/showHello', function(req, res) {
-  console.log(req.body);
-
-  const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleImage: {
-            imageUrl: "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg",
-            altText: "hello I'm Ryan"
-          }
-        }
-      ]
-    }
-  };
-
-  res.status(200).send(responseBody);
-});
+app.use('/api/simpletext', simpletext_Router);
+app.use('/api/webhook', webhook_Router);
+app.use('/api/image', image_Router);
+app.use('/api/card', card_Router);
+app.use('/api/cardimage', cardimage_Router);
+app.use('/api/cardlist', cardlist_Router);
+app.use('/api/knowlidge', knowledge_Router);
+app.use('/api/quickreplies',quickreplies_Router);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
