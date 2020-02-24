@@ -6,12 +6,12 @@ const bodyParser = require('body-parser');
 //const apiRouter = express.Router();
 const simpletext_Router = require('./routes/simpletext');
 const webhook_Router = require('./routes/webhook');
-const image_Router = require('./routes/image');
-const card_Router = require('./routes/card');
-const cardimage_Router = require('./routes/cardimage');
-const cardlist_Router = require('./routes/cardlist');
-const knowledge_Router = require('./routes/knowlidge');
-const knowledge_Router = require('./routes/quickreplies');
+//const image_Router = require('./routes/image');
+//const card_Router = require('./routes/card');
+//const cardimage_Router = require('./routes/cardimage');
+//const cardlist_Router = require('./routes/cardlist');
+//const knowledge_Router = require('./routes/knowledge');
+const quickreplies_Router = require('./routes/quickreplies');
 
 app.use(logger('dev', {}));
 app.use(bodyParser.json());
@@ -21,11 +21,11 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api/simpletext', simpletext_Router);
 app.use('/api/webhook', webhook_Router);
-app.use('/api/image', image_Router);
-app.use('/api/card', card_Router);
-app.use('/api/cardimage', cardimage_Router);
-app.use('/api/cardlist', cardlist_Router);
-app.use('/api/knowlidge', knowledge_Router);
+//app.use('/api/image', image_Router);
+//app.use('/api/card', card_Router);
+//app.use('/api/cardimage', cardimage_Router);
+//app.use('/api/cardlist', cardlist_Router);
+//app.use('/api/knowledge', knowledge_Router);
 app.use('/api/quickreplies',quickreplies_Router);
 
 var port = process.env.PORT || 3000;

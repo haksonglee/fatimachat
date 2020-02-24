@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 
-router.post('/sayHello', function(req, res) {
+router.post('/test', function(req, res) {
   const responseBody = {
     version: "2.0",
     template: {
