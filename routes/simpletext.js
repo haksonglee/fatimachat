@@ -2,6 +2,7 @@
 
 const router = require('express').Router();
 
+//localhost:3000/simpletext/test
 router.post('/test', function(req, res) {
   const responseBody = {
     version: "2.0",

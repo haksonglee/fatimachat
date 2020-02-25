@@ -9,7 +9,7 @@ const webhook_Router = require('./routes/webhook');
 //const image_Router = require('./routes/image');
 //const card_Router = require('./routes/card');
 //const cardimage_Router = require('./routes/cardimage');
-const listcard_Router = require('./routes/listcard');
+const listcard_drlist_Router = require('./routes/listcard_drlist');
 //const knowledge_Router = require('./routes/knowledge');
 const quickreplies_Router = require('./routes/quickreplies');
 
@@ -24,7 +24,7 @@ app.use('/api/webhook', webhook_Router);
 //app.use('/api/image', image_Router);
 //app.use('/api/card', card_Router);
 //app.use('/api/cardimage', cardimage_Router);
-app.use('/api/listcard', listcard_Router);
+app.use('/api/listcard_drlist', listcard_drlist_Router);
 //app.use('/api/knowledge', knowledge_Router);
 app.use('/api/quickreplies',quickreplies_Router);
 
