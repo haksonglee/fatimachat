@@ -10,7 +10,7 @@ var fs=require('fs')
 var dept = "";
 var deptname=  "";
 
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
   //var params = req.body.action.params;
   //dept = parms['dept']
   //deptname = parms['deptname']
