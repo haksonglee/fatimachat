@@ -38,9 +38,7 @@ router.post('/', function(req, res) {
             title: "창원파티마병원 " + deptname,
             description: "창원파티마병원 " + deptname + " 의료진소개입니다",
             //imageUrl: "http://k.kakaocdn.net/dn/xsBdT/btqqIzbK4Hc/F39JI8XNVDMP9jPvoVdxl1/2x1.jpg",
-            link: {
-              web: "https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
-            }
+            imageUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
           },
           items: [
             body
