@@ -64,7 +64,7 @@ function getDrlist(dept) {  //console.log("nodecraw start");
 
     //console.log(JSON.stringify(dataArr))
 
-    fs.writeFileSync(dataPath, JSON.stringify(dataArr), function(error, data){
+    fs.appendFileSync(dataPath, JSON.stringify(dataArr), function(error, data){
       if (error) {throw error};
     })
     //const data = ulList.filter(n => n.name);
