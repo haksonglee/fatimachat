@@ -1,3 +1,5 @@
+//drlist.json생성 플로어
+
 const express = require("express");
 const router = express.Router();
 //const request = require("request");
@@ -50,6 +52,7 @@ async function getDrlist(dept) {  //console.log("nodecraw start");
 
       var data = {
         dept: dept,
+        deptname: $(this).find("span.department").text(),
         title: $(this)
           .find("span.name")
           .text(),
@@ -92,9 +95,9 @@ var body=[];
 for (var i=0;i<data.length;i++){
   var item = data[i];
   //body.push(item.deptcode)
-  if(item.deptcode == 'GS') {
+  //if(item.deptcode == 'GS') {
     getDrlist(item.deptcode);
-  }
+  //}
 };
 
 

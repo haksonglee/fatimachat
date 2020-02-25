@@ -14,8 +14,8 @@ router.post('/', function(req, res) {
   //var params = req.body.action.params;
   //dept = parms['dept']
   //deptname = parms['deptname']
-  dept = "NS"
-  deptname = "소화기내과"
+  dept = "ET"
+  deptname = "이비인후과"
   //getDrlist(dept);
 
   var string= fs.readFileSync(dataPath, 'utf-8');
@@ -25,7 +25,10 @@ router.post('/', function(req, res) {
 
   for (var i=0;i<data.length;i++){
      var item = data[i];
-     body.push(item)
+     if(item.deptname == '['+deptname+']') {
+       body.push(item)
+     }
+
   };
 
   const responseBody = {
