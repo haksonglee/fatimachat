@@ -12,9 +12,9 @@ var deptname=  "";
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
-  console.log(params['deptname'])
+  console.log(params['진료과명'])
   dept = params['dept']
-  deptname = params['deptname']
+  deptname = params['진료과명']
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
