@@ -12,9 +12,10 @@ var deptname=  "";
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
-  console.log(params['진료과명'])
-  dept = params['dept']
-  deptname = params['진료과명']
+  //console.log(params['진료과명'])
+  //dept = params['dept']
+  deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
+
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
@@ -27,6 +28,7 @@ router.post('/', function(req, res) {
   for (var i=0;i<data.length;i++){
      var item = data[i];
      if(item.deptname == '['+deptname+']') {
+       dept = item.dept
        body.push(item)
      }
 
@@ -40,7 +42,7 @@ router.post('/', function(req, res) {
         listCard: {
           header: {
             title: "창원파티마병원 " + deptname,
-            imageUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
+            imageUrl: "" //"https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
           },
           items:
             body
