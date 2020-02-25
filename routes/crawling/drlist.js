@@ -92,7 +92,9 @@ var body=[];
 for (var i=0;i<data.length;i++){
   var item = data[i];
   //body.push(item.deptcode)
-  getDrlist(item.deptcode);
+  if(item.deptcode == 'GS') {
+    getDrlist(item.deptcode);
+  }
 };
 
 
