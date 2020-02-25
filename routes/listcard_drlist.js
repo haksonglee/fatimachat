@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
   //deptname = parms['deptname']
   dept = "NS"
   deptname = "소화기내과"
-  getDrlist(dept);
+  //getDrlist(dept);
 
   var string= fs.readFileSync(dataPath, 'utf-8');
   var data=JSON.parse(string)
