@@ -11,11 +11,12 @@ var dept = "";
 var deptname=  "";
 
 router.post('/', function(req, res) {
-  var params = req.body.action.params;
+  var params = req.body.action.params
+  console.log(params['deptname'])
   dept = parms['dept']
   deptname = parms['deptname']
   //dept = "ET"
-  //deptname = "이비인후과"
+  deptname = "이비인후과"
   //getDrlist(dept);
 
   var string= fs.readFileSync(dataPath, 'utf-8');
