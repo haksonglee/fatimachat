@@ -58,18 +58,3 @@ getHtml()
     //objectJSON = JSON.stringify(ulList1);
 
   });
-
-  const getDrlist = require(__dirname + '/drlist.js')
-  const dataPath2=__dirname + '/drlist.json'
-  var fs=require('fs')
-
-  var string= fs.readFileSync(dataPath, 'utf-8');
-  var data=JSON.parse(string)
-  var body=[];
-  //console.log(data.length)
-
-  for (var i=0;i<data.length;i++){
-     var item = data[i];
-     //body.push(item.deptcode)
-     getDrlist(item.deptcode);
-  };

@@ -9,11 +9,18 @@ var fs=require('fs')
 
 //var dept;
 //dept = 'PD'
-function getDrlist(dept) {  //console.log("nodecraw start");
 
-  //console.log("1")
-  var dataArr=[];
-  var dataPath = __dirname + '/drlist.json'
+//const getDrlist = require(__dirname + '/drlist.js')
+const dataPath = __dirname + '/deptlist.json'
+const dataPath2= __dirname + '/drlist.json'
+var dataArr=[];
+
+//console.log(dataPath)
+var fs=require('fs')
+
+async function getDrlist(dept) {  //console.log("nodecraw start");
+
+  //console.log(dept)
   const getHtml = async () => {
     try {
       return await axios.get("https://www.fatimahosp.co.kr/pages/department", {
@@ -60,19 +67,39 @@ function getDrlist(dept) {  //console.log("nodecraw start");
               .attr("data-drcode")
 
       dataArr.push(data);
+      fs.writeFileSync(dataPath2, JSON.stringify(dataArr), function(error, data){
+        if (error) {throw error};
+      });
+
     });
 
-    //console.log(JSON.stringify(dataArr))
 
-    fs.appendFileSync(dataPath, JSON.stringify(dataArr), function(error, data){
-      if (error) {throw error};
-    })
+    //console.log(dataArr)
     //const data = ulList.filter(n => n.name);
     //return data;
   });// .then(res => console.log(res));
   //return ulList;
-  //console.log(ulList)
+  //console.log(str)
   //return 'testreturn'
+  //return str;
 };
 
-module.exports = getDrlist ;
+var string= fs.readFileSync(dataPath, 'utf-8');
+//console.log(JSON.parse(string))
+var data=JSON.parse(string)
+var body=[];
+//console.log(data.length)
+for (var i=0;i<data.length;i++){
+  var item = data[i];
+  //body.push(item.deptcode)
+  getDrlist(item.deptcode);
+};
+
+
+  //console.log('end dataArr')
+//console.log(body)
+//fs.appendFileSync(dataPath, JSON.stringify(dataArr), function(error, data){
+  //if (error) {throw error};
+//})
+
+//module.exports = getDrlist ;
