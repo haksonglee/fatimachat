@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
      var item = data[i];
      var desc = item.description;
      if (desc.indexOf(diagname) > 0) {
-       item.title = item.title + item.deptname
+       item.title = item.title + '  ' + item.deptname
        body.push(item)
      }
 
