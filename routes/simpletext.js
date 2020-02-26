@@ -6,7 +6,7 @@ const router = require('express').Router();
 router.post('/test', function(req, res) {
   var name = req.body.action.name;
   console.log(name)
-  var reqjson = req.get_json()
+  var reqjson = JSON.stringify(req)
 
   console.log(reqjson)
   const responseBody = {
