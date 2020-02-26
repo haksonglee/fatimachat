@@ -13,6 +13,7 @@ var drname=  "";
 router.post('/', function(req, res) {
   var params = req.body.action.params
   console.log(params['진료의사'])
+
   //dept = params['dept']
   drname = params['진료의사'] //시나리오 필수파라미터 이름 동일해야함
 
