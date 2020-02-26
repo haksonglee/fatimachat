@@ -3,7 +3,7 @@ const router = require('express').Router();
 //크롤링
 
 //const getDrlist = require(__dirname + '/crawling/deptlist.js')
-const dataPath=__dirname + '/crawling/deptlist.json'
+const dataPath=__dirname + '/crawling/reservation_deptlist.json'
 var fs=require('fs')
 
 //http://localhost:3000/api/listcard_drlist/
@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
 // 초과시 에러 ...
   for (var i=0;i<data.length;i++){
      var item = data[i];
-     item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
+     //item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
      body.push(item)
   };
 
