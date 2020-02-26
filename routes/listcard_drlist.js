@@ -15,7 +15,7 @@ router.post('/', function(req, res) {
   //console.log(params['진료과명'])
   //dept = params['dept']
   deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
-
+  console("진료과명 : " + deptname)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
@@ -60,7 +60,7 @@ router.post('/', function(req, res) {
   }
 }
   res.status(200).send(responseBody);
-  
+
 });
 
 module.exports = router;
