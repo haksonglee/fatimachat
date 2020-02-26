@@ -17,7 +17,6 @@ router.post('/', function(req, res) {
   diagname = params['상병명'] //시나리오 필수파라미터 이름 동일해야함
 
   //dept = "ET"
-  //deptname = "이비인후과"
   //getDrlist(dept);
 
   console.log("diagname = " + diagname)
