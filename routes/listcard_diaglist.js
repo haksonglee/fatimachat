@@ -20,6 +20,7 @@ router.post('/', function(req, res) {
   //deptname = "이비인후과"
   //getDrlist(dept);
 
+  console.log("diagname = " + diagname)
   var string= fs.readFileSync(dataPath, 'utf-8');
   var data=JSON.parse(string)
   var body=[];
@@ -28,7 +29,9 @@ router.post('/', function(req, res) {
   for (var i=0;i<data.length;i++){
      var item = data[i];
      var desc = item.description;
+       console.log("desc = " + desc)
      if (desc.indexOf(diagname) > 0) {
+       console.log(desc.indexOf(diagname))
        item.title = item.title + '  ' + item.deptname
        body.push(item)
      }
