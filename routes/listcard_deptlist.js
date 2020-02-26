@@ -43,10 +43,9 @@ router.post('/', function(req, res) {
           }
         }
       ],
-      quickReplies: [
+      quickReplies:
         body
-    ]
-  }
+    }
 };
   res.status(200).send(responseBody);
 
