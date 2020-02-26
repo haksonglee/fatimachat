@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
   for (var i=0;i<data.length;i++){
      var item = data[i];
      var desc = item.description;
-       console.log("desc = " + desc)
+       //console.log("desc = " + desc)
      if (desc.indexOf(diagname) > 0) {
        console.log(desc.indexOf(diagname))
        item.title = item.title + '  ' + item.deptname
