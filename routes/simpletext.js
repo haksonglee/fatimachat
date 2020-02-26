@@ -6,6 +6,9 @@ const router = require('express').Router();
 router.post('/test', function(req, res) {
   var name = req.body.action.name;
   console.log(name)
+  var reqjson = req.get_json()
+
+  console.log(reqjson)
   const responseBody = {
     version: "2.0",
     template: {
