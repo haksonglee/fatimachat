@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
   var body=[];
   //console.log(data.length)
 
-  for (var i=0;i<data.length;i++){
+  for (var i=0;i<3;i++){
      var item = data[i];
      body.push(item)
   };
