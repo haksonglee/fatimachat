@@ -25,37 +25,29 @@ router.post('/', function(req, res) {
   var body=[];
   //console.log(data.length)
 
-  for (var i=0;i<10;i++){
+// 전체목록 listcard 최대 5개
+// 초과시 에러 ...
+  for (var i=0;i<data.length;i++){
      var item = data[i];
      item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
      body.push(item)
   };
 
   const responseBody = {
-  version: "2.0",
-  template: {
-    outputs: [
-      {
-        listCard: {
-          header: {
-            title: "창원파티마병원 " + deptname,
-            imageUrl: "" //"https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
-          },
-          items:
-            body
-          ,
-          buttons: [
-            {
-              label: "모바일 홈페이지",
-              action: "webLink",
-              webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
-            }
-          ]
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          simpleText:{
+            text:"진료과명을 선택해 주십시오"
+          }
         }
-      }
+      ],
+      quickReplies: [
+        body
     ]
   }
-}
+};
   res.status(200).send(responseBody);
 
 });
