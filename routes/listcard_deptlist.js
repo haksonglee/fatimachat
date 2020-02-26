@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
   var body=[];
   //console.log(data.length)
 
-  for (var i=0;i<data.length;i++){
+  for (var i=0;i<10;i++){
      var item = data[i];
      item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
      body.push(item)
