@@ -17,9 +17,11 @@ router.post('/', function(req, res) {
   diagname = params['상병명'] //시나리오 필수파라미터 이름 동일해야함
 
   //dept = "ET"
+
+  //deptname = "이비인후과"
   //getDrlist(dept);
 
-  console.log("diagname = " + diagname)
+  //console.log("diagname = " + diagname)
   var string= fs.readFileSync(dataPath, 'utf-8');
   var data=JSON.parse(string)
   var body=[];
@@ -28,7 +30,7 @@ router.post('/', function(req, res) {
   for (var i=0;i<data.length;i++){
      var item = data[i];
      var desc = item.description;
-       if (desc.indexOf(diagname) > 0) {
+       if (desc.indexOf(diagname) >= 0) {
        item.title = item.title + '  ' + item.deptname
        body.push(item)
      }
