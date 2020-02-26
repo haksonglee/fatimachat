@@ -12,12 +12,12 @@ var drname=  "";
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
-  //console.log(params['진료의사'])
+  console.log(params['진료의사'])
 
   //dept = params['dept']
   drname = params['진료의사'] //시나리오 필수파라미터 이름 동일해야함
 
-  //console.log(drname)
+  console.log(drname)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
@@ -30,8 +30,9 @@ router.post('/', function(req, res) {
   for (var i=0;i<data.length;i++){
      var item = data[i];
      if(item.title == drname) {
-       dept = item.dept
-       body.push(item)
+        item.title = item.title + '  ' + item.deptname
+        dept = item.dept
+        body.push(item)
      }
 
   };
