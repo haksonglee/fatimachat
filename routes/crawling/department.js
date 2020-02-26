@@ -40,12 +40,20 @@ getHtml()
       deptcode = str.substr(idx + 11, str.length - idx - 1)
       //console.log(deptcode)
 
+      var datai = {
+        //web: str
+        web : "소화기내과"
+      };
+
       var data = {
         deptcode: deptcode,
-        name: $(this)
+        title: $(this)
           .find("h3.field-title")
           .text(),
-        depturl: str
+        imageUrl: $(this)
+          .find("div.card-content-img img")
+          .attr("src"),
+        link: datai,
       };
 
       dataArr.push(data);
