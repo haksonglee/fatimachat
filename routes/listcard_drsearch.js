@@ -12,12 +12,12 @@ var drname=  "";
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
-  console.log(params['진료의사'])
+  //console.log(params['진료의사'])
 
   //dept = params['dept']
   drname = params['진료의사'] //시나리오 필수파라미터 이름 동일해야함
 
-  console.log(drname)
+  //console.log(drname)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
@@ -43,7 +43,7 @@ router.post('/', function(req, res) {
       {
         listCard: {
           header: {
-            title: "창원파티마병원 " + deptname,
+            title: "창원파티마병원 의료진"",
             imageUrl: "" //"https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
           },
           items:
