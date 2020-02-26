@@ -17,7 +17,7 @@ router.post('/', function(req, res) {
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   //console.log("진료과명 : " + deptname)
   //dept = "ET"
-  //deptname = "이비인후과" 
+  //deptname = "이비인후과"
   //getDrlist(dept);
 
   var string= fs.readFileSync(dataPath, 'utf-8');
@@ -25,8 +25,9 @@ router.post('/', function(req, res) {
   var body=[];
   //console.log(data.length)
 
-  for (var i=0;i<4;i++){
+  for (var i=0;i<6;i++){
      var item = data[i];
+     item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
      body.push(item)
   };
 
