@@ -61,15 +61,14 @@ router.post('/', function(req, res) {
             }
           }
 } else {
-            const dataPath=__dirname + '/crawling/reservation_deptlist.json'
-            var fs=require('fs')
-            var string= fs.readFileSync(dataPath, 'utf-8');
-            var data=JSON.parse(string)
-            var body=[];
-            for (var i=0;i<data.length;i++){
-               var item = data[i];
+            const dataPath2=__dirname + '/crawling/reservation_deptlist.json'
+            var string2= fs.readFileSync(dataPath2, 'utf-8');
+            var data2=JSON.parse(string2)
+            var body2=[];
+            for (var i=0;i<data2.length;i++){
+               var item2 = data2[i];
                //item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
-               body.push(item)
+               body2.push(item2)
             };
 
             const responseBody = {
@@ -83,7 +82,7 @@ router.post('/', function(req, res) {
                   }
                 ],
                 quickReplies:
-                  body
+                  body2
               }
           }
 }
