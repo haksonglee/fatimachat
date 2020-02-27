@@ -10,12 +10,8 @@ router.post('/test', function(req, res) {
   //var name2 = req.body.contexts;
   //console.log(JSON.stringify(name2))
 
-  var name1 = req.body.contexts[0].params.진료과.value;
-  console.log(name1)
-  var name2 = req.body.contexts[0].params.의사명.value;
-  console.log(name2)
-  var name3 = req.body.contexts[0].params.환자정보.value;
-  console.log(name3)
+  var patient = req.body.contexts[0].params.환자정보.value;
+  console.log(patient)
   //var reqjson = JSON.stringify(req.body)
 
 
@@ -36,9 +32,7 @@ router.post('/test', function(req, res) {
   const responseBody = {
     version: "2.0",
     data: {
-      menu: name1,
-      date: name2,
-      favorite: name3
+      patient: patient
     }
   };
   res.status(200).send(responseBody);
