@@ -12,7 +12,7 @@ router.post('/test', function(req, res) {
   //var reqjson = JSON.stringify(req.body)
 
 
-  console.log(reqjson)
+  //console.log(reqjson)
   const responseBody = {
     version: "2.0",
     template: {
