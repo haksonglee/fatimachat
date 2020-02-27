@@ -20,6 +20,7 @@ router.post('/test', function(req, res) {
 
 
   //console.log(reqjson)
+  /*
   const responseBody = {
     version: "2.0",
     template: {
@@ -30,6 +31,14 @@ router.post('/test', function(req, res) {
           }
         }
       ]
+    }
+  }; */
+  const responseBody = {
+    version: "2.0",
+    data: {
+      menu: name1,
+      date: name2,
+      favorite: name3
     }
   };
   res.status(200).send(responseBody);
