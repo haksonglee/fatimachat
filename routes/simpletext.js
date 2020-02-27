@@ -12,7 +12,7 @@ router.post('/test', function(req, res) {
 
   //var patient = req.body.contexts[0].params.환자정보.value;
   var params = req.body.action.params
-  var patient = parmas['환자정보']
+  var patient = params['환자정보']  
   console.log(patient)
   //var reqjson = JSON.stringify(req.body)
 
