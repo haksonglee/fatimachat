@@ -12,7 +12,7 @@ router.post('/test', function(req, res) {
 
   var name1 = req.body.contexts[0].params.진료과.value;
   console.log(name1)
-  var name2 = req.body.contexts[0].params.진료의사.value;
+  var name2 = req.body.contexts[0].params.의사명.value;
   console.log(name2)
   var name3 = req.body.contexts[0].params.성명/생년월일.value;
   console.log(name3)
