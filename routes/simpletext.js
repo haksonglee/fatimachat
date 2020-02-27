@@ -36,7 +36,7 @@ router.post('/test', function(req, res) {
   "context": {
     "values":[
       {
-        "name":deptname,
+        "name":"deptname",
         "lifespan":4,
         "params": {
           "진료과명": {"value":"심장내과","resolvedValue":"심장내과"}
