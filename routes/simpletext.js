@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 //localhost:3000/simpletext/test
 router.post('/test', function(req, res) {
-  var name = req.body.action.name;
+  var name = req.body.contexts.params."의사명".value;
   console.log(name)
   var reqjson = JSON.stringify(req.body)
 
