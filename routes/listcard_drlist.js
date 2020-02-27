@@ -22,7 +22,7 @@ router.post('/', function(req, res) {
 
 
   if( deptname != "진료과안내") {
-    console.log('pass 1' + deptname)
+    //console.log('pass 1' + deptname)
       var string= fs.readFileSync(dataPath, 'utf-8');
       var data=JSON.parse(string)
       var body=[];
@@ -52,7 +52,7 @@ router.post('/', function(req, res) {
                 ,
                 buttons: [
                   {
-                    label: "모바일 홈페이지",
+                    label: "모바일예약 이동",
                     action: "webLink",
                     webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
                   }
@@ -64,7 +64,7 @@ router.post('/', function(req, res) {
       }
       res.status(200).send(responseBody);
 } else {
-  console.log('pass 2' + deptname)
+  //console.log('pass 2' + deptname)
           const dataPath2=__dirname + '/crawling/reservation_deptlist.json'
           var string2= fs.readFileSync(dataPath2, 'utf-8');
           var data2=JSON.parse(string2)
