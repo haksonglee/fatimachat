@@ -71,9 +71,9 @@ router.post('/test', function(req, res) {
     "values":[
       {
         "name":"deptname",
-        "lifespan":1,
+        "lifesPan":5,
         "params": {
-          "진료과명": {"value":"심장내과","resolvedValue":"심장내과"}
+          "진료과명": {"value":"심장내과"}
         }
       }
     ]
