@@ -10,8 +10,8 @@ router.post('/test', function(req, res) {
   var name2 = req.body.contexts;
   console.log(JSON.stringify(name2))
 
-  var name3 = req.body.contexts[0].params."진료과".value;
-  console.log(name3)
+  var name3 = req.body.contexts[0].params;
+  console.log(JSON.stringify(name3))
   //var reqjson = JSON.stringify(req.body)
 
 
