@@ -14,7 +14,7 @@ router.post('/test', function(req, res) {
   console.log(name1)
   var name2 = req.body.contexts[0].params.의사명.value;
   console.log(name2)
-  var name3 = req.body.contexts[0].params.성명/생년월일.value;
+  var name3 = req.body.contexts[0].params.환자정보.value;
   console.log(name3)
   //var reqjson = JSON.stringify(req.body)
 
