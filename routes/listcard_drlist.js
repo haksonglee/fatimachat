@@ -22,6 +22,7 @@ router.post('/', function(req, res) {
 
 
   if( deptname != "진료과안내") {
+    console.log('pass 1' + deptname)
       var string= fs.readFileSync(dataPath, 'utf-8');
       var data=JSON.parse(string)
       var body=[];
@@ -62,6 +63,7 @@ router.post('/', function(req, res) {
         }
       }
 } else {
+  console.log('pass 2' + deptname)
           const dataPath2=__dirname + '/crawling/reservation_deptlist.json'
           var string2= fs.readFileSync(dataPath2, 'utf-8');
           var data2=JSON.parse(string2)
