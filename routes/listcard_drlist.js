@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
 
   };
 
-  if( deptname <> "진료과안내") {
+  if( deptname != "진료과안내") {
             const responseBody = {
             version: "2.0",
             template: {
