@@ -14,6 +14,7 @@ router.post('/', function(req, res) {
   var params = req.body.action.params
   //console.log(params['진료과명'])
   //dept = params['dept']
+  console.log(JSON.stringify(params))
   deptname = params['진료과'] //시나리오 필수파라미터 이름 동일해야함
   //console.log("진료과명 : " + deptname)
   //dept = "ET"
