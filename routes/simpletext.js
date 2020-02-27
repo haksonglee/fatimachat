@@ -7,8 +7,8 @@ router.post('/test', function(req, res) {
   var name = req.body.action.name;
   //var name = req.body.contexts.params."의사명".value;
   console.log(name)
-  var name2 = req.body.bot.id;
-  console.log(name2)
+  var name2 = req.body.action;
+  console.log(JSON.stringify(name2))
   //var reqjson = JSON.stringify(req.body)
 
 
