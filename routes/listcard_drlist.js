@@ -62,6 +62,7 @@ router.post('/', function(req, res) {
           ]
         }
       }
+      res.status(200).send(responseBody);
 } else {
   console.log('pass 2' + deptname)
           const dataPath2=__dirname + '/crawling/reservation_deptlist.json'
@@ -74,7 +75,7 @@ router.post('/', function(req, res) {
              body2.push(item2)
           };
 
-          const responseBody = {
+          const responseBody2 = {
             version: "2.0",
             template: {
               outputs: [
@@ -88,8 +89,9 @@ router.post('/', function(req, res) {
                 body2
             }
         }
+        res.status(200).send(responseBody2);
 }
-  res.status(200).send(responseBody);
+
 
 });
 
