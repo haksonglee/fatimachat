@@ -33,17 +33,6 @@ router.post('/test', function(req, res) {
   }; */
   const responseBody = {
   "version": "2.0",
-  "context": {
-    "values":[
-      {
-        "name":"deptname",
-        "lifespan":4,
-        "params": {
-          "진료과명": {"value":"심장내과","resolvedValue":"심장내과"}
-        }
-      }
-    ]
-  },
   "template": {
     "outputs": [
       {
@@ -74,6 +63,17 @@ router.post('/test', function(req, res) {
               "webLinkUrl": "https://e.kakao.com/t/hello-ryan"
             }
           ]
+        }
+      }
+    ]
+  },
+  "context": {
+    "values":[
+      {
+        "name":"deptname",
+        "lifespan":4,
+        "params": {
+          "진료과명": {"value":"심장내과","resolvedValue":"심장내과"}
         }
       }
     ]
