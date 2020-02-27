@@ -15,12 +15,12 @@ router.post('/', function(req, res) {
   //console.log(params['진료과명'])
   //dept = params['dept']
   //console.log(JSON.stringify(params))
-  deptname = params['진료과'] //시나리오 필수파라미터 이름 동일해야함
+  deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   //console.log("진료과명 : " + deptname)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
-  var name2 = req.body.contexts;
+  var name2 = req.body;
   console.log(JSON.stringify(name2))
 
   if( deptname != "진료과안내") {
