@@ -44,7 +44,7 @@ router.post('/', function(req, res) {
       {
         "carousel": {
           "type": "basicCard",
-          "heaer": {
+          "header": {
             "title": deptname + "의료진 입니다"
           },
           "items": [
