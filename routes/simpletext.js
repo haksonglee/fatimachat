@@ -7,8 +7,8 @@ router.post('/test', function(req, res) {
   //var name = req.body.action.name;
   //var name = req.body.contexts.params."의사명".value;
   //console.log(name)
-  //var name2 = req.body.contexts;
-  //console.log(JSON.stringify(name2))
+  var name2 = req.body.contexts;
+  console.log(JSON.stringify(name2))
 
   //var patient = req.body.contexts[0].params.환자정보.value;
   var params = req.body.action.params
