@@ -20,7 +20,8 @@ router.post('/', function(req, res) {
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
-
+  var name2 = req.body.contexts;
+  console.log(JSON.stringify(name2))
 
   if( deptname != "진료과안내") {
     //console.log('pass 1' + deptname)
