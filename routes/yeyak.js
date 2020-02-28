@@ -38,10 +38,11 @@ router.post('/', function(req, res) {
     var string= fs.readFileSync(dataPath, 'utf-8');
     var data=JSON.parse(string)
     var body=[];
+    var responseBody;
     //console.log(data.length)
 
     if (patient_name != '다시') {
-      const responseBody = {
+        responseBody = {
             "version": "2.0",
             "template": {
               "outputs": [
@@ -62,7 +63,7 @@ router.post('/', function(req, res) {
             }
           }
       } else {
-        const responseBody = {
+          responseBody = {
               "version": "2.0",
               "template": {
                 "outputs": [
