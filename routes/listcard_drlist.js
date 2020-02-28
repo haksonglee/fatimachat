@@ -22,7 +22,10 @@ router.post('/', function(req, res) {
   //getDrlist(dept);
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
+  var name2 = req.body;
+  console.log(JSON.stringify(name2))
 
+  
     var string= fs.readFileSync(dataPath, 'utf-8');
     var data=JSON.parse(string)
     var body=[];
