@@ -74,7 +74,7 @@ router.post('/', function(req, res) {
               "values":[
                 {
                   "name":"patient_info",
-                  "lifeSpan":5,
+                  "lifeSpan":0,
                   "params": {
                     "patient_confirm": patient_hospno
                   }
