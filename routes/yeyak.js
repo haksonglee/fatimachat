@@ -12,8 +12,8 @@ var deptname=  "";
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
-  console.log(params['patient_name'])
-  console.log(params['patient_birth'])
+  var patient_name = params['patient_name']
+  var patient_birth = params['patient_birth']
   //dept = params['dept']
   //console.log(JSON.stringify(params))
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
@@ -38,15 +38,6 @@ router.post('/', function(req, res) {
     var body=[];
     //console.log(data.length)
 
-    for (var i=0;i<data.length;i++){
-       var item = data[i];
-       if(item.deptname == '['+deptname+']') {
-         dept = item.dept
-         body.push(item)
-       }
-
-    };
-
       const responseBody =
       {
         "version": "2.0",
@@ -54,13 +45,13 @@ router.post('/', function(req, res) {
           "outputs": [
             {
               "basicCard": {
-                "title": "보물상자",
-                "description": "보물상자 안에는 뭐가 있을까",
+                "title": "안녕하세요 " + patient_name + "님",
+                "description": "창원파티마병원 예약 시스템 로그인 완료",
                 "buttons": [
                   {
                     "action": "message",
                     "label": "진료예약 계속",
-                    "messageText": "진료예약 계속"
+                    "messageText": "진료예약"
                   }
                 ]
               }
