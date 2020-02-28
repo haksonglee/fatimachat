@@ -29,6 +29,10 @@ router.post('/', function(req, res) {
 
   //break;
 
+  // fatimahosp 접속 환자명 + 생년월일 로 환자정보 getElementsByClassName()
+
+  //if 존재하면 pass else "없다는 정보 - 전화접수 안내 message "
+
     var string= fs.readFileSync(dataPath, 'utf-8');
     var data=JSON.parse(string)
     var body=[];
@@ -43,31 +47,27 @@ router.post('/', function(req, res) {
 
     };
 
-      const responseBody = {
-      version: "2.0",
-      template: {
-        outputs: [
-          {
-            listCard: {
-              header: {
-                title: "창원파티마병원 " + deptname,
-                imageUrl: "" //"https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
-              },
-              items:
-                body
-              ,
-              buttons: [
-                {
-                  label: "모바일예약 이동",
-                  action: "webLink",
-                  webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
-                }
-              ]
+      const responseBody =
+      {
+        "version": "2.0",
+        "template": {
+          "outputs": [
+            {
+              "basicCard": {
+                "title": "보물상자",
+                "description": "보물상자 안에는 뭐가 있을까",
+                "buttons": [
+                  {
+                    "action": "message",
+                    "label": "진료예약 계속",
+                    "messageText": "진료예약 계속"
+                  }
+                ]
+              }
             }
-          }
-        ]
+          ]
+        }
       }
-    }
     res.status(200).send(responseBody);
 });
 
