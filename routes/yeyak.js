@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
 
   //if 존재하면 pass else "없다는 정보 - 전화접수 안내 message "
 
-  var check_yn = 'Y'
+  var patient_hospno = '000602887'
 
     var string= fs.readFileSync(dataPath, 'utf-8');
     var data=JSON.parse(string)
@@ -67,7 +67,7 @@ router.post('/', function(req, res) {
                   "name":"patient_info",
                   "lifeSpan":5,
                   "params": {
-                    "patient_confirm": {"value":"Y","resolvedValue":"Y"}
+                    "patient_confirm": patient_hospno
                   }
                 }
               ]
