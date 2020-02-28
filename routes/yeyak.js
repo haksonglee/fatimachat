@@ -26,7 +26,7 @@ router.post('/', function(req, res) {
   console.log(JSON.stringify(name2))
   console.log('pass login module')
 
-  break;
+  //break;
 
     var string= fs.readFileSync(dataPath, 'utf-8');
     var data=JSON.parse(string)
