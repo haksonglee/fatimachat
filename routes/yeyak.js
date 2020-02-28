@@ -14,26 +14,35 @@ router.post('/', function(req, res) {
   var params = req.body.action.params
   var patient_name = params['patient_name']
   var patient_birth = params['patient_birth']
-  //dept = params['dept']
+  var patient_comfirm = params['patient_comfirm']
+   //dept = params['dept']
   //console.log(JSON.stringify(params))
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
-  //console.log("진료과명 : " + deptname)
+  console.log("patient_name : " + patient_name)
+  console.log("patient_birth : " + patient_birth)
+  console.log("patient_comfirm : " + patient_comfirm)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
-  var name2 = req.body;
-  console.log(JSON.stringify(name2))
+  //var name2 = req.body;
+  //console.log(JSON.stringify(name2))
   //console.log('pass login module')
 
   //break;
 
+  //로그인 상태 체크
+    if (patient_comfirm > ""){
+      console.log("login in status")
+    } else {
+      console.lg("not login in status")
+    }
+
+  var patient_hospno = ""
   // fatimahosp 접속 환자명 + 생년월일 로 환자정보 getElementsByClassName()
-
   //if 존재하면 pass else "없다는 정보 - 전화접수 안내 message "
-
-  var patient_hospno = '000602887'
+  patient_hospno = '000602887' //returj 값
 
     var string= fs.readFileSync(dataPath, 'utf-8');
     var data=JSON.parse(string)
@@ -41,7 +50,7 @@ router.post('/', function(req, res) {
     var responseBody;
     //console.log(data.length)
 
-    if (patient_name != '다시') {
+    if (patient_hospno > " ") {
         responseBody = {
             "version": "2.0",
             "template": {
