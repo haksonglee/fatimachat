@@ -14,6 +14,7 @@ const card_drlist_Router = require('./routes/card_drlist');
 const listcard_deptlist_Router = require('./routes/listcard_deptlist');
 const listcard_drsearch_Router = require('./routes/listcard_drsearch');
 const listcard_diaglist_Router = require('./routes/listcard_diaglist');
+const yeyak_Router = require('./routes/yeyak');
 //const knowledge_Router = require('./routes/knowledge');
 const quickreplies_Router = require('./routes/quickreplies');
 
