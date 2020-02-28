@@ -11,8 +11,9 @@ var dept = "";
 var deptname=  "";
 
 router.post('/', function(req, res) {
-  //var params = req.body.action.params
-  //console.log(params['진료과명'])
+  var params = req.body.action.params
+  console.log(params['patient_name'])
+  console.log(params['patient_birth'])
   //dept = params['dept']
   //console.log(JSON.stringify(params))
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
@@ -22,9 +23,9 @@ router.post('/', function(req, res) {
   //getDrlist(dept);
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
-  var name2 = req.body;
-  console.log(JSON.stringify(name2))
-  console.log('pass login module')
+  //var name2 = req.body;
+  //console.log(JSON.stringify(name2))
+  //console.log('pass login module')
 
   //break;
 
