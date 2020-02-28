@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
   var params = req.body.action.params
   var patient_name = params['patient_name']
   var patient_birth = params['patient_birth']
-  var patient_confirm = req.body.contexts[0].params.patient_confirm.value;
+  //var patient_confirm = req.body.contexts[0].params.patient_confirm.value;
    //dept = params['dept']
   //console.log(JSON.stringify(params))
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
@@ -24,10 +24,10 @@ router.post('/', function(req, res) {
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
-  var name2 = req.body;
-  console.log(JSON.stringify(name2))
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
+  var name2 = req.body;
+  console.log(JSON.stringify(name2))
   //console.log('pass login module')
 
   //break;
@@ -36,7 +36,7 @@ router.post('/', function(req, res) {
     if (patient_confirm = "undefined"){
       console.log("not login in status")
     } else {
-      console.lg("not login in status")
+      console.lg("login in status")
     }
 
   var patient_hospno = ""
