@@ -41,7 +41,6 @@ router.post('/', function(req, res) {
   //var string= fs.readFileSync(dataPath, 'utf-8');
   //var data=JSON.parse(string)
   var body=[];
-  /*
   var responseBody = {
       "version": "2.0",
       "template": {
@@ -61,19 +60,7 @@ router.post('/', function(req, res) {
             }
           ]
         }
-      } */
-    var responseBody = {
-    "version": "2.0",
-    "template": {
-        "outputs": [
-            {
-                "simpleText": {
-                    "text": "간단한 텍스트 요소입니다."
-                }
-            }
-        ]
-    }
-}
+      }
     res.status(200).send(responseBody);
 });
 
