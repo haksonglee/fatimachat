@@ -15,6 +15,7 @@ const listcard_deptlist_Router = require('./routes/listcard_deptlist');
 const listcard_drsearch_Router = require('./routes/listcard_drsearch');
 const listcard_diaglist_Router = require('./routes/listcard_diaglist');
 const yeyak_Router = require('./routes/yeyak');
+const logout_Router = require('./routes/logout');
 //const knowledge_Router = require('./routes/knowledge');
 const quickreplies_Router = require('./routes/quickreplies');
 
@@ -35,6 +36,7 @@ app.use('/api/listcard_deptlist', listcard_deptlist_Router);
 app.use('/api/listcard_diaglist', listcard_diaglist_Router);
 app.use('/api/listcard_drsearch', listcard_drsearch_Router);
 app.use('/api/yeyak', yeyak_Router);
+app.use('/api/logout', logout_Router);
 //app.use('/api/knowledge', knowledge_Router);
 app.use('/api/quickreplies',quickreplies_Router);
 
