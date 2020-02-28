@@ -65,9 +65,9 @@ router.post('/', function(req, res) {
               "values":[
                 {
                   "name":"patient_info",
-                  "lifesPan":5,
+                  "lifeSpan":5,
                   "params": {
-                    "patient_confirm": {"value":"confirm","resolvedValue":"confirm"}
+                    "patient_confirm": {"value":"Y","resolvedValue":"Y"}
                   }
                 }
               ]
