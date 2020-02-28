@@ -44,9 +44,8 @@ router.post('/', function(req, res) {
       {
         "carousel": {
           "type": "basicCard",
-          "items": [
-            body
-          ]
+          "items":
+            body          
         }
       }
     ]
