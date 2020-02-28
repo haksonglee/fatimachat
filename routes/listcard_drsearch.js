@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 //크롤링
 
-const getDrlist = require(__dirname + '/crawling/drlist.js')
+//const getDrlist = require(__dirname + '/crawling/drlist.js')
 const dataPath=__dirname + '/crawling/drlist.json'
 var fs=require('fs')
 
