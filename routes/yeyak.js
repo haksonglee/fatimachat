@@ -107,7 +107,7 @@ router.post('/', function(req, res) {
                 }
         }
   } else { //로그인상태
-          console.lg("login in status")
+          console.log("login in status")
           responseBody = {
               "version": "2.0",
               "template": {
