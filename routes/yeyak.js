@@ -14,20 +14,20 @@ router.post('/', function(req, res) {
   var params = req.body.action.params
   var patient_name = params['patient_name']
   var patient_birth = params['patient_birth']
+  try {
+    var patient_confirm = req.body.contexts[0].params.patient_confirm.value;
+  } catch (err) {
+    console.error(err)
+    patient_confirm = "undefined"
+  }
 
-  var li_contexts = req.body.contexts[0].length;
-  console.log(li_contexts)
-  //if (li_contexts > 0){
-    //var patient_confirm = req.body.contexts[0].params.patient_confirm.value;
-    //console.log("patient_confirm : " + patient_confirm)
-  //}
-  //console.log(ls_contexts)
-  //dept = params['dept']
+  console.log(ls_contexts)
+   //dept = params['dept']
   //console.log(JSON.stringify(params))
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   console.log("patient_name : " + patient_name)
   console.log("patient_birth : " + patient_birth)
-  //console.log("patient_confirm : " + patient_confirm)
+  console.log("patient_confirm : " + patient_confirm)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
@@ -40,7 +40,7 @@ router.post('/', function(req, res) {
   //break;
 
   //로그인 상태 체크
-    if (patient_confirm == "undefined"){
+    if (patient_confirm = "undefined"){
       console.log("not login in status")
     } else {
       console.lg("login in status")
@@ -81,7 +81,7 @@ router.post('/', function(req, res) {
               "values":[
                 {
                   "name":"patient_info",
-                  "lifeSpan":10,
+                  "lifeSpan":1,
                   "params": {
                     "patient_confirm": patient_hospno
                   }
