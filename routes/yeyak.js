@@ -33,8 +33,8 @@ router.post('/', function(req, res) {
   //break;
 
   //로그인 상태 체크
-    if (patient_comfirm > ""){
-      console.log("login in status")
+    if (patient_comfirm = "undefined"){
+      console.log("not login in status")
     } else {
       console.lg("not login in status")
     }
