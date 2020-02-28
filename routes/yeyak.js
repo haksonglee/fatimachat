@@ -64,10 +64,10 @@ router.post('/', function(req, res) {
             "context": {
               "values":[
                 {
-                  "name":"patient_confirm",
+                  "name":"patient_info",
                   "lifesPan":5,
                   "params": {
-                    "patient_confirm": {"value":"confirm"}
+                    "patient_confirm": {"value":"confirm","resolvedValue":"confirm"}
                   }
                 }
               ]
