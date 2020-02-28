@@ -34,6 +34,7 @@ app.use('/api/card_drlist', card_drlist_Router);
 app.use('/api/listcard_deptlist', listcard_deptlist_Router);
 app.use('/api/listcard_diaglist', listcard_diaglist_Router);
 app.use('/api/listcard_drsearch', listcard_drsearch_Router);
+app.use('/api/yeyak', yeyak_Router);
 //app.use('/api/knowledge', knowledge_Router);
 app.use('/api/quickreplies',quickreplies_Router);
 
