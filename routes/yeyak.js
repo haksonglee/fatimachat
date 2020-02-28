@@ -44,7 +44,7 @@ router.post('/', function(req, res) {
   var responseBody;
 
   //로그인 상태 체크
-  if (patient_confirm == "undefined"){
+  if (patient_hospno == "undefined"){
       var patient_hospno = ""
       // fatimahosp 접속 환자명 + 생년월일 로 환자정보 getElementsByClassName()
       //if 존재하면 pass else "없다는 정보 - 전화접수 안내 message "
