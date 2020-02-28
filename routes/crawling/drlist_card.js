@@ -52,7 +52,8 @@ async function getDrlist(dept) {  //console.log("nodecraw start");
       var data = {
         dept: dept,
         deptname: $(this).find("span.department").text(),
-        title: $(this)
+        title:  $(this).find("span.department").text()  +
+           $(this)
           .find("span.name")
           .text(),
         description: $(this)
