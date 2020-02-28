@@ -60,6 +60,17 @@ router.post('/', function(req, res) {
                   }
                 }
               ]
+            },
+            "context": {
+              "values":[
+                {
+                  "name":"patient_confirm",
+                  "lifesPan":5,
+                  "params": {
+                    "patient_confirm": {"value":"confirm"}
+                  }
+                }
+              ]
             }
           }
       } else {
