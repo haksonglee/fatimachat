@@ -20,7 +20,7 @@ router.post('/', function(req, res) {
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   console.log("patient_name : " + patient_name)
   console.log("patient_birth : " + patient_birth)
-  console.log("patient_comfirm : " + patient_comfirm)
+  console.log("patient_confirm : " + patient_confirm)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
   //break;
 
   //로그인 상태 체크
-    if (patient_comfirm = "undefined"){
+    if (patient_confirm = "undefined"){
       console.log("not login in status")
     } else {
       console.lg("not login in status")
