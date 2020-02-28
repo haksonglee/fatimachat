@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
   var params = req.body.action.params
   var patient_name = params['patient_name']
   var patient_birth = params['patient_birth']
-  var patient_confirm = params['patient_confirm']
+  var patient_confirm = req.body.contexts[0].params.patient_confirm.value;
    //dept = params['dept']
   //console.log(JSON.stringify(params))
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
