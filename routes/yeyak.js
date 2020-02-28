@@ -15,11 +15,12 @@ router.post('/', function(req, res) {
   var patient_name = params['patient_name']
   var patient_birth = params['patient_birth']
 
-  var ls_contexts = req.body.contexts[0];
-  if (ls_contexts != "undefined"){
-    var patient_confirm = req.body.contexts[0].params.patient_confirm.value;
-    console.log("patient_confirm : " + patient_confirm)
-  }
+  var li_contexts = length(req.body.contexts[0]);
+  console.log(li_contexts)
+  //if (li_contexts > 0){
+    //var patient_confirm = req.body.contexts[0].params.patient_confirm.value;
+    //console.log("patient_confirm : " + patient_confirm)
+  //}
   //console.log(ls_contexts)
   //dept = params['dept']
   //console.log(JSON.stringify(params))
@@ -39,7 +40,7 @@ router.post('/', function(req, res) {
   //break;
 
   //로그인 상태 체크
-    if (patient_confirm = "undefined"){
+    if (patient_confirm == "undefined"){
       console.log("not login in status")
     } else {
       console.lg("login in status")
