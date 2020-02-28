@@ -15,7 +15,7 @@ router.post('/', function(req, res) {
   var patient_name = params['patient_name']
   var patient_birth = params['patient_birth']
 
-  var li_contexts = length(req.body.contexts[0]);
+  var li_contexts = req.body.contexts[0].length;
   console.log(li_contexts)
   //if (li_contexts > 0){
     //var patient_confirm = req.body.contexts[0].params.patient_confirm.value;
