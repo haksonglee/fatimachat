@@ -24,6 +24,7 @@ router.post('/', function(req, res) {
   //console.log(JSON.stringify(name2))
   var name2 = req.body;
   console.log(JSON.stringify(name2))
+  console.log('pass login module')
 
   break;
 
