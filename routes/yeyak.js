@@ -51,13 +51,18 @@ router.post('/', function(req, res) {
               "outputs": [
                 {
                   "basicCard": {
-                    "title": "안녕하세요 " + patient_name + "님",
+                    "title": "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님",
                     "description": "창원파티마병원 예약 시스템 로그인 완료",
                     "buttons": [
                       {
                         "action": "message",
                         "label": "진료예약 계속",
                         "messageText": "진료예약"
+                      },
+                      {
+                        "action": "message",
+                        "label": "로그아웃",
+                        "messageText": "로그아웃"
                       }
                     ]
                   }
