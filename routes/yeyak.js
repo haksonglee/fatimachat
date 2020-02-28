@@ -21,7 +21,6 @@ router.post('/', function(req, res) {
     patient_confirm = "undefined"
   }
 
-  console.log(ls_contexts)
    //dept = params['dept']
   //console.log(JSON.stringify(params))
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
