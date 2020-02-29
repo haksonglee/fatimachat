@@ -19,8 +19,12 @@ router.post('/', function(req, res) {
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
-  //var name2 = req.body;
-  //console.log(JSON.stringify(name2))
+  var name2 = req.body;
+  console.log(JSON.stringify(name2))
+  
+  var params = req.body.action.params
+  var patient_name = params['patient_name']
+  var patient_birth = params['patient_birth']
 
   var string= fs.readFileSync(dataPath, 'utf-8');
   var data=JSON.parse(string)
