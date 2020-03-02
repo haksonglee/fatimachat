@@ -11,9 +11,14 @@ router.post('/test', function(req, res) {
   console.log(JSON.stringify(name2))
 
   //var patient = req.body.contexts[0].params.환자정보.value;
-  var params = req.body.action.params
-  var patient = params['환자정보']
+  var patient = req.body.action.params.환자정보
   console.log(patient)
+
+  var drcode = req.body.action.detailParams.예약.values
+  console.log(drcode)
+
+  var jsondate = req.body.aciton.detailParams.sys_date.values
+  var sdate = jsondate.date
   //var reqjson = JSON.stringify(req.body)
 
 
