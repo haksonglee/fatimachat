@@ -2,7 +2,11 @@ const router = require('express').Router();
 
 //크롤링
 
+<<<<<<< HEAD
 //const getDrlist = require(__dirname + '/crawling/drlist.js')
+=======
+const getDrlist = require(__dirname + '/crawling/drlist.js')
+>>>>>>> 6fb05f22b42298585fe8c0047f433c82be37f6ba
 const dataPath=__dirname + '/crawling/drlist.json'
 var fs=require('fs')
 
@@ -12,6 +16,7 @@ var drname=  "";
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
+<<<<<<< HEAD
   //console.log(params['진료의사'])
 
   //var name2 = req.body;
@@ -21,6 +26,12 @@ router.post('/', function(req, res) {
   drname = params['진료의사'] //시나리오 필수파라미터 이름 동일해야함
 
   //console.log(drname)
+=======
+  //console.log(params['진료과명'])
+  //dept = params['dept']
+  drname = params['진료의사'] //시나리오 필수파라미터 이름 동일해야함
+
+>>>>>>> 6fb05f22b42298585fe8c0047f433c82be37f6ba
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
@@ -33,9 +44,14 @@ router.post('/', function(req, res) {
   for (var i=0;i<data.length;i++){
      var item = data[i];
      if(item.title == drname) {
+<<<<<<< HEAD
         item.title = item.title + '  ' + item.deptname
         dept = item.dept
         body.push(item)
+=======
+       dept = item.dept
+       body.push(item)
+>>>>>>> 6fb05f22b42298585fe8c0047f433c82be37f6ba
      }
 
   };
@@ -47,7 +63,11 @@ router.post('/', function(req, res) {
       {
         listCard: {
           header: {
+<<<<<<< HEAD
             title: "창원파티마병원 의료진",
+=======
+            title: "창원파티마병원 " + deptname,
+>>>>>>> 6fb05f22b42298585fe8c0047f433c82be37f6ba
             imageUrl: "" //"https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
           },
           items:
