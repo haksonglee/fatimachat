@@ -58,9 +58,6 @@ router.post('/', function(req, res) {
         }
 
     }
-
-    var buttonstr =
-
       const responseBody = {
       version: "2.0",
       template: {
