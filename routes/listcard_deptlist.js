@@ -22,15 +22,24 @@ router.post('/', function(req, res) {
   var name2 = req.body;
   console.log(JSON.stringify(name2))
 
-  var params = req.body.action.params
-  var patient_name = params['patient_name']
-  var patient_birth = params['patient_birth']
+  try {
+    var patient_name = req.body.contexts.params."patient_name".value;
+    var patient_birth = req.body.contexts.params."patient_birth".value;
+
+
+    console.log('patient_name is : ' + patient_name)
+    console.log('patient_birth is : ' + patient_birth)
+  } catch(e) {
+    console.log(e)
+  }
+  //
+  //var patient_name = params['patient_name']
+  //var patient_birth = params['patient_birth']
 
   var string= fs.readFileSync(dataPath, 'utf-8');
   var data=JSON.parse(string)
   var body=[];
   let responseBody;
-  console.log('patient_name is : ' + patient_name)
 
 
  // 로그인
