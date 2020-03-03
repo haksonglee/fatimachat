@@ -41,8 +41,9 @@ router.post('/', function(req, res) {
     };
 
     var buttonstr;
+    console.log('dept = ' + dept)
     switch (dept) {
-      case '피부과','안과':
+      case '피부과':
       buttonstr = {
         label: "컨택센터 전화예약",
         action: "phone",
