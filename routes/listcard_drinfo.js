@@ -35,6 +35,7 @@ router.post('/', function(req, res) {
        var item = data[i];
        if(item.deptname == '['+deptname+']') {
          dept = item.dept
+         item.title = item.title + '  ' + item.deptname
          body.push(item)
        }
 
@@ -47,7 +48,7 @@ router.post('/', function(req, res) {
           {
             listCard: {
               header: {
-                title: "창원파티마병원 " + deptname,
+                title: "창원파티마병원 의료진,
                 imageUrl: "" //"https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
               },
               items:

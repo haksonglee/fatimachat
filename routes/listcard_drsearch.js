@@ -52,7 +52,6 @@ router.post('/', function(req, res) {
         listCard: {
           header: {
             title: "창원파티마병원 의료진",
-            title: "창원파티마병원 " + deptname,
             imageUrl: "" //"https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
           },
           items:
