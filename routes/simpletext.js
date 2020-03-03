@@ -52,10 +52,9 @@ router.post('/test', function(req, res) {
     }
   }; */
   const responseBody = {
-  "version": "2.0",
-  "template": {
-    "outputs": [
-      {
+    "version": "2.0",
+    "template": {
+      "outputs": [{
         "basicCard": {
           "title": "보물상자",
           "description": "보물상자 안에는 뭐가 있을까",
@@ -71,34 +70,32 @@ router.post('/test', function(req, res) {
             "comment": 8,
             "share": 780
           },
-          "buttons": [
-            {
+          "buttons": [{
               "action": "message",
               "label": "열어보기",
               "messageText": "짜잔! 우리가 찾던 보물입니다"
             },
             {
-              "action":  "webLink",
+              "action": "webLink",
               "label": "구경하기",
               "webLinkUrl": "https://e.kakao.com/t/hello-ryan"
             }
           ]
         }
-      }
-    ]
-  },
-  "context": {
-    "values":[
-      {
-        "name":"deptname",
-        "lifesPan":5,
+      }]
+    },
+    "context": {
+      "values": [{
+        "name": "deptname",
+        "lifesPan": 5,
         "params": {
-          "진료과명": {"value":"심장내과"}
+          "진료과명": {
+            "value": "심장내과"
+          }
         }
-      }
-    ]
-  }
-};
+      }]
+    }
+  };
   res.status(200).send(responseBody);
 });
 

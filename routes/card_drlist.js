@@ -3,12 +3,12 @@ const router = require('express').Router();
 //크롤링
 
 //const getDrlist = require(__dirname + '/crawling/drlist.js')
-const dataPath=__dirname + '/crawling/drlist_card.json'
-var fs=require('fs')
+const dataPath = __dirname + '/crawling/drlist_card.json'
+var fs = require('fs')
 
 //http://localhost:3000/api/listcard_drlist/
 var dept = "";
-var deptname=  "";
+var deptname = "";
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
@@ -23,35 +23,32 @@ router.post('/', function(req, res) {
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
 
-    var string= fs.readFileSync(dataPath, 'utf-8');
-    var data=JSON.parse(string)
-    var body=[];
-    //console.log(data.length)
+  var string = fs.readFileSync(dataPath, 'utf-8');
+  var data = JSON.parse(string)
+  var body = [];
+  //console.log(data.length)
 
-    for (var i=0;i<data.length;i++){
-       var item = data[i];
-       if(item.deptname == '['+deptname+']') {
-         dept = item.dept
-         body.push(item)
-       }
+  for (var i = 0; i < data.length; i++) {
+    var item = data[i];
+    if (item.deptname == '[' + deptname + ']') {
+      dept = item.dept
+      body.push(item)
+    }
 
-    };
+  };
 
-      const responseBody = {
-  "version": "2.0",
-  "template": {
-    "outputs": [
-      {
+  const responseBody = {
+    "version": "2.0",
+    "template": {
+      "outputs": [{
         "carousel": {
           "type": "basicCard",
-          "items":
-            body
+          "items": body
         }
-      }
-    ]
+      }]
+    }
   }
-}
-    res.status(200).send(responseBody);
+  res.status(200).send(responseBody);
 });
 
 module.exports = router;
