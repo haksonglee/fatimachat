@@ -38,13 +38,14 @@ router.post('/', function(req, res) {
        var item = data[i];
        dept = item.dept
 
-       if (drname = undefined) {
-          if(item.title == drname) {
-            body.push(item)}
+       if (drname == undefined) {
+         if(item.deptname == '['+deptname+']') {
+           body.push(item)}
+
        }
        else {
-          if(item.deptname == '['+deptname+']') {
-            body.push(item)}
+         if(item.title == drname) {
+           body.push(item)}
       }
     }
 
