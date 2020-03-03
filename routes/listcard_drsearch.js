@@ -41,8 +41,6 @@ router.post('/', function(req, res) {
         item.title = item.title + '  ' + item.deptname
         dept = item.dept
         body.push(item)
-       dept = item.dept
-       body.push(item)
      }
 
   };
