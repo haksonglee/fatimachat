@@ -38,7 +38,7 @@ getHtml()
             action: "message",
             messageText: $(this)
               .find("h3.field-title")
-              .text(),
+              .text() + ' 예약',
 
       };
 
