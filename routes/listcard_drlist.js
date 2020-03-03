@@ -34,14 +34,19 @@ router.post('/', function(req, res) {
     var body=[];
     //console.log(data.length)
 
-    for (var i=0;i<data.length;i++){
+    for (var i=0;i<data.length;i++) {
        var item = data[i];
-       if(item.deptname == '['+deptname+']') {
-         dept = item.dept
-         body.push(item)
-       }
+       dept = item.dept
 
-    };
+       if (drname = "undefined" ) {
+          if(item.title == drname) {
+            body.push(item)}
+       }
+       else {
+          if(item.deptname == '['+deptname+']') {
+            body.push(item)}
+        }
+      }    
 
     var buttonstr;
     console.log('deptname = ' + deptname)
