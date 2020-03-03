@@ -35,15 +35,16 @@ router.post('/', function(req, res) {
        var item = data[i];
        if(item.deptname == '['+deptname+']') {
          dept = item.dept
+         deptname = item.deptname
          body.push(item)
        }
 
     };
 
     var buttonstr;
-    console.log('dept = ' + dept)
-    switch (dept) {
-      case '피부과':
+    console.log('deptname = ' + deptname)
+    switch (deptname) {
+      case '[]피부과]','[안과]','[비뇨의학과]','[정신건강의학과]','[재활의학과]','[치과]':
       buttonstr = {
         label: "컨택센터 전화예약",
         action: "phone",
