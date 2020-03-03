@@ -36,17 +36,18 @@ router.post('/', function(req, res) {
 
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
-    dept = item.dept
 
     if (drname == undefined) {
       if (item.deptname == '[' + deptname + ']') {
         item.title = item.title + '  ' + item.deptname
+        dept = item.dept
         body.push(item)
       }
 
     } else {
       if (item.title == drname) {
-        item.title = item.title + '  ' + item.deptname
+        item.title = item.title + '  ' + item.deptname        
+        dept = item.dept
         body.push(item)
       }
     }
