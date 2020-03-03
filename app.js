@@ -7,6 +7,7 @@ const http = require('http');
 /* Prevent Sleep inHeroku Server*/
 setInterval(function () {
   http.get("http://fatimachat.herokuapp.com");
+  console.log("awake heroku server.....!!")
 }, 600000);
 
 //const apiRouter = express.Router();
