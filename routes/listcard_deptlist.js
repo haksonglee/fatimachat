@@ -21,7 +21,7 @@ router.post('/', function(req, res) {
   //getDrlist(dept);
   var name2 = req.body;
   console.log(JSON.stringify(name2))
-  
+
   var params = req.body.action.params
   var patient_name = params['patient_name']
   var patient_birth = params['patient_birth']
@@ -29,30 +29,59 @@ router.post('/', function(req, res) {
   var string= fs.readFileSync(dataPath, 'utf-8');
   var data=JSON.parse(string)
   var body=[];
+  let responseBody;
   //console.log(data.length)
 
+
+ // 로그인
+ if (patient_name == '이학송') {
+     responseBody = {
+         "version": "2.0",
+         "template": {
+           "outputs": [
+             {
+               "basicCard": {
+                 "title": "예약을 위해 로그인 부탁드립니다.",
+                 "description": "성명 / 생년월일을 입력해주세요",
+                 "buttons": [
+                   {
+                     "action": "message",
+                     "label": "로그인",
+                     "messageText": "로그인"
+                   }
+                 ]
+               }
+             }
+           ]
+         }
+       }
+ }
+ else {
+       for (var i=0;i<data.length;i++){
+          var item = data[i];
+          //item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
+          body.push(item)
+       };
+
+       responseBody = {
+         version: "2.0",
+         template: {
+           outputs: [
+             {
+               simpleText:{
+                 text:"진료과명을 선택해 주십시오"
+               }
+             }
+           ],
+           quickReplies:
+             body
+         }
+     };
+ }
 // 전체목록 listcard 최대 5개
 // 초과시 에러 ...
-  for (var i=0;i<data.length;i++){
-     var item = data[i];
-     //item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
-     body.push(item)
-  };
 
-  const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleText:{
-            text:"진료과명을 선택해 주십시오"
-          }
-        }
-      ],
-      quickReplies:
-        body
-    }
-};
+
   res.status(200).send(responseBody);
 
 });
