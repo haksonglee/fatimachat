@@ -7,18 +7,33 @@ router.post('/test', function(req, res) {
   //var name = req.body.action.name;
   //var name = req.body.contexts.params."의사명".value;
   //console.log(name)
-  var name2 = req.body;
-  console.log(JSON.stringify(name2))
+  //var name2 = req.body;
+  //console.log(JSON.stringify(name2))
 
   //var patient = req.body.contexts[0].params.환자정보.value;
-  var patient = req.body.action.params.환자정보
-  console.log(patient)
+  try {
+    var patient = req.body.action.params.환자정보
+    console.log(patient)
+  } catch (e) {
+    console.log(e)
+  }
 
-  var drcode = req.body.action.detailParams.예약.values
-  console.log(drcode)
 
-  var jsondate = req.body.aciton.detailParams.sys_date.values
-  var sdate = jsondate.date
+  try {
+    var drcode = req.body.action.detailParams.예약.values
+    console.log(drcode)
+  } catch (e) {
+    console.log(e)
+  }
+
+
+  try {
+    var jsondate = req.body.aciton.detailParams.sys_date.values
+    var sdate = jsondate.date
+  } catch (e) {
+    console.log(e)
+  }
+
   //var reqjson = JSON.stringify(req.body)
 
 
