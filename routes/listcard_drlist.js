@@ -43,7 +43,12 @@ router.post('/', function(req, res) {
     var buttonstr;
     console.log('deptname = ' + deptname)
     switch (deptname) {
-      case '피부과','안과','비뇨의학과','정신건강의학과','재활의학과','치과':
+      case '피부과' :
+      case '안과' :
+      case '비뇨의학과' :
+      case '정신건강의학과' :
+      case '재활의학과' :
+      case '치과' :
       buttonstr = {
         label: "컨택센터 전화예약",
         action: "phone",
