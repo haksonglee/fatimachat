@@ -24,11 +24,6 @@ router.post('/', function(req, res) {
   //console.log(drname)
   //console.log(params['진료과명'])
   //dept = params['dept']
-  deptname = params['진료과명']
-  if (deptname == 'undefined') {
-    deptname = ''
-  }
-
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
@@ -43,6 +38,7 @@ router.post('/', function(req, res) {
      if(item.title == drname) {
         item.title = item.title + '  ' + item.deptname
         dept = item.dept
+        deptname = item.deptname
         body.push(item)
      }
 
