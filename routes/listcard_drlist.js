@@ -9,6 +9,7 @@ var fs=require('fs')
 //http://localhost:3000/api/listcard_drlist/
 var dept = "";
 var deptname=  "";
+var drname = "";
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
@@ -16,7 +17,9 @@ router.post('/', function(req, res) {
   //dept = params['dept']
   //console.log(JSON.stringify(params))
   deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
-  //console.log("진료과명 : " + deptname)
+  drname = params['진료의사']
+  console.log("진료과명 : " + deptname)
+  console.log("진료의사 : " + drname)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
