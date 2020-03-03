@@ -30,7 +30,8 @@ router.post('/', function(req, res) {
     console.log('patient_name is : ' + string1)
     console.log('patient_birth is : ' + string2)
   } catch(e) {
-    console.log(e)
+    //console.log(e)
+    console.log("로그인 없음")
   }
   //
   //var patient_name = params['patient_name']
