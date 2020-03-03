@@ -23,8 +23,8 @@ router.post('/', function(req, res) {
   console.log(JSON.stringify(name2))
 
   try {
-    var string1 = req.body.contexts.params."patient_name".value;
-    var string2 = req.body.contexts.params."patient_birth".value;
+    var string1 = req.body.contexts.params.patient_name.value;
+    var string2 = req.body.contexts.params.patient_birth.value;
 
 
     console.log('patient_name is : ' + string1)
