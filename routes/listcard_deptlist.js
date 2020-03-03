@@ -23,12 +23,12 @@ router.post('/', function(req, res) {
   console.log(JSON.stringify(name2))
 
   try {
-    var patient_name = req.body.contexts.params."patient_name".value;
-    var patient_birth = req.body.contexts.params."patient_birth".value;
+    var string1 = req.body.contexts.params."patient_name".value;
+    var string2 = req.body.contexts.params."patient_birth".value;
 
 
-    console.log('patient_name is : ' + patient_name)
-    console.log('patient_birth is : ' + patient_birth)
+    console.log('patient_name is : ' + string1)
+    console.log('patient_birth is : ' + string2)
   } catch(e) {
     console.log(e)
   }
@@ -40,7 +40,7 @@ router.post('/', function(req, res) {
   var data=JSON.parse(string)
   var body=[];
   let responseBody;
-
+  var patient_name = string1;
 
  // 로그인
  if (patient_name == '이학송') {
