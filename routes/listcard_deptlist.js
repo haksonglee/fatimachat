@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
   var data=JSON.parse(string)
   var body=[];
   let responseBody;
-  //console.log(data.length)
+  console.log('patient_name is : ' + patient_name)
 
 
  // 로그인
