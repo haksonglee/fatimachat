@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
   var name2 = req.body;
   console.log(JSON.stringify(name2))
 
-  
+
     var string= fs.readFileSync(dataPath, 'utf-8');
     var data=JSON.parse(string)
     var body=[];
@@ -39,6 +39,27 @@ router.post('/', function(req, res) {
        }
 
     };
+
+    var buttonstr;
+    switch (dept) {
+      case '피부과','안과':
+      buttonstr = {
+        label: "컨택센터 전화예약",
+        action: "phone",
+        phoneNumber: "055-270-1000"
+      }
+        break;
+
+      default:
+        buttonstr = {
+          label: "모바일예약 이동",
+          action: "webLink",
+          webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
+        }
+
+    }
+
+    var buttonstr =
 
       const responseBody = {
       version: "2.0",
@@ -54,11 +75,7 @@ router.post('/', function(req, res) {
                 body
               ,
               buttons: [
-                {
-                  label: "모바일예약 이동",
-                  action: "webLink",
-                  webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
-                }
+                buttonstr
               ]
             }
           }
