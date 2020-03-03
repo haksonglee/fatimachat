@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
   //console.log(params['진료과명'])
   //dept = params['dept']
   if (deptname == 'undefined') {
-    deptname = ''
+    deptname = '' 
   } else {
     deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
     }
