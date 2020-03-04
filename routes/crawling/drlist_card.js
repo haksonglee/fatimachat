@@ -46,7 +46,10 @@ async function getDrlist(dept) { //console.log("nodecraw start");
       var thumbnail = {
         imageUrl: $(this)
           .find("div.card-content-img img")
-          .attr("src")
+          .attr("src"),
+          fixedRatio: true,
+          width: 147,
+          height: 184
       };
 
       var data = {
