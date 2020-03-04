@@ -58,14 +58,14 @@ router.post('/', function(req, res) {
         item.title = item.title + '  ' + item.deptname
         dept = item.dept
         item.link.web = item.link.web + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
-        console.log(item.link.web)
+        //console.log(item.link.web)
         body.push(item)
       }
     }
   }
 
   var buttonstr;
-  console.log('deptname = ' + deptname)
+  //console.log('deptname = ' + deptname)
   switch (deptname) {
     case '피부과':
     case '안과':
