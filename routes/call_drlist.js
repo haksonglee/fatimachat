@@ -12,10 +12,11 @@ exports.call_drlist = function(deptname) {
 
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
-    if (item.deptname == '[' + deptname + ']') {
+    if (item.deptname == '[' + deptname + ']' || item.title == deptname) {
       dept = item.dept
       item.title = item.title + '  ' + item.deptname
       body.push(item)
+      deptname_or_drname = true
     }
 
   };
