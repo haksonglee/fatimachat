@@ -21,7 +21,7 @@ router.post('/', function(req, res) {
   yedate = params['예약일자']
   console.log("진료과명 : " + deptname)
   console.log("진료의사 : " + drname)
-  console.log("예약일자 : " + yedate)
+  console.log("예약일자 : " + yedate.date)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
