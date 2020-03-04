@@ -60,23 +60,8 @@ router.post('/', function(req, res) {
       }
     }
   } else {
-    for (var i = 0; i < data.length; i++) {
-      var item = data[i];
-      //item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
-      body.push(item)
-    };
-
-    responseBody = {
-      version: "2.0",
-      template: {
-        outputs: [{
-          simpleText: {
-            text: "진료과명을 선택해 주십시오"
-          }
-        }],
-        quickReplies: body
-      }
-    };
+    var deptlist_script = require('./call_deptlist');
+    responseBody = JSON.stringify(drlist_script.call_deptlist())
   }
   // 전체목록 listcard 최대 5개
   // 초과시 에러 ...
