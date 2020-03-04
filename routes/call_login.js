@@ -13,7 +13,7 @@ exports.call_login = function(patient_name, patient_birth) {
 
 
 
-      if (patient_hospno > " ") {
+      if (patient_name == '확인자') {
         responseBody = {
           "version": "2.0",
           "template": {
