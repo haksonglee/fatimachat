@@ -28,6 +28,15 @@ router.post('/', function(req, res) {
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
 
+  try {
+    var patient_name = req.body.contexts[1].params.patient_name.value;
+    var patient_birth = req.body.contexts[1].params.patient_birth.value;
+    console.log('patient_name is : ' + patient_name)
+    console.log('patient_birth is : ' + patient_birth)
+  } catch (e) {
+    //console.log(e)
+    console.log("로그인 없음")
+  }
 
   var string = fs.readFileSync(dataPath, 'utf-8');
   var data = JSON.parse(string)
@@ -48,6 +57,7 @@ router.post('/', function(req, res) {
       if (item.title == drname) {
         item.title = item.title + '  ' + item.deptname
         dept = item.dept
+        item.link.web = item.link.web + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
         console.log(item.link.web)
         body.push(item)
       }

@@ -24,10 +24,10 @@ router.post('/', function(req, res) {
 
   // 1. 로그인 정보 확인 -> context 정보 환자명 / 생년월일 확인
   try {
-    var string1 = req.body.contexts[1].params.patient_name.value;
-    var string2 = req.body.contexts[1].params.patient_birth.value;
-    console.log('patient_name is : ' + string1)
-    console.log('patient_birth is : ' + string2)
+    var patient_name = req.body.contexts[1].params.patient_name.value;
+    var patient_birth = req.body.contexts[1].params.patient_birth.value;
+    console.log('patient_name is : ' + patient_name)
+    console.log('patient_birth is : ' + patient_birth)
   } catch (e) {
     //console.log(e)
     console.log("로그인 없음")
@@ -40,7 +40,6 @@ router.post('/', function(req, res) {
   var data = JSON.parse(string)
   var body = [];
   let responseBody;
-  var patient_name = string1;
 
   // // 1. 로그인 확인 -> 로그인 없을시 로그인 message
   if (patient_name == '이학송') {
