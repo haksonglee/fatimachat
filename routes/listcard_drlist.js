@@ -25,8 +25,8 @@ router.post('/', function(req, res) {
   //getDrlist(dept);
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
-  var name2 = req.body;
-  console.log(JSON.stringify(name2))
+  //var name2 = req.body;
+  //console.log(JSON.stringify(name2))
 
 
   var string = fs.readFileSync(dataPath, 'utf-8');
@@ -46,7 +46,7 @@ router.post('/', function(req, res) {
 
     } else {
       if (item.title == drname) {
-        item.title = item.title + '  ' + item.deptname        
+        item.title = item.title + '  ' + item.deptname
         dept = item.dept
         body.push(item)
       }
