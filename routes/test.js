@@ -1,5 +1,5 @@
 var drlist_script = require('./call_drlist');
-var drlist_bodydata = JSON.stringify(drlist_script.call_drlist('임민희'))
+var drlist_bodydata = JSON.stringify(drlist_script.call_drlist('무릎'))
 
 console.log(drlist_bodydata)
 
