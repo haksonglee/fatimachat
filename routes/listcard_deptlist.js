@@ -61,7 +61,7 @@ router.post('/', function(req, res) {
     }
   } else {
     var deptlist_script = require('./call_deptlist');
-    responseBody = JSON.stringify(drlist_script.call_deptlist())
+    responseBody = JSON.stringify(deptlist_script.call_deptlist())
   }
   // 전체목록 listcard 최대 5개
   // 초과시 에러 ...
