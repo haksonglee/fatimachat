@@ -11,6 +11,10 @@ var dept = "";
 var deptname = "";
 var drname = "";
 
+var deptlist_script = require('./call_deptlist');
+var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist())
+var responseBody;
+
 router.post('/', function(req, res) {
   var params = req.body.action.params
   //console.log(params['진료과명'])
@@ -46,68 +50,77 @@ router.post('/', function(req, res) {
   var body = [];
   //console.log(data.length)
 
-  for (var i = 0; i < data.length; i++) {
-    var item = data[i];
 
-    if (drname == undefined) {
-      if (item.deptname == '[' + deptname + ']') {
-        item.title = item.title + '  ' + item.deptname
-        dept = item.dept
-        body.push(item)
-      }
+  //일자만 입력되면 과선택 모듈
 
-    } else {
-      if (item.title == drname) {
-        item.title = item.title + '  ' + item.deptname
-        dept = item.dept
-        item.link.web = item.link.web + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
-        //console.log(item.link.web)
-        body.push(item)
-      }
-    }
+  if (deptname == undefined && drname == undefined) {
+    responseBody = deptlist_bodydata
   }
+  else {
+      for (var i = 0; i < data.length; i++) {
+        var item = data[i];
 
-  var buttonstr;
-  //console.log('deptname = ' + deptname)
-  switch (deptname) {
-    case '피부과':
-    case '안과':
-    case '비뇨의학과':
-    case '정신건강의학과':
-    case '재활의학과':
-    case '치과':
-      buttonstr = {
-        label: "컨택센터 전화예약",
-        action: "phone",
-        phoneNumber: "055-270-1000"
-      }
-      break;
+        if (drname == undefined) {
+          if (item.deptname == '[' + deptname + ']') {
+            item.title = item.title + '  ' + item.deptname
+            dept = item.dept
+            body.push(item)
+          }
 
-    default:
-      buttonstr = {
-        label: "모바일예약 이동",
-        action: "webLink",
-        webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
-      }
-
-  }
-  const responseBody = {
-    version: "2.0",
-    template: {
-      outputs: [{
-        listCard: {
-          header: {
-            title: "창원파티마병원 의료진",
-            imageUrl: "https://www.fatimahosp.co.kr/assets/images/sub/sub_visual5.jpg"
-          },
-          items: body,
-          buttons: [
-            buttonstr
-          ]
+        } else {
+          if (item.title == drname) {
+            item.title = item.title + '  ' + item.deptname
+            dept = item.dept
+            item.link.web = item.link.web + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
+            //console.log(item.link.web)
+            body.push(item)
+          }
         }
-      }]
+      }
+
+      var buttonstr;
+      //console.log('deptname = ' + deptname)
+      switch (deptname) {
+        case '피부과':
+        case '안과':
+        case '비뇨의학과':
+        case '정신건강의학과':
+        case '재활의학과':
+        case '치과':
+          buttonstr = {
+            label: "컨택센터 전화예약",
+            action: "phone",
+            phoneNumber: "055-270-1000"
+          }
+          break;
+
+        default:
+          buttonstr = {
+            label: "모바일예약 이동",
+            action: "webLink",
+            webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
+          }
+
+      }
+
+      responseBody = {
+        version: "2.0",
+        template: {
+          outputs: [{
+            listCard: {
+              header: {
+                title: "창원파티마병원 의료진",
+                imageUrl: "https://www.fatimahosp.co.kr/assets/images/sub/sub_visual5.jpg"
+              },
+              items: body,
+              buttons: [
+                buttonstr
+              ]
+            }
+          }]
+        }
+      }
     }
-  }
   res.status(200).send(responseBody);
 });
 
