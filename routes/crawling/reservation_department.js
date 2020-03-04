@@ -7,10 +7,10 @@ const router = express.Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
 const log = console.log;
-var fs=require('fs')
+var fs = require('fs')
 
 //console.log("nodecraw start");
-var dataArr=[];
+var dataArr = [];
 var dataPath = __dirname + '/reservation_deptlist.json'
 const getHtml = async () => {
   try {
@@ -31,25 +31,27 @@ getHtml()
     var deptcode;
 
     $bodyList.each(function(i, elem) {
-            var data = {
-            label: $(this)
-              .find("h3.field-title")
-              .text(),
-            action: "message",
-            messageText: $(this)
-              .find("h3.field-title")
-              .text() + ' 예약',
+      var data = {
+        label: $(this)
+          .find("h3.field-title")
+          .text(),
+        action: "message",
+        messageText: $(this)
+          .find("h3.field-title")
+          .text() + ' 예약',
 
       };
 
       dataArr.push(data);
     });
-    fs.writeFileSync(dataPath, JSON.stringify(dataArr), function(error, data){
-      if (error) {throw error};
-    //const data = ulList.filter(n => n.name);
-    //return data;
-  });
-  //.then(res => {
+    fs.writeFileSync(dataPath, JSON.stringify(dataArr), function(error, data) {
+      if (error) {
+        throw error
+      };
+      //const data = ulList.filter(n => n.name);
+      //return data;
+    });
+    //.then(res => {
     //log(res);
     //objectJSON = JSON.stringify(ulList1);
 
