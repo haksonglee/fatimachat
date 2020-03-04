@@ -18,15 +18,17 @@ router.post('/', function(req, res) {
   //console.log(JSON.stringify(params))
   deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   drname = params['진료의사']
+  yedate = params['예약일자']
   console.log("진료과명 : " + deptname)
   console.log("진료의사 : " + drname)
+  console.log("예약일자 : " + yedate)
   //dept = "ET"
   //deptname = "이비인후과"
   //getDrlist(dept);
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
-  var name2 = req.body;
-  console.log(JSON.stringify(name2))
+  //var name2 = req.body;
+  //console.log(JSON.stringify(name2))
 
   try {
     var patient_name = req.body.contexts[1].params.patient_name.value;
