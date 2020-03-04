@@ -48,6 +48,7 @@ router.post('/', function(req, res) {
       if (item.title == drname) {
         item.title = item.title + '  ' + item.deptname
         dept = item.dept
+        console.log(item.link.web)
         body.push(item)
       }
     }
@@ -84,7 +85,7 @@ router.post('/', function(req, res) {
         listCard: {
           header: {
             title: "창원파티마병원 의료진",
-            imageUrl: "" //"https://www.fatimahosp.co.kr/pages/department?deptdoctor="+ dept
+            imageUrl: "https://www.fatimahosp.co.kr/assets/images/sub/sub_visual5.jpg"
           },
           items: body,
           buttons: [
