@@ -57,7 +57,7 @@ router.post('/', function(req, res) {
       if (item.title == drname) {
         item.title = item.title + '  ' + item.deptname
         dept = item.dept
-        item.link.web = "https://www.fatimahosp.co.kr/weblink?req=myreservation&data=1407464|이하정" // + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
+        item.link.web = "https://www.fatimahosp.co.kr/weblink?req=myreservation&data=1407464|" + patient_name // + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
         console.log(item.link.web)
         body.push(item)
       }
