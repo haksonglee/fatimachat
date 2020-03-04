@@ -7,7 +7,7 @@ exports.call_login = function(patient_name, patient_birth) {
 
     //로그인 상태 체크
     var patient_hospno = ""
-    // fatimahosp 접속 환자명 + 생년월일 로 환자정보 getElementsByClassName()
+    // fatimahosp 접속 환자명 + 생년월일 로 환자정 보 getElementsByClassName()
     //if 존재하면 pass else "없다는 정보 - 전화접수 안내 message "
     patient_hospno = '000602887' //returj 값
 
