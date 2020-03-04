@@ -1,0 +1,127 @@
+const router = require('express').Router();
+
+//크롤링
+
+//const getDrlist = require(__dirname + '/crawling/drlist.js')
+const dataPath = __dirname + '/crawling/drlist.json'
+var fs = require('fs')
+
+//http://localhost:3000/api/listcard_drlist/
+var dept = "";
+var deptname = "";
+var drname = "";
+
+var deptlist_script = require('./call_deptlist');
+var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist())
+var responseBody;
+
+router.post('/', function(req, res) {
+  var params = req.body.action.params
+  //console.log(params['진료과명'])
+  //dept = params['dept']
+  //console.log(JSON.stringify(params))
+  deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
+  drname = params['진료의사']
+  yedate = params['예약일자']
+  ydate_json = JSON.parse(yedate)
+  console.log("진료과명 : " + deptname)
+  console.log("진료의사 : " + drname)
+  console.log("예약일자 : " + ydate_json.date)
+  //dept = "ET"
+  //deptname = "이비인후과"
+  //getDrlist(dept);
+  //var name2 = req.body;
+  //console.log(JSON.stringify(name2))
+  //var name2 = req.body;
+  //console.log(JSON.stringify(name2))
+
+  try {
+    var patient_name = req.body.contexts[1].params.patient_name.value;
+    var patient_birth = req.body.contexts[1].params.patient_birth.value;
+    console.log('patient_name is : ' + patient_name)
+    console.log('patient_birth is : ' + patient_birth)
+  } catch (e) {
+    //console.log(e)
+    console.log("로그인 없음")
+  }
+
+  var string = fs.readFileSync(dataPath, 'utf-8');
+  var data = JSON.parse(string)
+  var body = [];
+  //console.log(data.length)
+
+
+  //일자만 입력되면 과선택 모듈
+
+  if (deptname == undefined && drname == undefined) {
+    responseBody = deptlist_bodydata
+  }
+  else {
+      for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+
+        if (drname == undefined) {
+          if (item.deptname == '[' + deptname + ']') {
+            item.title = item.title + '  ' + item.deptname
+            dept = item.dept
+            body.push(item)
+          }
+
+        } else {
+          if (item.title == drname) {
+            item.title = item.title + '  ' + item.deptname
+            dept = item.dept
+            item.link.web = item.link.web + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
+            //console.log(item.link.web)
+            body.push(item)
+          }
+        }
+      }
+
+      var buttonstr;
+      //console.log('deptname = ' + deptname)
+      switch (deptname) {
+        case '피부과':
+        case '안과':
+        case '비뇨의학과':
+        case '정신건강의학과':
+        case '재활의학과':
+        case '치과':
+          buttonstr = {
+            label: "컨택센터 전화예약",
+            action: "phone",
+            phoneNumber: "055-270-1000"
+          }
+          break;
+
+        default:
+          buttonstr = {
+            label: "모바일예약 이동",
+            action: "webLink",
+            webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
+          }
+
+      }
+
+      responseBody = {
+        version: "2.0",
+        template: {
+          outputs: [{
+            listCard: {
+              header: {
+                title: "창원파티마병원 의료진",
+                imageUrl: "https://www.fatimahosp.co.kr/assets/images/sub/sub_visual5.jpg"
+              },
+              items: body,
+              buttons: [
+                buttonstr
+              ]
+            }
+          }]
+        }
+      }
+    }
+  res.status(200).send(responseBody);
+});
+
+module.exports = router;

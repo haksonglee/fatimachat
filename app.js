@@ -19,6 +19,8 @@ const webhook_Router = require('./routes/webhook');
 //const listcard_drlist_Router = require('./routes/listcard_drlist');
 const yeyak_drcode_Router = require('./routes/yeyak_drcode');
 const yeyak_date_Router = require('./routes/yeyak_date');
+const yeyak_drcode_date_Router = require('./routes/yeyak_drcode_date');
+
 const listcard_drinfo_Router = require('./routes/listcard_drinfo');
 const card_drlist_Router = require('./routes/card_drlist');
 
@@ -43,6 +45,7 @@ app.use('/api/webhook', webhook_Router);
 //app.use('/api/cardimage', cardimage_Router);
 app.use('/api/yeyak_drcode', yeyak_drcode_Router);
 app.use('/api/yeyak_date', yeyak_date_Router);
+app.use('/api/yeyak_drcode_date', yeyak_drcode_date_Router);
 //app.use('/api/listcard_drlist', listcard_drlist_Router);
 app.use('/api/listcard_drinfo', listcard_drinfo_Router);
 app.use('/api/card_drlist', card_drlist_Router);
