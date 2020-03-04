@@ -48,8 +48,8 @@ async function getDrlist(dept) { //console.log("nodecraw start");
           .find("div.card-content-img img")
           .attr("src"),
           fixedRatio: true,
-          width: 147,
-          height: 184
+          width: 74,
+          height: 92
       };
 
       var data = {
