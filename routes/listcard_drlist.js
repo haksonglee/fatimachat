@@ -25,8 +25,8 @@ router.post('/', function(req, res) {
   //getDrlist(dept);
   //var name2 = req.body;
   //console.log(JSON.stringify(name2))
-  //var name2 = req.body;
-  //console.log(JSON.stringify(name2))
+  var name2 = req.body;
+  console.log(JSON.stringify(name2))
 
   try {
     var patient_name = req.body.contexts[1].params.patient_name.value;
