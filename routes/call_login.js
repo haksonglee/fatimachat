@@ -9,9 +9,12 @@ exports.call_login = function(patient_name, patient_birth) {
     var patient_hospno = ""
     // fatimahosp 접속 환자명 + 생년월일 로 환자정 보 getElementsByClassName()
     //if 존재하면 pass else "없다는 정보 - 전화접수 안내 message "
-    patient_hospno = '000602887' //returj 값
+    if (patient_name != undefined && patient_birth != undefined) {
+      patient_hospno = '000602887' //returj 값
+    }
 
-      if (patient_name == '확인자') {
+
+      if (patient_hospno == '000602887') {
         responseBody = {
           "version": "2.0",
           "template": {
