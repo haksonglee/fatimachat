@@ -18,7 +18,7 @@ router.get('/schema', function(req, res) {
     if (err) {
       return next(err);
     } else {
-      res.json(user);
+      res.json(user); 
     }
   });
 });

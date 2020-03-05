@@ -3,9 +3,7 @@ const app = express();
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
-
 var mongoose    = require('mongoose');
-
 
 /* Prevent Sleep inHeroku Server*/
 setInterval(function () {
@@ -63,8 +61,28 @@ app.use('/api/logout', logout_Router);
 //app.use('/api/knowledge', knowledge_Router);
 app.use('/api/quickreplies',quickreplies_Router);
 app.use('/api/test',test_Router);
+app.use('/api/dbuser',dbuser_Router);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('Example skill server listening on port 3000!');
 });
+
+var database;
+var UserSchema;
+var Usermodel;
+
+var databaseUrl = "mongodb://localhost:27017/fatimachat";
+
+mongoose.connect(databaseUrl);
+database = mongoose.connection;
+
+database.on('error', console.error.bind(console,'mongoose connection error'));
+database.on('open', function() {
+  console.log('db connecting ok');
+})
+
+database.on('disconnected', function() {
+  console.log('db reconnecting...')
+  setInterval(connectDB, 5000);
+})
