@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
     var patient_birth;
 
     var drlist_script = require('./call_login');
-    var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
+    var responseBody = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
   } else {
     var deptlist_script = require('./call_deptlist');
