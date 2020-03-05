@@ -7,10 +7,11 @@ var deptname;
 
 router.post('/', function(req, res) {
   // 1. 로그인 정보 확인 -> context 정보 환자명 / 생년월일 확인
+
   try {
-    console.log(JSON.stringify(req.body))
-    var patient_name = req.body.contexts[0].params.patient_name.value;
-    var patient_birth = req.body.contexts[0].params.patient_birth.value;
+    //console.log(JSON.stringify(req.body))
+    var patient_name; /// = req.body.contexts[0].params.patient_name.value;
+    var patient_birth; // = req.body.contexts[0].params.patient_birth.value;
     console.log('patient_name is : ' + patient_name)
     console.log('patient_birth is : ' + patient_birth)
   } catch (e) {
@@ -21,8 +22,6 @@ router.post('/', function(req, res) {
 
   // // 1. 로그인 확인 -> 로그인 없을시 로그인 message
   if (login_pass == 'NO') {
-    var patient_name;
-    var patient_birth;
 
     var drlist_script = require('./call_login');
     var responseBody = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
