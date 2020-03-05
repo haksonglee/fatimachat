@@ -1,7 +1,7 @@
 const dataPath = __dirname + '/crawling/reservation_deptlist.json'
 var fs = require('fs')
 
-exports.call_deptlist = function() {
+exports.call_deptlist = function(yeyakdate) {
 
   var string = fs.readFileSync(dataPath, 'utf-8');
   var data = JSON.parse(string)
@@ -11,6 +11,9 @@ exports.call_deptlist = function() {
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
     //item.imageUrl = 'https://www.fatimahosp.co.kr' + item.imageUrl
+    if (yeyakdate != undefined) {
+      item.messageText = item.messageText + ' ' + yeyakdate
+    }
     body.push(item)
   };
 

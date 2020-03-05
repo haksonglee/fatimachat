@@ -22,6 +22,7 @@ router.post('/', function(req, res) {
   drname = params['진료의사']
   yedate = params['예약일자']
   ydate_json = JSON.parse(yedate)
+  yeyakdate = ydate_json.date
   console.log("진료과명 : " + deptname)
   console.log("진료의사 : " + drname)
   console.log("예약일자 : " + ydate_json.date)
@@ -53,7 +54,7 @@ router.post('/', function(req, res) {
 
   if (deptname == undefined && drname == undefined) {
     var deptlist_script = require('./call_deptlist');
-    var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist())
+    var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist(yeyakdate))
     responseBody = deptlist_bodydata
   }
   else {
