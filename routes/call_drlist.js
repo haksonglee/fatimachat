@@ -9,11 +9,12 @@ exports.call_drlist = function(deptname, drname, gubun) {
   var data = JSON.parse(string)
   var body = [];
   var dept
-  //console.log(data.length)
+  console.log(deptname)
+  console.log(drname)
 
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
-    if (item.deptname == '[' + deptname + ']'&& drname == undefined) {
+    if (item.deptname == '[' + deptname + ']' && drname == undefined) {
       dept = item.dept
       item.title = item.title + '  ' + item.deptname
       body.push(item)
