@@ -73,7 +73,7 @@ router.post('/', function(req, res) {
           if (item.title == drname) {
             item.title = item.title + '  ' + item.deptname
             dept = item.dept
-            item.link.web = item.link.web + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
+            item.link.web = item.link.web + '&patient_name= '+ patient_name + '&patient_birth=' + patient_birth
             //console.log(item.link.web)
             body.push(item)
           }
