@@ -4,6 +4,9 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
 
+var mongoose    = require('mongoose');
+
+
 /* Prevent Sleep inHeroku Server*/
 setInterval(function () {
   http.get("http://fatimachat.herokuapp.com");
@@ -33,6 +36,7 @@ const logout_Router = require('./routes/logout');
 //const knowledge_Router = require('./routes/knowledge');
 const quickreplies_Router = require('./routes/quickreplies');
 const test_Router = require('./routes/test');
+const dbuser_Router = require('./routes/dbuser');
 
 app.use(logger('dev', {}));
 app.use(bodyParser.json());
