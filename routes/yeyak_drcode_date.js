@@ -81,12 +81,13 @@ router.post('/', function(req, res) {
       }*/
 
       var drlist_script = require('./call_drlist');
-      var drlist_bodydata1 = JSON.parse(drlist_script.call_drlist(deptname, drname, 'dept'))
-      drlist_bodydata1.link.web = drlist_bodydata1.link.web +  '&patient_name='+ patient_name + '&patient_birth=' + patient_birth + '&deptname=' + deptname + '&drname=' + drname + '&yeyakdate=' + yeyakdate
-      console.log("check link  = " + drlist_bodydata1)
-      console.log("check link pamameter = " + drlist_bodydata1.link.web)
-      var drlist_bodydata2 = JSON.stringify(drlist_bodydata1)
-      responseBody = drlist_bodydata2
+      var drlist_bodydata1 = JSON.stringify(drlist_script.call_drlist(deptname, drname, 'dept'))
+      var drlist_bodydata2 = JSON.parse(drlist_bodydata1)
+      drlist_bodydata2.link.web = drlist_bodydata2.link.web +  '&patient_name='+ patient_name + '&patient_birth=' + patient_birth + '&deptname=' + deptname + '&drname=' + drname + '&yeyakdate=' + yeyakdate
+      //console.log("check link  = " + drlist_bodydata)
+      console.log("check link pamameter = " + drlist_bodydata2.link.web)
+      //var drlist_bodydata2 = JSON.stringify(drlist_bodydata1)
+      responseBody = drlist_bodydata1
     }
   res.status(200).send(responseBody);
 });
