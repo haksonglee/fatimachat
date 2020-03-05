@@ -11,8 +11,6 @@ exports.call_login = function(patient_name, patient_birth) {
     //if 존재하면 pass else "없다는 정보 - 전화접수 안내 message "
     patient_hospno = '000602887' //returj 값
 
-
-
       if (patient_name == '확인자') {
         responseBody = {
           "version": "2.0",
@@ -52,7 +50,7 @@ exports.call_login = function(patient_name, patient_birth) {
             "outputs": [{
               "basicCard": {
                 "title": "안녕하세요 " + patient_name + "님",
-                "description": "환자정보를 찾을수 없습니다 \n 다시 로그인 부탁드립니다",
+                "description": "환자정보를 찾을수 없습니다 \n 로그인 부탁드립니다",
                 "buttons": [{
                   "action": "message",
                   "label": "로그인",
