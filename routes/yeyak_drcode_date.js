@@ -81,10 +81,17 @@ router.post('/', function(req, res) {
       }*/
 
       var drlist_script = require('./call_drlist');
-      var drlist_bodydata1 = JSON.stringify(drlist_script.call_drlist(deptname, drname, 'dept'))
+      var drlist_bodydata = drlist_script.call_drlist(deptname, drname, 'dept')
+      var itemlength = drlist_bodydata.template.outputs[0].listCard.items.length
+
       //drlist_bodydata2.link.web = drlist_bodydata2.link.web +  '&patient_name='+ patient_name + '&patient_birth=' + patient_birth + '&deptname=' + deptname + '&drname=' + drname + '&yeyakdate=' + yeyakdate
       //console.log("check link  = " + drlist_bodydata)
-      console.log("check link pamameter = " + drlist_bodydata1)
+      //console.log("check link pamameter = " + drlist_bodydata)
+      for (var i=0;i<itemlength;i++){
+        drlist_bodydata.template.outputs[0].listCard.items[i].link.web =
+        drlist_bodydata.template.outputs[0].listCard.items[i].link.web + '&patient_name='+'이학송' +
+        '&patient_hospno='+'000602887'
+      };
       //var drlist_bodydata2 = JSON.stringify(drlist_bodydata1)
       responseBody = drlist_bodydata1
     }
