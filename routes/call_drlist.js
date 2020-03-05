@@ -1,7 +1,7 @@
 const dataPath = __dirname + '/crawling/drlist.json'
 var fs = require('fs')
 
-exports.call_drlist = function(deptname, gubun) {
+exports.call_drlist = function(deptname, drname, gubun) {
 
  //gubun 'sang'=> 상병, 'dept' => 진료과
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함

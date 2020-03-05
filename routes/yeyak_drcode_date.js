@@ -11,10 +11,6 @@ var dept = "";
 var deptname = "";
 var drname = "";
 
-var deptlist_script = require('./call_deptlist');
-var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist())
-var responseBody;
-
 router.post('/', function(req, res) {
   var params = req.body.action.params
   //console.log(params['진료과명'])
@@ -57,7 +53,9 @@ router.post('/', function(req, res) {
   //일자만 입력되면 과선택 모듈
 
   if (deptname == undefined && drname == undefined) {
-    responseBody = deptlist_bodydata
+    var deptlist_script = require('./call_deptlist');
+    var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist())
+    var responseBody = deptlist_bodydata;
   }
   else {
     /*
