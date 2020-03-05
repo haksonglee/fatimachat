@@ -12,12 +12,17 @@ exports.call_drlist = function(deptname) {
 
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
-    if (item.deptname == '[' + deptname + ']' || item.title == deptname || item.description.indexOf(deptname) >= 0) {
+    if (item.deptname == '[' + deptname + ']' || item.title == deptname) {
       dept = item.dept
       item.title = item.title + '  ' + item.deptname
       body.push(item)
       //deptname_or_drname = true
+    } else if (item.description.indexOf(deptname) >= 0){
+      dept = item.dept
+      item.title = item.title + '  ' + item.deptname
+      body.push(item)
     }
+
 
   };
 
