@@ -32,6 +32,7 @@ const login_Router = require('./routes/login');
 const logout_Router = require('./routes/logout');
 //const knowledge_Router = require('./routes/knowledge');
 const quickreplies_Router = require('./routes/quickreplies');
+const test_Router = require('./routes/test');
 
 app.use(logger('dev', {}));
 app.use(bodyParser.json());
@@ -57,6 +58,7 @@ app.use('/api/login', login_Router);
 app.use('/api/logout', logout_Router);
 //app.use('/api/knowledge', knowledge_Router);
 app.use('/api/quickreplies',quickreplies_Router);
+app.use('/api/test',test_Router);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
