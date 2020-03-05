@@ -68,7 +68,7 @@ router.post('/', function(req, res) {
   }
 
   var drlist_script = require('./call_drlist');
-  var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname))
+  var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname,'dept'))
   responseBody = drlist_bodydata
   res.status(200).send(responseBody);
 });
