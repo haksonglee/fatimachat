@@ -18,7 +18,7 @@ router.post('/', function(req, res) {
   //console.log(JSON.stringify(params))
   deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   drname = params['진료의사']
-  yedate = params['예약일자']
+  //yedate = params['예약일자']
   //ydate_json = JSON.parse(yedate)
   console.log("진료과명 : " + deptname)
   console.log("진료의사 : " + drname)
