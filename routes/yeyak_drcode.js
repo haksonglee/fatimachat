@@ -45,7 +45,7 @@ router.post('/', function(req, res) {
   var data = JSON.parse(string)
   var body = [];
   //console.log(data.length)
-
+/*
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
 
@@ -66,9 +66,9 @@ router.post('/', function(req, res) {
       }
     }
   }
-
+*/
   var drlist_script = require('./call_drlist');
-  var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname,'dept'))
+  var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname, drname, 'dept'))
   responseBody = drlist_bodydata
   res.status(200).send(responseBody);
 });
