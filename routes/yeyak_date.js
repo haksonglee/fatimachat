@@ -11,8 +11,6 @@ var dept = "";
 var deptname = "";
 var drname = "";
 
-var deptlist_script = require('./call_deptlist');
-var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist())
 var responseBody;
 
 router.post('/', function(req, res) {
@@ -54,6 +52,9 @@ router.post('/', function(req, res) {
   //일자만 입력되면 과선택 모듈
 
   if (deptname == undefined && drname == undefined) {
+    var deptlist_script = require('./call_deptlist');
+    deptlist_script.
+    var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist())
     responseBody = deptlist_bodydata
   }
   else {

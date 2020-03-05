@@ -17,6 +17,7 @@ const webhook_Router = require('./routes/webhook');
 //const card_Router = require('./routes/card');
 //const cardimage_Router = require('./routes/cardimage');
 //const listcard_drlist_Router = require('./routes/listcard_drlist');
+//예약관련
 const yeyak_drcode_Router = require('./routes/yeyak_drcode');
 const yeyak_date_Router = require('./routes/yeyak_date');
 const yeyak_drcode_date_Router = require('./routes/yeyak_drcode_date');
