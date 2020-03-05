@@ -15,7 +15,7 @@ router.post('/', function(req, res) {
   //  console.log('patient_name is : ' + patient_name)
   //  console.log('patient_birth is : ' + patient_birth)
   } catch (e) {
-  //  var login_pass = 'NO'
+    var login_pass = 'NO'
 //    console.log(e)
   }
 
