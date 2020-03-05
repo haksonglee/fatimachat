@@ -5,6 +5,10 @@ var dept = "";
 var deptname = "";
 
 router.post('/', function(req, res) {
+
+  var botid = JSON.stringify(req.body.bot.id)
+  console.log("bot id :  " + botid)
+
   var params = req.body.action.params
 
   var patient_name = params['patient_name']
