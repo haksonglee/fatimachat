@@ -84,7 +84,7 @@ router.post('/', function(req, res) {
       var drlist_bodydata1 = JSON.stringify(drlist_script.call_drlist(deptname, drname, 'dept'))
       //drlist_bodydata2.link.web = drlist_bodydata2.link.web +  '&patient_name='+ patient_name + '&patient_birth=' + patient_birth + '&deptname=' + deptname + '&drname=' + drname + '&yeyakdate=' + yeyakdate
       //console.log("check link  = " + drlist_bodydata)
-      console.log("check link pamameter = " + drlist_bodydata1.link.web)
+      console.log("check link pamameter = " + drlist_bodydata1)
       //var drlist_bodydata2 = JSON.stringify(drlist_bodydata1)
       responseBody = drlist_bodydata1
     }
