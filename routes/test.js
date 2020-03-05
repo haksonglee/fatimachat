@@ -8,7 +8,7 @@ var deptname;
 router.post('/', function(req, res) {
   // 1. 로그인 정보 확인 -> context 정보 환자명 / 생년월일 확인
   try {
-    console.log(req.body)
+    console.log(JSON.stringify(req.body))
     var patient_name = req.body.contexts[1].params.patient_name.value;
     var patient_birth = req.body.contexts[1].params.patient_birth.value;
     console.log('patient_name is : ' + patient_name)
