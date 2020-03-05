@@ -93,7 +93,7 @@ router.post('/', function(req, res) {
         '&patient_hospno='+'000602887'
       };
       //var drlist_bodydata2 = JSON.stringify(drlist_bodydata1)
-      responseBody = drlist_bodydata1
+      responseBody = drlist_bodydata
     }
   res.status(200).send(responseBody);
 });
