@@ -68,6 +68,7 @@ app.listen(port, function() {
   console.log('Example skill server listening on port 3000!');
 });
 
+/*
 var database;
 var UserSchema;
 var Usermodel;
@@ -86,3 +87,4 @@ database.on('disconnected', function() {
   console.log('db reconnecting...')
   //setInterval(connectDB, 5000);
 })
+*/
