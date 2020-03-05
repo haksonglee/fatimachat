@@ -7,9 +7,9 @@ const dataPath = __dirname + '/crawling/drlist.json'
 var fs = require('fs')
 
 //http://localhost:3000/api/listcard_drlist/
-var dept = "";
-var deptname = "";
-var drname = "";
+var dept;
+var deptname;
+var drname;
 
 router.post('/', function(req, res) {
   var params = req.body.action.params

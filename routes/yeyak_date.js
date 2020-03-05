@@ -3,13 +3,13 @@ const router = require('express').Router();
 //크롤링
 
 //const getDrlist = require(__dirname + '/crawling/drlist.js')
-const dataPath = __dirname + '/crawling/drlist.json'
-var fs = require('fs')
+//const dataPath = __dirname + '/crawling/drlist.json'
+//var fs = require('fs')
 
 //http://localhost:3000/api/listcard_drlist/
-var dept = "";
-var deptname = "";
-var drname = "";
+var dept;
+var deptname;
+var drname;
 
 var responseBody;
 
@@ -44,8 +44,8 @@ router.post('/', function(req, res) {
     console.log("로그인 없음")
   }
 
-  var string = fs.readFileSync(dataPath, 'utf-8');
-  var data = JSON.parse(string)
+  //var string = fs.readFileSync(dataPath, 'utf-8');
+  //var data = JSON.parse(string)
   var body = [];
   //console.log(data.length)
 
@@ -80,9 +80,8 @@ router.post('/', function(req, res) {
       }
 
       var drlist_script = require('./call_drlist');
-      var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname))
+      var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname,drname,'dept'))
       responseBody = drlist_bodydata
-
 }
   res.status(200).send(responseBody);
 });
