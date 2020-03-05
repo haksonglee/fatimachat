@@ -18,7 +18,7 @@ exports.call_drlist = function(deptname, gubun) {
       item.title = item.title + '  ' + item.deptname
       body.push(item)
       //deptname_or_drname = true
-    } else if (gubun = 'sang' && item.description.indexOf(deptname) >= 0){
+    } else if (gubun == 'sang' && item.description.indexOf(deptname) >= 0){
       dept = item.dept
       item.title = item.title + '  ' + item.deptname
       body.push(item)
