@@ -9,14 +9,14 @@ router.post('/', function(req, res) {
   // 1. 로그인 정보 확인 -> context 정보 환자명 / 생년월일 확인
 
   try {
-    //console.log(JSON.stringify(req.body))
-    var patient_name; /// = req.body.contexts[0].params.patient_name.value;
-    var patient_birth; // = req.body.contexts[0].params.patient_birth.value;
-    console.log('patient_name is : ' + patient_name)
-    console.log('patient_birth is : ' + patient_birth)
+    console.log(JSON.stringify(req.body.bot.id))
+  //  var patient_name =req.body.contexts[0].params.patient_name.value;
+  //  var patient_birth= req.body.contexts[0].params.patient_birth.value;
+  //  console.log('patient_name is : ' + patient_name)
+  //  console.log('patient_birth is : ' + patient_birth)
   } catch (e) {
-    var login_pass = 'NO'
-    console.log(e)
+  //  var login_pass = 'NO'
+//    console.log(e)
   }
 
 
