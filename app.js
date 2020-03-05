@@ -84,5 +84,5 @@ database.on('open', function() {
 
 database.on('disconnected', function() {
   console.log('db reconnecting...')
-  setInterval(connectDB, 5000);
+  //setInterval(connectDB, 5000);
 })
