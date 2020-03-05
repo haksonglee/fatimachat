@@ -13,12 +13,12 @@ exports.call_drlist = function(deptname, drname, gubun) {
 
   for (var i = 0; i < data.length; i++) {
     var item = data[i];
-    if (item.deptname == '[' + deptname + ']' || drname == undefined) {
+    if (item.deptname == '[' + deptname + ']'&& drname == undefined) {
       dept = item.dept
       item.title = item.title + '  ' + item.deptname
       body.push(item)
       //deptname_or_drname = true
-    } else if (item.deptname == '[' + deptname + ']' || item.title == drname){
+    } else if (item.deptname == '[' + deptname + ']' && item.title == drname){
       dept = item.dept
       item.title = item.title + '  ' + item.deptname
       body.push(item)
