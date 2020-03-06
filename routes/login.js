@@ -22,34 +22,29 @@ router.post('/', function(req, res) {
   // db 로그인 정보
   var chatUser = require("./dbuser_schema")
   if (drlist_jsondata.patient_hospno != undefined) {
-    try {
       console.log("db insert test start 111")
-      var user = chatUser.findOne({id:botid});
-      console.log("user = " + user)
-      if (!user) {
-        // insert
-        console.log("db insert test start 222")
 
-        var userModel = new chatUser();
-            userModel.id = botid;
-            userModel.name = patient_name;
-            userModel.birth = patient_birth;
-            userModel.hospno = patient_hospno;
-            userModel
-              .save()
-              .then(cuser => {
-                console.log('insert ok')
-              })
-              .catch(err => {
-                console.log('insert err ==> ' + err)
-              })
-      } else {
-        console.log("db insert test start 333")
-      }
-    } catch(err) {
-        console.log('db user findOne error')
-      }
-  }
+      chatUser.find({id : input_id}, function (err, users) {
+        if (err) {return handleError(err);}
+      //console.log(users)
+        console.log("users.length = " + users.length)
+        if (users.length == 0){
+        //insert
+          var userModel = new chatUser();
+              userModel.id = botid
+              userModel.name = patient_name
+              userModel.birth = patient_birth
+              userModel.hospno = patient_hospno
+              userModel.save()
+          } else {
+            //for (var i=0;i< users.length;i++) {
+              //console.log(users[i].name + users[i].id + users[i].birth + users[i].hospno)
+              //var name = users[i].name
+              //databody.push({name});
+            
+          }
+      })
+}
   //db
   var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
