@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
   var chatUser = require("./dbuser_schema")
   if (drlist_jsondata.patient_hospno != undefined) {
       console.log("db insert test start 111")
-
+      
       chatUser.find({id : botid}, function (err, users) {
         if (err) {return handleError(err);}
       //console.log(users)
@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
               userModel.id = botid
               userModel.name = patient_name
               userModel.birth = patient_birth
-              userModel.hospno = patient_hospno
+              userModel.hospno = drlist_jsondata.patient_hospno
               userModel.save()
           } else {
             //for (var i=0;i< users.length;i++) {
