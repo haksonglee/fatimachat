@@ -66,4 +66,6 @@ exports.call_login = function(patient_name, patient_birth) {
       };
 
   return responseBody
+
+  console.log("login test: " + responseBody)
 }
