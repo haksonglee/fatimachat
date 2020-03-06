@@ -65,7 +65,11 @@ exports.call_login = function(patient_name, patient_birth) {
         }
       };
 
+
+        console.log("login test 1: " + responseBody)
+        responseBody.patient_hospno = patient_hospno
+        console.log("login test 2: " + responseBody)
+
   return responseBody
 
-  console.log("login test: " + responseBody)
 }
