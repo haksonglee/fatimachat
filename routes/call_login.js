@@ -68,7 +68,6 @@ exports.call_login = function(patient_name, patient_birth) {
       };
 
       responseBody.patient_hospno = patient_hospno
-      responseBody.patient_hospno2 = patient_hospno2
 
   return responseBody
 

@@ -19,8 +19,32 @@ router.post('/', function(req, res) {
   var drlist_script = require('./call_login');
   var drlist_jsondata = drlist_script.call_login(patient_name, patient_birth)
 
-  console.log("login jsondata : " + drlist_jsondata.patient_hospno)
-    console.log("login jsondata2 : " + drlist_jsondata.patient_hospno2)
+  // db 로그인 정보
+  var chatUser = require("./dbuser_schema")
+  if (drlist_jsondata.patient_hospno != undefined) {
+    try {
+      var user = chatUser.findOne({id:botid});
+      if (!user) {
+        // insert
+        var userModel = new chatUser();
+            userModel.id = botid;
+            userModel.name = patient_name;
+            userModel.birth = patient_birth;
+            userModel.hospno = patient_hospno;
+            userModel
+              .save()
+              .then(cuser => {
+                console.log('insert ok')
+              })
+              .catch(err => {
+                console.log('insert err ==> ' + err)
+              })
+      }
+    } catch(err) {
+        console.log('db user findOne error')
+      }
+  }
+  //db
   var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
   res.status(200).send(drlist_bodydata);
