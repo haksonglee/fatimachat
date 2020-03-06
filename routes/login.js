@@ -23,9 +23,12 @@ router.post('/', function(req, res) {
   var chatUser = require("./dbuser_schema")
   if (drlist_jsondata.patient_hospno != undefined) {
     try {
+      console.log("db insert test start 111")
       var user = chatUser.findOne({id:botid});
       if (!user) {
         // insert
+        console.log("db insert test start 222")
+
         var userModel = new chatUser();
             userModel.id = botid;
             userModel.name = patient_name;
@@ -39,6 +42,8 @@ router.post('/', function(req, res) {
               .catch(err => {
                 console.log('insert err ==> ' + err)
               })
+      } else {
+        console.log("db insert test start 333")
       }
     } catch(err) {
         console.log('db user findOne error')
