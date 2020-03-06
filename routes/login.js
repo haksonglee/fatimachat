@@ -8,7 +8,7 @@ router.post('/', function(req, res) {
 
   var botid = JSON.stringify(req.body.bot.id)
   console.log("bot id :  " + botid)
- 
+
   var params = req.body.action.params
 
   var patient_name = params['patient_name']
@@ -20,6 +20,7 @@ router.post('/', function(req, res) {
   var drlist_jsondata = drlist_script.call_login(patient_name, patient_birth)
 
   console.log("login jsondata : " + drlist_jsondata.patient_hospno)
+    console.log("login jsondata2 : " + drlist_jsondata.patient_hospno2)
   var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
   res.status(200).send(drlist_bodydata);
