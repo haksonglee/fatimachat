@@ -6,7 +6,9 @@ exports.call_login = function(patient_name, patient_birth) {
 
 
     //로그인 상태 체크
-    var patient_hospno = ""
+    var patient_hospno;
+    var patient_hospno2;
+
     // fatimahosp 접속 환자명 + 생년월일 로 환자정 보 getElementsByClassName()
     //if 존재하면 pass else "없다는 정보 - 전화접수 안내 message "
     if (patient_name != undefined && patient_birth != undefined) {
@@ -65,10 +67,8 @@ exports.call_login = function(patient_name, patient_birth) {
         }
       };
 
-
-        console.log("login test 1: " + responseBody)
-        responseBody.patient_hospno = patient_hospno
-        console.log("login test 2: " + responseBody)
+      responseBody.patient_hospno = patient_hospno
+      responseBody.patient_hospno2 = patient_hospno2
 
   return responseBody
 
