@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
   if (drlist_jsondata.patient_hospno != undefined) {
       console.log("db insert test start 111")
 
-      chatUser.find({id : input_id}, function (err, users) {
+      chatUser.find({id : botid}, function (err, users) {
         if (err) {return handleError(err);}
       //console.log(users)
         console.log("users.length = " + users.length)
@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
               //console.log(users[i].name + users[i].id + users[i].birth + users[i].hospno)
               //var name = users[i].name
               //databody.push({name});
-            
+
           }
       })
 }
