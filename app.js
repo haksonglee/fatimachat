@@ -42,7 +42,7 @@ app.listen(port, function() {
 var database;
 var UserSchema;
 var Usermodel;
-
+ 
 //var databaseUrl = "mongodb://blank:lhs90250@localhost:27017/fatimachat";
 var databaseUrl = "mongodb+srv://blank:lhs90250@cluster0-vkwql.mongodb.net/fatimachat?retryWrites=true&w=majority";
 //mongoose.connect(databaseUrl,  { useNewUrlParser: true });
