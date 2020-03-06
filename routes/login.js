@@ -25,6 +25,7 @@ router.post('/', function(req, res) {
     try {
       console.log("db insert test start 111")
       var user = chatUser.findOne({id:botid});
+      console.log("user = " + user)
       if (!user) {
         // insert
         console.log("db insert test start 222")
