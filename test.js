@@ -72,7 +72,7 @@ var database;
 var UserSchema;
 var Usermodel;
 
-var databaseUrl = "mongodb://localhost:27017/fatimachat";
+var databaseUrl = "mongodb://blank:lhs90250@localhost:27017/fatimachat";
 
 mongoose.connect(databaseUrl);
 database = mongoose.connection;
@@ -85,5 +85,5 @@ database.on('open', function() {
 
 database.on('disconnected', function() {
   console.log('db reconnecting...')
-  setInterval(connectDB, 5000);
+  //setInterval(connectDB, 5000);
 })

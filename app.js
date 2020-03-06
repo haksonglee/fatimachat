@@ -34,7 +34,9 @@ const logout_Router = require('./routes/logout');
 //const knowledge_Router = require('./routes/knowledge');
 const quickreplies_Router = require('./routes/quickreplies');
 const test_Router = require('./routes/test');
-const dbuser_Router = require('./routes/dbuser');
+
+//dbconnect
+const mongodb_Router = require('./routes/mongodb');
 
 app.use(logger('dev', {}));
 app.use(bodyParser.json());
@@ -61,21 +63,31 @@ app.use('/api/logout', logout_Router);
 //app.use('/api/knowledge', knowledge_Router);
 app.use('/api/quickreplies',quickreplies_Router);
 app.use('/api/test',test_Router);
-app.use('/api/dbuser',dbuser_Router);
+app.use('/api/mongodb',mongodb_Router);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('Example skill server listening on port 3000!');
 });
 
-/*
 var database;
 var UserSchema;
 var Usermodel;
 
-var databaseUrl = "mongodb://localhost:27017/fatimachat";
+//var databaseUrl = "mongodb://blank:lhs90250@localhost:27017/fatimachat";
+var databaseUrl = "mongodb+srv://blank:lhs90250@cluster0-vkwql.mongodb.net/fatimachat?retryWrites=true&w=majority";
+//mongoose.connect(databaseUrl,  { useNewUrlParser: true });
 
-mongoose.connect(databaseUrl);
+mongoose.connect(databaseUrl, {
+useUnifiedTopology: true,
+useNewUrlParser: true,
+ useCreateIndex: true,
+})
+.then(() => console.log('DB Connected!'))
+.catch(err => {
+console.log(`DB Connection Error: ${err.message}`);
+});
+
 database = mongoose.connection;
 
 database.on('error', console.error.bind(console,'mongoose connection error'));
@@ -87,4 +99,3 @@ database.on('disconnected', function() {
   console.log('db reconnecting...')
   //setInterval(connectDB, 5000);
 })
-*/

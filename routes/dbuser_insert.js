@@ -1,25 +1,17 @@
-exports.dbuser_insert = function() {
-var mongoose = require('mongoose');
-Schema = mongoose.Schema;
-var UserSchema = new Schema({
-  id: String,
-  name: String,
-  birth: String,
-  hospno: String
-});
+exports.call_insert = function() {
 
-var User = mongoose.model('fatima_user', UserSchema);
-  //var User = mongoose.model('fatima_users', 'fatima_users');
-  var sampledata = new User({id:'f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee1102',
-                    name:'이학송',
-                    birth:'2010-01-01',
-                    hospno:"000602887"})
-  var user = new User(sampledata);
-  user.save(function(err) {
-    if (err) {
-      return next(err);
-    } else {
-      return user;
-    }
-  });
+  var chatUser = require("./dbuser_schema")
+  var postModel = new chatUser();
+      postModel.id = '4'
+      postModel.name = '1'
+      postModel.birth = '2020-01-01'
+      postModel.hospno = '1'
+      postModel
+        .save()
+        .then(cuser => {
+          //console.log(cuser)
+        })
+        .catch(err => {
+          console.log(err)
+        })
 }
