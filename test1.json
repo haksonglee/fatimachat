@@ -1,1 +1,63 @@
-{"bot":{"id":"5e1bf6a492690d00019eb692!","name":"창원파티마병원 챗봇"},"intent":{"id":"5e5de87dc209c10001dcf153","name":"진료예약테스트","extra":{"reason":{"code":1,"message":"OK"}}},"action":{"id":"5e608fbd90ad5f00016a0287","name":"테스트","params":{},"detailParams":{},"clientExtra":{}},"userRequest":{"block":{"id":"5e5de87dc209c10001dcf153","name":"진료예약테스트"},"user":{"id":"f4bd08edb6ef6174700df32d8baa72c7dbe51e94ce76d1291d1dfd0be40dee1102","type":"botUserKey","properties":{"botUserKey":"f4bd08edb6ef6174700df32d8baa72c7dbe51e94ce76d1291d1dfd0be40dee1102","bot_user_key":"f4bd08edb6ef6174700df32d8baa72c7dbe51e94ce76d1291d1dfd0be40dee1102"}},"utterance":"진료예약테스트\n","params":{"surface":"BuilderBotTest","ignoreMe":"true"},"lang":"kr","timezone":"Asia/Seoul"},"contexts":[{"name":"patient_info","lifespan":9,"ttl":3600,"params":{"patient_birth":{"value":"19711108","resolvedValue":"19711108"},"patient_confirm":{"value":"000602887","resolvedValue":"000602887"},"patient_name":{"value":"이학송","resolvedValue":"이학송"}}}]}
+{
+  "bot": {
+    "id": "5e1bf6a492690d00019eb692!",
+    "name": "창원파티마병원 챗봇"
+  },
+  "intent": {
+    "id": "5e5de87dc209c10001dcf153",
+    "name": "진료예약테스트",
+    "extra": {
+      "reason": {
+        "code": 1,
+        "message": "OK"
+      }
+    }
+  },
+  "action": {
+    "id": "5e608fbd90ad5f00016a0287",
+    "name": "테스트",
+    "params": {},
+    "detailParams": {},
+    "clientExtra": {}
+  },
+  "userRequest": {
+    "block": {
+      "id": "5e5de87dc209c10001dcf153",
+      "name": "진료예약테스트"
+    },
+    "user": {
+      "id": "f4bd08edb6ef6174700df32d8baa72c7dbe51e94ce76d1291d1dfd0be40dee1102",
+      "type": "botUserKey",
+      "properties": {
+        "botUserKey": "f4bd08edb6ef6174700df32d8baa72c7dbe51e94ce76d1291d1dfd0be40dee1102",
+        "bot_user_key": "f4bd08edb6ef6174700df32d8baa72c7dbe51e94ce76d1291d1dfd0be40dee1102"
+      }
+    },
+    "utterance": "진료예약테스트\n",
+    "params": {
+      "surface": "BuilderBotTest",
+      "ignoreMe": "true"
+    },
+    "lang": "kr",
+    "timezone": "Asia/Seoul"
+  },
+  "contexts": [{
+    "name": "patient_info",
+    "lifespan": 9,
+    "ttl": 3600,
+    "params": {
+      "patient_birth": {
+        "value": "19711108",
+        "resolvedValue": "19711108"
+      },
+      "patient_confirm": {
+        "value": "000602887",
+        "resolvedValue": "000602887"
+      },
+      "patient_name": {
+        "value": "이학송",
+        "resolvedValue": "이학송"
+      }
+    }
+  }]
+}

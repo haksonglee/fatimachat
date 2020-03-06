@@ -11,6 +11,7 @@ router.post('/', function(req, res) {
     var patient_birth = req.body.contexts[1].params.patient_birth.value;
     console.log('patient_name is : ' + patient_name)
     console.log('patient_birth is : ' + patient_birth)
+
   } catch (e) {
     //console.log(e)
     console.log("로그인 없음")
