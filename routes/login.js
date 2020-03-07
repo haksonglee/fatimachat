@@ -31,10 +31,10 @@ router.post('/', function(req, res) {
   if (drlist_jsondata.patient_hospno != undefined) {
       console.log("db insert test start 111")
 
-      chatUser.findOne({id : botid}, function (err, users) {
-        if (err) {return handleError(err);}
-      //console.log(users)
-        console.log("users.length = " + users.length)
+      var user = await chatUser.findOne({id:botid});
+      if (!user) return res.status(404).json({ message : "user not found"})
+
+      console.log("users.length = " + users.length)
         if (users.length == 0){
         //insert
           var userModel = new chatUser();
