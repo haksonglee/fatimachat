@@ -57,9 +57,9 @@ router.post('/', function(req, res) {
 
           //}
           //db
-          var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
+          //var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
-          res.status(200).send(drlist_bodydata);
+          //res.status(200).send(drlist_bodydata);
         });
 
       module.exports = router;
