@@ -81,11 +81,14 @@ router.post('/', function(req, res) {
                   console.log(users.hospno)
                   responseBody = {
                     "version": "2.0",
-                    "data": {
-                      "id": users.id,
-                      "name": users.name,
-                      "birth": users.birth,
-                      "hospno":users.hospno
+                    "templates": {
+                      "outputs": [
+                        {
+                          "simpleText": {
+                            "text" : users.name + users.birth + users.hospno
+                          }
+                        }
+                      ]
                     }
                   };
                 }
@@ -108,7 +111,7 @@ router.post('/', function(req, res) {
           //db
           //var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
-console.log(responseBody)
+//console.log(responseBody)
 
           res.status(200).send(responseBody);
         });
