@@ -40,6 +40,7 @@ router.post('/', function(req, res) {
                 })
               }
               else {
+                console.log(user._id)
                 //if (users.length == 0) {
                   //insert
                   var userModel = new chatUser();
