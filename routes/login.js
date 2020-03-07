@@ -39,7 +39,7 @@ router.post('/', function(req, res) {
                   message: "user not found"
                 })
               }
-              else {
+              else { 
                 //if (users.length == 0) {
                   //insert
                   var userModel = new chatUser();
