@@ -82,7 +82,7 @@ router.post('/', function(req, res) {
                       id: users.id,
                       name: users.name,
                       birth: users.birth,
-                      hospno:user.hospno
+                      hospno:users.hospno
                     }
                   };
                 }
