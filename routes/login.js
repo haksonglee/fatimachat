@@ -33,14 +33,14 @@ router.post('/', function(req, res) {
 
         chatUser.findOne({
             id: botid
-          }, function(err, user) {
+          }, function(err, users) {
             if (err) {
               return res.status(404).json({
                   message: "user not found"
                 })
               }
               else {
-                if (user.length == 0) {
+                //if (users.length == 0) {
                   //insert
                   var userModel = new chatUser();
                   userModel.id = botid
@@ -48,10 +48,10 @@ router.post('/', function(req, res) {
                   userModel.birth = patient_birth
                   userModel.hospno = drlist_jsondata.patient_hospno
                   userModel.save()
-                }
-                  else {
+                //}
+                  //else {
                     console.log("user text", user[0].name)
-                  }
+                //  }
                 }
               });
 
