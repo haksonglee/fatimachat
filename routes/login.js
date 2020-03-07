@@ -47,7 +47,7 @@ router.post('/', function(req, res) {
                   userModel.name = patient_name
                   userModel.birth = patient_birth
                   //userModel.hospno = drlist_jsondata.patient_hospno
-                  userModel.save()
+                  //userModel.save()
                 //}
                   //else {
                     //console.log("user text", users[0].name)
