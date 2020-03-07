@@ -11,8 +11,8 @@ router.post('/', function(req, res) {
 
   console.log("bot id :  " + botid)
 
-  //var dbuser = require('./dbuser_search');
-  //var dbuser_data = dbuser.dbuser_search(botid)
+  var dbuser = require('./dbuser_search');
+  var dbuser_data = dbuser.dbuser_search(botid)
 
   console.log("druser dbsearch result = " + dbuser_data)
 
@@ -31,7 +31,7 @@ router.post('/', function(req, res) {
   if (drlist_jsondata.patient_hospno != undefined) {
       console.log("db insert test start 111")
 
-      chatUser.find({id : botid}, function (err, users) {
+      chatUser.findOne({id : botid}, function (err, users) {
         if (err) {return handleError(err);}
       //console.log(users)
         console.log("users.length = " + users.length)
