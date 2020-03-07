@@ -31,7 +31,7 @@ router.post('/', function(req, res) {
   if (drlist_jsondata.patient_hospno != undefined) {
     console.log("db insert test start 111")
 
-    var user = chatUser.findOne({
+    var user = chatUser.findOne({ 
       id: botid
     });
     if (!user) return res.status(404).json({
