@@ -108,6 +108,7 @@ router.post('/', function(req, res) {
           //db
           //var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
+console.log(responseBody)
 
           res.status(200).send(responseBody);
         });
