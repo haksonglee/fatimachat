@@ -39,14 +39,14 @@ router.post('/', function(req, res) {
                   message: "user not found"
                 })
               }
-              else { 
+              else {
                 //if (users.length == 0) {
                   //insert
                   var userModel = new chatUser();
                   userModel.id = botid
                   userModel.name = patient_name
                   userModel.birth = patient_birth
-                  userModel.hospno = drlist_jsondata.patient_hospno
+                  //userModel.hospno = drlist_jsondata.patient_hospno
                   userModel.save()
                 //}
                   //else {
