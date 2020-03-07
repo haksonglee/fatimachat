@@ -59,7 +59,14 @@ router.post('/', function(req, res) {
           //db
           //var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
-          res.status(200).send(botid);
+          const responseBody = {
+            version: "2.0",
+            data: {
+              menu: "bulgogi",
+              date: "2월 22일"
+            }
+          };
+          res.status(200).send(responseBody);
         });
 
       module.exports = router;
