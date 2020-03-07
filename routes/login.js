@@ -23,12 +23,12 @@ router.post('/', function(req, res) {
       console.log("login.js : patient_name = " + patient_name)
       console.log("login.js : patient_birth = " + patient_birth)
 
-      var drlist_script = require('./call_login');
-      var drlist_jsondata = drlist_script.call_login(patient_name, patient_birth)
+      //var drlist_script = require('./call_login');
+      //var drlist_jsondata = drlist_script.call_login(patient_name, patient_birth)
 
       // db 로그인 정보
       var chatUser = require("./dbuser_schema")
-      if (drlist_jsondata.patient_hospno != undefined) {
+      //if (drlist_jsondata.patient_hospno != undefined) {
         console.log("db insert test start 111")
 
         chatUser.findOne({
@@ -55,7 +55,7 @@ router.post('/', function(req, res) {
                 }
               });
 
-          }
+          //}
           //db
           var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
