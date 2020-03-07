@@ -40,13 +40,32 @@ router.post('/', function(req, res) {
                 })
               }
               else {
-                console.log(users._id)
-                //if (users.length == 0) {
+                if (users == null) {
                   //insert
                   var userModel = new chatUser();
                   userModel.id = botid
                   userModel.name = patient_name
                   userModel.birth = patient_birth
+                  userModel.hospno = 'patient_hospno'
+                  userModel.save()
+                } else {
+                  console.log(user._id)
+                  const responseBody = {
+                    version: "2.0",
+                    data: {
+                      id: users.id,
+                      name: users.name,
+                      birth: users.birth,
+                      hospno:user.hospno
+                    }
+                  };
+                }
+                  //if (users.length == 0) {
+                    //insert
+                    //var userModel = new chatUser();
+                    //userModel.id = botid
+                    //userModel.name = patient_name
+                    //userModel.birth = patient_birth
                   //userModel.hospno = drlist_jsondata.patient_hospno
                   //userModel.save()
                 //}
@@ -60,13 +79,7 @@ router.post('/', function(req, res) {
           //db
           //var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
-          const responseBody = {
-            version: "2.0",
-            data: {
-              menu: "bulgogi",
-              date: "2월 22일"
-            }
-          };
+
           res.status(200).send(responseBody);
         });
 
