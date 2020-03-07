@@ -50,7 +50,7 @@ router.post('/', function(req, res) {
                   userModel.save()
                 //}
                   //else {
-                    console.log("user text", user[0].name)
+                    //console.log("user text", users[0].name)
                 //  }
                 }
               });
