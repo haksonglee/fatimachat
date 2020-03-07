@@ -29,33 +29,37 @@ router.post('/', function(req, res) {
   // db 로그인 정보
   var chatUser = require("./dbuser_schema")
   if (drlist_jsondata.patient_hospno != undefined) {
-      console.log("db insert test start 111")
+    console.log("db insert test start 111")
 
-      var user = await chatUser.findOne({id:botid});
-      if (!user) return res.status(404).json({ message : "user not found"})
+    var user = chatUser.findOne({
+      id: botid
+    });
+    if (!user) return res.status(404).json({
+      message: "user not found"
+    })
 
-      console.log("users.length = " + users.length)
-        if (users.length == 0){
-        //insert
-          var userModel = new chatUser();
-              userModel.id = botid
-              userModel.name = patient_name
-              userModel.birth = patient_birth
-              userModel.hospno = drlist_jsondata.patient_hospno
-              userModel.save()
-          } else {
-            //for (var i=0;i< users.length;i++) {
-              //console.log(users[i].name + users[i].id + users[i].birth + users[i].hospno)
-              //var name = users[i].name
-              //databody.push({name});
+    console.log("users.length = " + users.length)
+    if (users.length == 0) {
+      //insert
+      var userModel = new chatUser();
+      userModel.id = botid
+      userModel.name = patient_name
+      userModel.birth = patient_birth
+      userModel.hospno = drlist_jsondata.patient_hospno
+      userModel.save()
+    } else {
+      //for (var i=0;i< users.length;i++) {
+      //console.log(users[i].name + users[i].id + users[i].birth + users[i].hospno)
+      //var name = users[i].name
+      //databody.push({name});
 
-          }
-      })
-}
+    }
+
+  }
   //db
   var drlist_bodydata = JSON.stringify(drlist_script.call_login(patient_name, patient_birth))
 
   res.status(200).send(drlist_bodydata);
-  });
+});
 
-  module.exports = router;
+module.exports = router;
