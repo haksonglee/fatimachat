@@ -3,6 +3,7 @@ const router = require('express').Router();
 //http://localhost:3000/api/listcard_drlist/
 var dept = "";
 var deptname = "";
+var responseBody;
 
 router.post('/', function(req, res) {
 
@@ -27,7 +28,7 @@ router.post('/', function(req, res) {
       //var drlist_jsondata = drlist_script.call_login(patient_name, patient_birth)
 
       var patient_hospno = 'patient_hospno'
-      
+
       // db 로그인 정보
       var chatUser = require("./dbuser_schema")
       //if (drlist_jsondata.patient_hospno != undefined) {
@@ -75,7 +76,7 @@ router.post('/', function(req, res) {
                   }
                 } else {
                   console.log(user._id)
-                  const responseBody = {
+                  responseBody = {
                     version: "2.0",
                     data: {
                       id: users.id,
