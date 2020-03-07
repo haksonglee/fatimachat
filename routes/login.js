@@ -9,10 +9,10 @@ router.post('/', function(req, res) {
   var botid = JSON.stringify(req.body.bot.id)
   console.log("bot id :  " + botid)
 
-  var druser = require('./dbuser_search');
-  var druser_data = druser.druser_search(botid)
+  var dbuser = require('./dbuser_search');
+  var dbuser_data = dbuser.dbuser_search(botid)
 
-  console.log("druser dbsearch result = " + druser_date)
+  console.log("druser dbsearch result = " + dbuser_data)
 
   var params = req.body.action.params
 
