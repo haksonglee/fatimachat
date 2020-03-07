@@ -9,6 +9,11 @@ router.post('/', function(req, res) {
   var botid = JSON.stringify(req.body.bot.id)
   console.log("bot id :  " + botid)
 
+  var druser = require('./dbuser_search');
+  var druser_data = druser.druser_search(botid)
+
+  console.log("druser dbsearch result = " + druser_date)
+
   var params = req.body.action.params
 
   var patient_name = params['patient_name']
@@ -23,7 +28,7 @@ router.post('/', function(req, res) {
   var chatUser = require("./dbuser_schema")
   if (drlist_jsondata.patient_hospno != undefined) {
       console.log("db insert test start 111")
-      
+
       chatUser.find({id : botid}, function (err, users) {
         if (err) {return handleError(err);}
       //console.log(users)
