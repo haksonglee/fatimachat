@@ -11,8 +11,8 @@ router.post('/', function(req, res) {
 
   console.log("bot id :  " + botid)
 
-  var dbuser = require('./dbuser_search');
-  var dbuser_data = dbuser.dbuser_search(botid)
+  //var dbuser = require('./dbuser_search');
+  //var dbuser_data = dbuser.dbuser_search(botid)
 
   console.log("druser dbsearch result = " + dbuser_data)
 
