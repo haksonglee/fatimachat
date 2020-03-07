@@ -77,12 +77,12 @@ router.post('/', function(req, res) {
                 } else {
                   console.log(users._id)
                   responseBody = {
-                    version: "2.0",
-                    data: {
-                      id: users.id,
-                      name: users.name,
-                      birth: users.birth,
-                      hospno:users.hospno
+                    "version": "2.0",
+                    "data": {
+                      "id": users.id,
+                      "name": users.name,
+                      "birth": users.birth,
+                      "hospno":users.hospno
                     }
                   };
                 }
