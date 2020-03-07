@@ -75,7 +75,10 @@ router.post('/', function(req, res) {
                     }
                   }
                 } else {
-                  console.log(users._id)
+                  console.log(users.id)
+                  console.log(users.name)
+                  console.log(users.birth)
+                  console.log(users.hospno)
                   responseBody = {
                     "version": "2.0",
                     "data": {
