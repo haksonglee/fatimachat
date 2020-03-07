@@ -6,8 +6,8 @@ var deptname = "";
 
 router.post('/', function(req, res) {
 
-  var botid = JSON.stringify(req.body.bot.id)
-  console.log("bot id :  " + botid)
+  var botid = req.body.bot
+  console.log("bot id :  " + botid['id'])
 
   var dbuser = require('./dbuser_search');
   var dbuser_data = dbuser.dbuser_search(botid)
