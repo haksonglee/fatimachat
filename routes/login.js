@@ -26,6 +26,8 @@ router.post('/', function(req, res) {
       //var drlist_script = require('./call_login');
       //var drlist_jsondata = drlist_script.call_login(patient_name, patient_birth)
 
+      var patient_hospno = 'patient_hospno'
+      
       // db 로그인 정보
       var chatUser = require("./dbuser_schema")
       //if (drlist_jsondata.patient_hospno != undefined) {
@@ -48,6 +50,29 @@ router.post('/', function(req, res) {
                   userModel.birth = patient_birth
                   userModel.hospno = 'patient_hospno'
                   userModel.save()
+
+                  responseBody = {
+                    "version": "2.0",
+                    "template": {
+                      "outputs": [{
+                        "basicCard": {
+                          "title": "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님",
+                          "description": "창원파티마병원 예약 시스템 로그인 완료",
+                          "buttons": [{
+                              "action": "message",
+                              "label": "진료예약 계속",
+                              "messageText": "진료예약"
+                            },
+                            {
+                              "action": "message",
+                              "label": "로그아웃",
+                              "messageText": "로그아웃"
+                            }
+                          ]
+                        }
+                      }]
+                    }
+                  }
                 } else {
                   console.log(user._id)
                   const responseBody = {
