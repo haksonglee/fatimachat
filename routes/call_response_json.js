@@ -76,7 +76,7 @@ exports.response_json = function(gubun) {
           "outputs": [{
             "basicCard": {
               "title": "사용자 추가 정보",
-              "description": "자세한 사용자 확인을 위하여 \n 휴대폰 뒷번호 4자리를 입력해주세요",
+              "description": "정확한 사용자 확인을 위하여 휴대폰 본인확인을 부탁드립니다",
               "buttons": [{
                 "action": "message",
                 "label": "휴대폰 본인확인",
