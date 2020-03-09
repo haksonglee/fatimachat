@@ -52,23 +52,40 @@ exports.response_json = function(gubun) {
       }
       break;
     case 'logout':
-    responseBody = {
-      "version": "2.0",
-      "template": {
-        "outputs": [{
-          "basicCard": {
-            "title": "로그아웃 완료",
-            "description": "예약을 하시려면 다시 로그인 해주세요",
-            "buttons": [{
+      responseBody = {
+        "version": "2.0",
+        "template": {
+          "outputs": [{
+            "basicCard": {
+              "title": "로그아웃 완료",
+              "description": "예약을 하시려면 다시 로그인 해주세요",
+              "buttons": [{
                 "action": "message",
                 "label": "사용자 로그인",
                 "messageText": "로그인"
-              }
-            ]
-          }
-        }]
+              }]
+            }
+          }]
+        }
       }
-    }
+      break;
+    case 'login_phone':
+      responseBody = {
+        "version": "2.0",
+        "template": {
+          "outputs": [{
+            "basicCard": {
+              "title": "사용자 추가 정보",
+              "description": "자세한 사용자 확인을 위하여 \n 휴대폰 뒷번호 4자리를 입력해주세요",
+              "buttons": [{
+                "action": "message",
+                "label": "휴대폰 본인확인",
+                "messageText": "휴대폰 본인확인"
+              }]
+            }
+          }]
+        }
+      }
       break;
     default:
       responseBody = {

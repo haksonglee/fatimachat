@@ -8,10 +8,10 @@ router.post('/', function(req, res) {
 
   //로그인 처리
   try {
-    var name2 = req.body;
-    console.log(JSON.stringify(name2))
-    var patient_name = req.body.contexts[1].params.환자명.value;
-    var patient_birth = req.body.contexts[1].params.생년월일.value;
+    //var name2 = req.body;
+    //console.log(JSON.stringify(name2))
+    var patient_name = req.body.contexts[0].params.환자명.value;
+    var patient_birth = req.body.contexts[0].params.생년월일.value;
     console.log('patient_name is : ' + patient_name)
     console.log('patient_birth is : ' + patient_birth)
   } catch (e) {
@@ -23,11 +23,11 @@ router.post('/', function(req, res) {
   var botids = req.body.bot
   var botid = botids['id']
   var params = req.body.action.params
-  var patient_name = params['환자명']
-  var patient_birth = params['생년월일']
+  var patient_phone = params['휴대폰뒷번호']
   var chatUser = require("./dbuser_schema")
 
   // 사용자 정보 조회  -fatima 홈페이지 연동
+  //   patien_name, patient_birth, patient_phone
   // 개발로직 여기
 
   // db 로그인 정보
