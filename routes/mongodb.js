@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router();
 
-var chatUser = require("./dbuser_schema")
+var chatUser = require("./users/dbuser_schema")
 
 //insert router
 router.post('/', function(req, res, next) {

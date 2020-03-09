@@ -21,17 +21,22 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api/simpletext', require('./routes/simpletext'));
 app.use('/api/webhook', require('./routes/webhook'));
-app.use('/api/yeyak_drcode', require('./routes/yeyak_drcode'));
-app.use('/api/yeyak_date', require('./routes/yeyak_date'));
-app.use('/api/yeyak_drcode_date', require('./routes/yeyak_drcode_date'));
+
 app.use('/api/listcard_drinfo', require('./routes/listcard_drinfo'));
 app.use('/api/card_drlist', require('./routes/card_drlist'));
 app.use('/api/listcard_deptlist', require('./routes/listcard_deptlist'));
 app.use('/api/listcard_diaglist', require('./routes/listcard_diaglist'));
 app.use('/api/listcard_drsearch', require('./routes/listcard_drsearch'));
-app.use('/api/login', require('./routes/login'));
-app.use('/api/logout', require('./routes/logout'));
 app.use('/api/quickreplies', require('./routes/quickreplies'));
+
+app.use('/api/yeyak_drcode',      require('./routes/yeyak/yeyak_drcode'));
+app.use('/api/yeyak_date',        require('./routes/yeyak/yeyak_date'));
+app.use('/api/yeyak_drcode_date', require('./routes/yeyak/yeyak_drcode_date'));
+
+app.use('/api/login',       require('./routes/users/login'));
+app.use('/api/login_phone', require('./routes/users/login_phone'));
+app.use('/api/logout',      require('./routes/users/logout'));
+
 app.use('/api/mongodb', require('./routes/mongodb'));
 
 var port = process.env.PORT || 3000;

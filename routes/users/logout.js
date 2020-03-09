@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 //http://localhost:3000/api/listcard_drlist/
-var response_json = require('./call_response_json')
+var response_json = require('../call_response_json')
 var responseBody;
 
 router.post('/', function(req, res) {

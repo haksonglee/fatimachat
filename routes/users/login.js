@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 //http://localhost:3000/api/listcard_drlist/
-var response_json = require('./call_response_json')
+var response_json = require('../call_response_json')
 var responseBody;
 
 router.post('/', function(req, res) {
@@ -12,13 +12,12 @@ router.post('/', function(req, res) {
   var params = req.body.action.params
   var patient_name = params['환자명']
   var patient_birth = params['생년월일']
-  var chatUser = require("./dbuser_schema")
 
   // 사용자 정보 조회  -fatima 홈페이지 연동
   // 개발로직 여기
 
   // db 로그인 정보
-  var chatUser = require("./dbuser_schema")
+  var chatUser = require("./users/dbuser_schema")
   //if (drlist_jsondata.patient_hospno != undefined) {
   chatUser.findOne({
     //id: botid
