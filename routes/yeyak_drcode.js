@@ -15,7 +15,7 @@ router.post('/', function(req, res) {
 
     var string = fs.readFileSync(dataPath, 'utf-8');
   var data = JSON.parse(string)
-  var body = [];
+  var body = []; 
   //console.log(data.length)
 /*
   for (var i = 0; i < data.length; i++) {
