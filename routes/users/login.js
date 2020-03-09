@@ -29,8 +29,7 @@ router.post('/', function(req, res) {
     var chatUser = require("./dbuser_schema");
     //if (drlist_jsondata.patient_hospno != undefined) {
     chatUser.findOne({
-      //id: botid
-      name: patient_name
+      id: botid
     }, function(err, users) {
       if (err) {
         return res.status(404).json({
@@ -60,10 +59,10 @@ router.post('/', function(req, res) {
             //insert
             try {
               var userModel = new chatUser();
-              userModel.id = botid + patient_name
-              userModel.name = patient_name
-              userModel.birth = patient_birth
-              userModel.hospno = 'patient_hospno'
+              userModel.id = botid;
+              userModel.name = patient_name;
+              userModel.birth = patient_birth;
+              userModel.hospno = 'patient_hospno';
               userModel.save()
             } catch (err) {
               console.log("userModel save error")

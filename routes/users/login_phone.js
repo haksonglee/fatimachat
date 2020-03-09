@@ -38,7 +38,7 @@ router.post('/', function(req, res) {
   var chatUser = require("./dbuser_schema")
   //if (drlist_jsondata.patient_hospno != undefined) {
   chatUser.findOne({
-    id: botid;
+    id: botid
   }, function(err, users) {
     if (err) {
       return res.status(404).json({
