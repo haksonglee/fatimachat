@@ -29,9 +29,9 @@ app.use('/api/listcard_diaglist', require('./routes/listcard_diaglist'));
 app.use('/api/listcard_drsearch', require('./routes/listcard_drsearch'));
 app.use('/api/quickreplies', require('./routes/quickreplies'));
 
-app.use('/api/yeyak_drcode',      require('./routes/yeyak/yeyak_drcode'));
-app.use('/api/yeyak_date',        require('./routes/yeyak/yeyak_date'));
-app.use('/api/yeyak_drcode_date', require('./routes/yeyak/yeyak_drcode_date'));
+app.use('/api/yeyak_drcode',      require('./routes//yeyak_drcode'));
+app.use('/api/yeyak_date',        require('./routes//yeyak_date'));
+app.use('/api/yeyak_drcode_date', require('./routes//yeyak_drcode_date'));
 
 app.use('/api/login',       require('./routes/users/login'));
 app.use('/api/login_phone', require('./routes/users/login_phone'));
