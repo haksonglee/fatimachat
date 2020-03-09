@@ -9,14 +9,18 @@ router.post('/', function(req, res) {
   //로그인 처리
   try {
     var name2 = req.body;
-    console.log(JSON.stringify(name2))
-    var patient_name = req.body.contexts[0].params.환자명.value;
-    var patient_birth = req.body.contexts[0].params.생년월일.value;
-    console.log('patient_name is : ' + patient_name)
-    console.log('patient_birth is : ' + patient_birth)
+    //console.log(JSON.stringify(name2))
+    //console.log(req.body.contexts.length)
+    for (var i = 0; i < req.body.contexts.length; i++) {
+      if (req.body.contexts[i].name === 'patient_info') {
+        var patient_name = req.body.contexts[i].params.환자명.value;
+        var patient_birth = req.body.contexts[i].params.생년월일.value;
+        //console.log('patient_name is : ' + patient_name)
+        //console.log('patient_birth is : ' + patient_birth)
+      }
+    }
   } catch (e) {
     console.log(e)
-    console.log("로그인 없음")
   }
 
   //console.log(req.body.bot)
@@ -24,6 +28,7 @@ router.post('/', function(req, res) {
   var botid = botids['id']
   var params = req.body.action.params
   var patient_phone = params['휴대폰뒷번호']
+  console.log("patient_phone = " + patient_phone)
 
   // 사용자 정보 조회  -fatima 홈페이지 연동
   //   patien_name, patient_birth, patient_phone
@@ -77,7 +82,7 @@ router.post('/', function(req, res) {
           responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
         }
       } else { // 사용자 정보가 있으면
-        console.log("select ok " + users)
+        //console.log("select ok " + users)
         patient_name = users.name;
         patient_hospno = users.hospno;
         responseBody = response_json.response_json('login_ok')

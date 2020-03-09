@@ -16,7 +16,9 @@ router.post('/', function(req, res) {
   // 사용자 정보 조회  -fatima 홈페이지 연동
   // patient_name, patient_birth
   // 개발로직 여기
-  var patient_result = 2
+  if (patient_name === '김영숙') {
+    patient_result = 2
+  }
   // 이중번호 확인
   if (patient_result > 1) {
     responseBody = response_json.response_json('login_phone')
