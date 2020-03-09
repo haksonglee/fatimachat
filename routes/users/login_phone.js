@@ -5,8 +5,10 @@ var response_json = require('../call_response_json')
 var responseBody;
 
 router.post('/', function(req, res) {
+
   //로그인 처리
   try {
+    console.log(req.body)
     var patient_name = req.body.contexts[1].params.환자명.value;
     var patient_birth = req.body.contexts[1].params.생년월일.value;
     console.log('patient_name is : ' + patient_name)
