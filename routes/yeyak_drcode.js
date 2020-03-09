@@ -15,7 +15,7 @@ router.post('/', function(req, res) {
 
     var string = fs.readFileSync(dataPath, 'utf-8');
   var data = JSON.parse(string)
-  var body = []; 
+  var body = [];
   //console.log(data.length)
 /*
   for (var i = 0; i < data.length; i++) {
@@ -39,7 +39,7 @@ router.post('/', function(req, res) {
     }
   }
 */
-  var drlist_script = require('../call_drlist');
+  var drlist_script = require('./call_drlist');
   var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname, drname, 'dept'))
   //console.log(drlist_bodydata)
   responseBody = drlist_bodydata
