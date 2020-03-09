@@ -36,7 +36,7 @@ router.post('/', function(req, res) {
         //hospital_ocs_patient_search start
         var patient_hospno;
         patient_hospno = '000000001'
-        if(patient_birth === '99999999') {
+        if (patient_birth === '99999999') {
           patient_hospno = null
         }
         //hospital_ocs_patient_search end
@@ -50,12 +50,16 @@ router.post('/', function(req, res) {
         } //if (patient_hospno === undefined)
         else { // 병원시스템 사용자 정보 확인 -> db등록시작
           //insert
-          var userModel = new chatUser();
-          userModel.id = botid
-          userModel.name = patient_name
-          userModel.birth = patient_birth
-          userModel.hospno = 'patient_hospno'
-          userModel.save()
+          try {
+            var userModel = new chatUser();
+            userModel.id = botid
+            userModel.name = patient_name
+            userModel.birth = patient_birth
+            userModel.hospno = 'patient_hospno'
+            userModel.save()
+          } catch (err) {
+            console.log("userModel save error")
+          }
 
           responseBody = response_json.response_json('login_ok')
           responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"

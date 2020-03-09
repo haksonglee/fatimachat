@@ -13,7 +13,7 @@ exports.response_json = function(gubun) {
               "description": "병원 처음 방문하신 분은 컨택센터를 이용부탁드립니다.",
               "buttons": [{
                   "action": "message",
-                  "label": "다시 로그인",
+                  "label": "사용자 로그인",
                   "messageText": "로그인"
                 },
                 {
@@ -42,7 +42,7 @@ exports.response_json = function(gubun) {
                 },
                 {
                   "action": "message",
-                  "label": "로그아웃",
+                  "label": "로그아웃(다른 사용자)",
                   "messageText": "로그아웃"
                 }
               ]
@@ -51,8 +51,29 @@ exports.response_json = function(gubun) {
         }
       }
       break;
+    case 'logout':
+    responseBody = {
+      "version": "2.0",
+      "template": {
+        "outputs": [{
+          "basicCard": {
+            "title": "로그아웃 완료",
+            "description": "예약을 하시려면 다시 로그인 해주세요",
+            "buttons": [{
+                "action": "message",
+                "label": "사용자 로그인",
+                "messageText": "로그인"
+              }
+            ]
+          }
+        }]
+      }
+    }
+      break;
     default:
-    responseBody = {message : "not found"}
+      responseBody = {
+        message: "not found"
+      }
   }
   return responseBody
 }
