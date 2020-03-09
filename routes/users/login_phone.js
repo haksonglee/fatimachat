@@ -8,7 +8,8 @@ router.post('/', function(req, res) {
 
   //로그인 처리
   try {
-    console.log(req.body)
+    var name2 = req.body;
+    console.log(JSON.stringify(name2))
     var patient_name = req.body.contexts[1].params.환자명.value;
     var patient_birth = req.body.contexts[1].params.생년월일.value;
     console.log('patient_name is : ' + patient_name)
