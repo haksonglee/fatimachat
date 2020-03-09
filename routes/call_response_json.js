@@ -84,7 +84,7 @@ exports.response_json = function(gubun) {
               }]
             }
           }]
-        }
+        } 
       }
       break;
     default:
