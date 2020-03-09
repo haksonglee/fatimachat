@@ -17,7 +17,7 @@ router.post('/', function(req, res) {
   // patient_name, patient_birth
   // 개발로직 여기
   if (patient_name === '김영숙') {
-    patient_result = 2
+    var patient_result = 2
   }
   // 이중번호 확인
   if (patient_result > 1) {
