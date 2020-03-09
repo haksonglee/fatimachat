@@ -20,21 +20,8 @@ router.post('/', function(req, res) {
         message: "user not found"
       })
     } else { // db connect find trying OK...
-
       responseBody = response_json.response_json('logout')
     }
-    //if (users.length == 0) {
-    //insert
-    //var userModel = new chatUser();
-    //userModel.id = botid
-    //userModel.name = patient_name
-    //userModel.birth = patient_birth
-    //userModel.hospno = drlist_jsondata.patient_hospno
-    //userModel.save()
-    //}
-    //else {
-    //console.log("user text", users[0].name)
-    //  }
     res.status(200).send(responseBody );
   }); //findremove
 }); // router

@@ -80,18 +80,6 @@ router.post('/', function(req, res) {
           responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
         }
       }
-      //if (users.length == 0) {
-      //insert
-      //var userModel = new chatUser();
-      //userModel.id = botid
-      //userModel.name = patient_name
-      //userModel.birth = patient_birth
-      //userModel.hospno = drlist_jsondata.patient_hospno
-      //userModel.save()
-      //}
-      //else {
-      //console.log("user text", users[0].name)
-      //  }
       res.status(200).send(responseBody);
     }); //findOne
   }
