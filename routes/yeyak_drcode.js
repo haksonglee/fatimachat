@@ -13,18 +13,7 @@ router.post('/', function(req, res) {
   console.log("진료과명 : " + deptname)
   console.log("진료의사 : " + drname)
 
-  //로그인 처리
-  try {
-    var patient_name = req.body.contexts[1].params.patient_name.value;
-    var patient_birth = req.body.contexts[1].params.patient_birth.value;
-    console.log('patient_name is : ' + patient_name)
-    console.log('patient_birth is : ' + patient_birth)
-  } catch (e) {
-    //console.log(e)
-    console.log("로그인 없음")
-  }
-
-  var string = fs.readFileSync(dataPath, 'utf-8');
+    var string = fs.readFileSync(dataPath, 'utf-8');
   var data = JSON.parse(string)
   var body = [];
   //console.log(data.length)
@@ -50,7 +39,7 @@ router.post('/', function(req, res) {
     }
   }
 */
-  var drlist_script = require('./call_drlist');
+  var drlist_script = require('../call_drlist');
   var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname, drname, 'dept'))
   //console.log(drlist_bodydata)
   responseBody = drlist_bodydata
