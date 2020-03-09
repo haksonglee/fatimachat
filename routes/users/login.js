@@ -17,7 +17,7 @@ router.post('/', function(req, res) {
   // 개발로직 여기
 
   // db 로그인 정보
-  var chatUser = require("./users/dbuser_schema")
+  var chatUser = require("./dbuser_schema")
   //if (drlist_jsondata.patient_hospno != undefined) {
   chatUser.findOne({
     //id: botid
