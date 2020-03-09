@@ -52,7 +52,7 @@ router.post('/', function(req, res) {
           //insert
           try {
             var userModel = new chatUser();
-            userModel.id = botid
+            userModel.id = botid + patient_name
             userModel.name = patient_name
             userModel.birth = patient_birth
             userModel.hospno = 'patient_hospno'
