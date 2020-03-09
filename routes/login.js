@@ -10,8 +10,8 @@ router.post('/', function(req, res) {
   var botids = req.body.bot
   var botid = botids['id']
   var params = req.body.action.params
-  var patient_name = params['patient_name']
-  var patient_birth = params['patient_birth']
+  var patient_name = params['환자명']
+  var patient_birth = params['생년월일']
   var chatUser = require("./dbuser_schema")
 
   // 사용자 정보 조회  -fatima 홈페이지 연동

@@ -10,7 +10,7 @@ router.post('/', function(req, res) {
   var botids = req.body.bot
   var botid = botids['id']
   var params = req.body.action.params
-  var patient_name = params['patient_name']
+  var patient_name = params['환자명']
   //var patient_birth = params['patient_birth']
   var chatUser = require("./dbuser_schema")
   chatUser.remove({
