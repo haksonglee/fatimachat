@@ -7,7 +7,7 @@ exports.reservation_department = function() {
 
   //console.log("nodecraw start");
   var dataArr = [];
-  var dataPath = __dirname + '/reservation_deptlist.json'
+  var dataPath = './reservation_deptlist.json'
   const getHtml = async () => {
     try {
       return await axios.get("https://www.fatimahosp.co.kr/pages/department");

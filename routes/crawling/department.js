@@ -12,7 +12,7 @@ exports.department = function() {
 
   //console.log("nodecraw start");
   var dataArr = [];
-  var dataPath = __dirname + '/deptlist.json'
+  var dataPath = './deptlist.json'
   const getHtml = async () => {
     try {
       return await axios.get("https://www.fatimahosp.co.kr/pages/department");
