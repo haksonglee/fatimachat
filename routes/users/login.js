@@ -65,6 +65,7 @@ router.post('/', async function(req, res) {
         responseBody = response_json.response_json('login_ok')
         responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
       }
+      res.status(200).send(responseBody);
     } else { // 사용자 정보가 있으면
       console.log("select ok " + users)
       patient_name = users.name;
@@ -72,6 +73,7 @@ router.post('/', async function(req, res) {
       responseBody = response_json.response_json('login_ok')
       //console.log(responseBody)
       responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
+      res.status(200).send(responseBody);
     }
   } //else 이중번호가 아니면
   //res.status(200).send(responseBody);
