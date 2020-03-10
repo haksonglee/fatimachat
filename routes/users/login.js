@@ -14,7 +14,7 @@ router.post('/', async function(req, res) {
   var patient_birth = params['생년월일']
 
 
-//if (req.session.user) { console.log('ok......') }
+if (req.session.user) { console.log('ok......', req.session.user.intent) }
 
   // 사용자 정보 조회  -fatima 홈페이지 연동
   // patient_name, patient_birth
