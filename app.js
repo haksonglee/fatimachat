@@ -23,12 +23,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cookieParser());
-app.use(expressSession({
-  secret : 'blank',
-  resave: false,
-  saveUninitialized: true,
-  store: new MongoStore({mongooseConnection: mongoose.connection})
-}));
 
 //app.use('/api/simpletext', require('./routes/simpletext'));
 //app.use('/api/webhook', require('./routes/webhook'));
@@ -87,3 +81,10 @@ database.on('disconnected', function() {
   console.log('db reconnecting...')
   //setInterval(connectDB, 5000);
 })
+
+app.use(expressSession({
+  secret : 'blank',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({mongooseConnection: mongoose.connection})
+}));
