@@ -6,6 +6,9 @@ var dept;
 var deptname;
 
 router.post('/', function(req, res) {
+  //var params = req.body.action.params
+  var intent = req.body.intent.name;
+  console.log('intent', intent)
   // 1. 로그인 정보 확인 -> context 정보 환자명 / 생년월일 확인
   try {
     var patient_name = req.body.contexts[1].params.patient_name.value;
@@ -27,7 +30,7 @@ router.post('/', function(req, res) {
 
   } else {
     var deptlist_script = require('./call_deptlist');
-    responseBody = JSON.stringify(deptlist_script.call_deptlist())
+    responseBody = JSON.stringify(deptlist_script.call_deptlist(intent, ''))
   }
 
   res.status(200).send(responseBody);

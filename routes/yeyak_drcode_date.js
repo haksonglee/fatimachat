@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
 
   if (deptname == undefined && drname == undefined) {
     var deptlist_script = require('./call_deptlist');
-    var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist())
+    var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist(intent, yedate))
     var responseBody = deptlist_bodydata;
   }
   else {

@@ -8,6 +8,7 @@ var dept , deptname, drname;
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
+  //let intent = req.body.intent.name;
   deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   drname = params['진료의사']
   console.log("진료과명 : " + deptname)

@@ -15,6 +15,7 @@ var responseBody;
 
 router.post('/', function(req, res) {
   var params = req.body.action.params
+  let intent = req.body.intent.name;
   //console.log(params['진료과명'])
   //dept = params['dept']
   //console.log(JSON.stringify(params))
@@ -45,11 +46,10 @@ router.post('/', function(req, res) {
 
   if (deptname == undefined && drname == undefined) {
     var deptlist_script = require('./call_deptlist');
-    var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist(yeyakdate))
+    var deptlist_bodydata = JSON.stringify(deptlist_script.call_deptlist(intent, yeyakdate))
     responseBody = deptlist_bodydata
-  }
-  else {
-      for (var i = 0; i < data.length; i++) {
+  } else {
+    /*  for (var i = 0; i < data.length; i++) {
         var item = data[i];
 
         if (drname == undefined) {
@@ -67,13 +67,13 @@ router.post('/', function(req, res) {
             //console.log(item.link.web)
             body.push(item)
           }
-        }
-      }
+        } */
 
-      var drlist_script = require('./call_drlist');
-      var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname,drname,'dept'))
-      responseBody = drlist_bodydata
-}
+
+    var drlist_script = require('./call_drlist');
+    var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname, drname, 'dept'))
+    responseBody = drlist_bodydata
+  }
   res.status(200).send(responseBody);
 });
 
