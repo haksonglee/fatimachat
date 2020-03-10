@@ -6,8 +6,8 @@ const http = require('http');
 var mongoose = require('mongoose');
 
 var cookieParser = require('cookie-parser');
-var expressSession = require('express-session');
-var MongoStore = require('connect-mongo')(expressSession);
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 /* Prevent Sleep inHeroku Server*/
 setInterval(function() {
@@ -82,7 +82,7 @@ database.on('disconnected', function() {
   //setInterval(connectDB, 5000);
 })
 
-app.use(expressSession({
+app.use(session({
   secret : 'blank',
   resave: false,
   saveUninitialized: true,
