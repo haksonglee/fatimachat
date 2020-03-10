@@ -31,16 +31,27 @@ getHtml()
     var deptcode;
 
     $bodyList.each(function(i, elem) {
-      var data = {
-        label: $(this)
-          .find("h3.field-title")
-          .text(),
-        action: "message",
-        messageText: $(this)
-          .find("h3.field-title")
-          .text() + ' 예약',
+      switch ($(this).find("h3.field-title").text()) {
+        case '병리과':
+        case '진단검사의학과':
+        case '영상의학과':
+        case '응급의학과':
+        case '정신건강의학과':
+        case '직업환경의학과':
+        case '건강증진센터':
+          break;
+        default:
+        var data = {
+          label: $(this)
+            .find("h3.field-title")
+            .text(),
+          action: "message",
+          messageText: $(this)
+            .find("h3.field-title")
+            .text() + ' 예약',
+        };
+      }
 
-      };
 
       dataArr.push(data);
     });
