@@ -10,7 +10,7 @@ var dept, deptname, drname;
 router.post('/', async function(req, res) {
   //파라미터
   var params = req.body.action.params;
-  var intent = req.body.userRequest.utterance;
+  var intent =req.body.userRequest.utterance;
 
   //console.log(intent)
   //let intent = req.body.intent.name;
@@ -28,11 +28,12 @@ router.post('/', async function(req, res) {
   if (users === null || users === undefined) {
     //login message
     var responseBody = response_json.response_json('welcome')
+    intent = intent.replace(/\n/g,'');
     req.session.user = {
       id : botid,
       intent : intent
     };
-    console.log('first intent = ', req.session.user.intent)
+    //console.log('first intent = ', req.session.user.intent)
     //var patient_name = responseBody.name;
     //var patient_hospno = responseBody.hospno;
     //console.log(responseBody)
