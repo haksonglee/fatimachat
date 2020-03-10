@@ -73,7 +73,7 @@ exports.drlist = function() {
           .attr("data-drcode")
 
         dataArr.push(data);
-        console.log('dept create', data)
+
         fs.writeFileSync(dataPath2, JSON.stringify(dataArr), function(error, data) {
           if (error) {
             throw error
@@ -102,6 +102,7 @@ exports.drlist = function() {
     var item = data[i];
     //body.push(item.deptcode)
     //if(item.deptcode == 'GS') {
+    console.log('dept create', item.deptcode)
     getDrlist(item.deptcode);
     //}
   };
