@@ -14,8 +14,10 @@ exports.drlist = function() {
   //dept = 'PD'
 
   //const getDrlist = require(__dirname + '/drlist.js')
+
   const dataPath = __dirname + '/deptlist.json'
   const dataPath2 = __dirname + '/drlist.json'
+  console.log('dataPath ' , dataPath)
   var dataArr = [];
 
   //console.log(dataPath)
