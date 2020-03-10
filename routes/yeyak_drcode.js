@@ -23,8 +23,9 @@ router.post('/', async function(req, res) {
 
 
   //사용자 확인
-  var search = require('./users/dbuser_search')
-  var users = await search.dbuser_search(botid); // db connect find trying OK...
+  //var search = require('./users/dbuser_search')
+  //var users = await search.dbuser_search(botid); // db connect find trying OK...
+  var users = 'xxx'
   if (users === null || users === undefined) {
     //login message
     var responseBody = response_json.response_json('welcome')
