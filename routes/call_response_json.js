@@ -3,6 +3,30 @@ exports.response_json = function(gubun) {
   let responseBody;
 
   switch (gubun) {
+    case 'welcome':
+    responseBody = {
+      "version": "2.0",
+      "template": {
+        "outputs": [{
+          "basicCard": {
+            "title": "안녕하세요 창원파티마병원 입니다. ",
+            "description": "예약을 위하여 사용자 정보를 입력해주시기 바랍니다.",
+            "buttons": [{
+                "action": "message",
+                "label": "로그인",
+                "messageText": "로그인"
+              },
+              {
+                "action": "message",
+                "label": "처음으로",
+                "messageText": "처음으로"
+              }
+            ]
+          }
+        }]
+      }
+    } // responseBody
+      break;
     case 'login_fail':
       responseBody = {
         "version": "2.0",
@@ -84,7 +108,7 @@ exports.response_json = function(gubun) {
               }]
             }
           }]
-        } 
+        }
       }
       break;
     default:
