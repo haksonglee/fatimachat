@@ -23,6 +23,10 @@ exports.call_drlist = function(deptname, drname, gubun) {
       dept = item.dept
       item.title = item.title + '  ' + item.deptname
       body.push(item)
+    } else if (deptname == undefined && item.title == drname){
+      dept = item.dept
+      item.title = item.title + '  ' + item.deptname
+      body.push(item)
     } else if (gubun == 'sang' && item.description.indexOf(deptname) >= 0){
       dept = item.dept
       item.title = item.title + '  ' + item.deptname
