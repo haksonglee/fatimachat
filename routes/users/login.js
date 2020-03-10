@@ -14,7 +14,7 @@ router.post('/', async function(req, res) {
   var patient_birth = params['생년월일']
 
 
-if (req.session.user) { console.log('ok......', req.session.user.intent) }
+//if (req.session.user) { console.log('ok......', req.session.user.intent) }
 
   // 사용자 정보 조회  -fatima 홈페이지 연동
   // patient_name, patient_birth
@@ -67,14 +67,14 @@ if (req.session.user) { console.log('ok......', req.session.user.intent) }
 
         responseBody = response_json.response_json('login_ok')
         responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
-        if (req.session.user) {
+        /*if (req.session.user) {
           intent = req.session.user.intent
 
           req.session.destroy(function() {
             req.session;
           })
           responseBody.template.outputs[0].basicCard.buttons[0].messageText = intent
-        }
+        }*/
 
 
       }
@@ -86,14 +86,14 @@ if (req.session.user) { console.log('ok......', req.session.user.intent) }
       responseBody = response_json.response_json('login_ok')
       //console.log(responseBody)
       responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
-      if (req.session.user) {
+      /*if (req.session.user) {
         intent = req.session.user.intent
 
         req.session.destroy(function() {
           req.session;
         })
         responseBody.template.outputs[0].basicCard.buttons[0].messageText = intent
-      }
+      }*/
       res.status(200).send(responseBody);
     }
   } //else 이중번호가 아니면
