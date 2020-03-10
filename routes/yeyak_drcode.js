@@ -11,6 +11,8 @@ router.post('/', async function(req, res) {
   //파라미터
   var params = req.body.action.params;
   var intent = req.body.intent.name;
+
+  console.log(JSON.stringify(req.body))
   //let intent = req.body.intent.name;
   deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   drname = params['진료의사']
