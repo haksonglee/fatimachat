@@ -12,7 +12,7 @@ router.post('/', async function(req, res) {
   var params = req.body.action.params;
   var intent = req.body.userRequest.utterance;
 
-  console.log(intent)
+  //console.log(intent)
   //let intent = req.body.intent.name;
   deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   drname = params['진료의사']
@@ -32,7 +32,7 @@ router.post('/', async function(req, res) {
       id : botid,
       intent : intent
     };
-    console.log('first intent = ', intent)
+    console.log('first intent = ', req.session.user.intent)
     //var patient_name = responseBody.name;
     //var patient_hospno = responseBody.hospno;
     //console.log(responseBody)
@@ -43,7 +43,11 @@ router.post('/', async function(req, res) {
       console.log('second intent = ', intent)
       console.log('session intent = ', req.session.user.intent)
 
+      req.session.destroy(function(){
+        req.session;
+      })
     }
+
     var string = fs.readFileSync(dataPath, 'utf-8');
     var data = JSON.parse(string)
     var body = [];
