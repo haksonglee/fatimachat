@@ -37,7 +37,7 @@ app.use('/api/login',       require('./routes/users/login'));
 app.use('/api/login_phone', require('./routes/users/login_phone'));
 app.use('/api/logout',      require('./routes/users/logout'));
 
-app.use('/admin', require('./routes/crawling/admin'));
+//app.use('/admin', require('./routes/crawling/admin'));
 //app.use('/api/mongodb', require('./routes/mongodb'));
 app.use('/test', require('./test'));
 
