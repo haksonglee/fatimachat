@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
+var MongoStore = require('connect-mongo')(expressSession);
 
 /* Prevent Sleep inHeroku Server*/
 setInterval(function() {
@@ -25,7 +26,8 @@ app.use(cookieParser());
 app.use(expressSession({
   secret : 'blank',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
 //app.use('/api/simpletext', require('./routes/simpletext'));
