@@ -9,7 +9,8 @@ var dept, deptname, drname;
 
 router.post('/', async function(req, res) {
   //파라미터
-  var params = req.body.action.params
+  var params = req.body.action.params;
+  var intent = req.body.intent.name;
   //let intent = req.body.intent.name;
   deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   drname = params['진료의사']
@@ -18,18 +19,29 @@ router.post('/', async function(req, res) {
   //console.log("진료과명 : " + deptname)
   //console.log("진료의사 : " + drname)
 
+
   //사용자 확인
   var search = require('./users/dbuser_search')
   var users = await search.dbuser_search(botid); // db connect find trying OK...
   if (users === null || users === undefined) {
     //login message
     var responseBody = response_json.response_json('welcome')
+    req.session.user = {
+      id : botid,
+      intent : intent
+    };
+    console.log('first intent = ', intent)
     //var patient_name = responseBody.name;
     //var patient_hospno = responseBody.hospno;
     //console.log(responseBody)
     //responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
     //res.status(200).send(resultdata);
   } else { // 로그인 확인
+    if (req.session.user) {
+      console.log('second intent = ', intent)
+      console.log('session intent = ', req.session.user.intent)
+
+    }
     var string = fs.readFileSync(dataPath, 'utf-8');
     var data = JSON.parse(string)
     var body = [];

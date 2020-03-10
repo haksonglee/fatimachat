@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const http = require('http');
 var mongoose = require('mongoose');
 
+var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
+
 /* Prevent Sleep inHeroku Server*/
 setInterval(function() {
   http.get("http://fatimachat.herokuapp.com");
@@ -17,6 +20,12 @@ app.use(logger('dev', {}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
+}));
+app.use(cookieParser());
+app.use(expressSession({
+  secret : 'blank',
+  resave: false,
+  saveUninitialized: true
 }));
 
 //app.use('/api/simpletext', require('./routes/simpletext'));
