@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-var exex_script1 = require('./crawling/reservation_department')
-var exex_script2 = require('./crawling/department')
-var exex_script3 = require('./crawling/drlist')
+var exex_script1 = require('./reservation_department')
+var exex_script2 = require('./department')
+var exex_script3 = require('./drlist')
 
 router.post('/reservation_department', async function(req, res) {
 
