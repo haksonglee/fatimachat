@@ -74,7 +74,7 @@ router.post('/', async function(req, res) {
       responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
     }
   } //else 이중번호가 아니면
-  res.status(200).send(responseBody);
+  //res.status(200).send(responseBody);
 }); // router
 
 module.exports = router;
