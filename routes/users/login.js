@@ -64,6 +64,14 @@ router.post('/', async function(req, res) {
 
         responseBody = response_json.response_json('login_ok')
         responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
+        if (req.session.user) {
+          console.log('second intent = ', intent)
+          console.log('session intent = ', req.session.user.intent)
+
+          req.session.destroy(function(){
+            req.session;
+          })
+        }
       }
       res.status(200).send(responseBody);
     } else { // 사용자 정보가 있으면
@@ -73,6 +81,14 @@ router.post('/', async function(req, res) {
       responseBody = response_json.response_json('login_ok')
       //console.log(responseBody)
       responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
+      if (req.session.user) {
+        console.log('second intent = ', intent)
+        console.log('session intent = ', req.session.user.intent)
+
+        req.session.destroy(function(){
+          req.session;
+        })
+      }
       res.status(200).send(responseBody);
     }
   } //else 이중번호가 아니면

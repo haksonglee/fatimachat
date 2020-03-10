@@ -39,15 +39,6 @@ router.post('/', async function(req, res) {
     //responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
     //res.status(200).send(resultdata);
   } else { // 로그인 확인
-    if (req.session.user) {
-      console.log('second intent = ', intent)
-      console.log('session intent = ', req.session.user.intent)
-
-      req.session.destroy(function(){
-        req.session;
-      })
-    }
-
     var string = fs.readFileSync(dataPath, 'utf-8');
     var data = JSON.parse(string)
     var body = [];
