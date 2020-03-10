@@ -21,7 +21,7 @@ router.post('/', function(req, res) {
 
   //console.log(req.body.bot)
   var botids = req.body.bot
-  var botid = botids['id']
+  var botid = botids['id'] + patient_name
   var params = req.body.action.params
   var patient_phone = params['휴대폰뒷번호']
   //console.log("patient_phone = " + patient_phone)
