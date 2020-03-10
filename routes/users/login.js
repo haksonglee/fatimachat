@@ -9,7 +9,7 @@ router.post('/', async function(req, res) {
   //console.log(req.body.bot)
   var botids = req.body.bot
   var params = req.body.action.params
-  var botid = botids['id'] + params['환자명']
+  var botid = botids['id']
   var patient_name = params['환자명']
   var patient_birth = params['생년월일']
 
@@ -67,7 +67,7 @@ router.post('/', async function(req, res) {
       }
       res.status(200).send(responseBody);
     } else { // 사용자 정보가 있으면
-      console.log("select ok " + users)
+      //console.log("select ok " + users)
       patient_name = users.name;
       patient_hospno = users.hospno;
       responseBody = response_json.response_json('login_ok')
