@@ -8,7 +8,7 @@ router.post('/', async function(req, res) {
 
   //console.log(req.body.bot)
   var botids = req.body.bot
-  var botid = botids['id']
+  var botid = botids['id'] + params['환자명']
   var params = req.body.action.params
   var patient_name = params['환자명']
   var patient_birth = params['생년월일']
