@@ -7,10 +7,10 @@ const router = express.Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
 const log = console.log;
-var fs=require('fs')
+var fs = require('fs')
 
 //console.log("nodecraw start");
-var dataArr=[];
+var dataArr = [];
 var dataPath = __dirname + '/deptlist.json'
 const getHtml = async () => {
   try {
@@ -42,7 +42,7 @@ getHtml()
 
       var datai = {
         //web: str
-        web : ""
+        web: ""
       };
 
       var data = {
@@ -55,15 +55,29 @@ getHtml()
           .attr("src"),
         link: datai,
       };
+      switch ($(this).find("h3.field-title").text()) {
+        case '병리과':
+        case '진단검사의학과':
+        case '영상의학과':
+        case '응급의학과':
+        case '정신건강의학과':
+        case '직업환경의학과':
+        case '건강증진센터':
 
-      dataArr.push(data);
+          break;
+        default:
+          dataArr.push(data);
+      }
+
     });
-    fs.writeFileSync(dataPath, JSON.stringify(dataArr), function(error, data){
-      if (error) {throw error};
-    //const data = ulList.filter(n => n.name);
-    //return data;
-  });
-  //.then(res => {
+    fs.writeFileSync(dataPath, JSON.stringify(dataArr), function(error, data) {
+      if (error) {
+        throw error
+      };
+      //const data = ulList.filter(n => n.name);
+      //return data;
+    });
+    //.then(res => {
     //log(res);
     //objectJSON = JSON.stringify(ulList1);
 

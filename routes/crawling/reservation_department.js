@@ -50,10 +50,9 @@ getHtml()
             .find("h3.field-title")
             .text() + ' 예약',
         };
+              dataArr.push(data);
       }
 
-
-      dataArr.push(data);
     });
     fs.writeFileSync(dataPath, JSON.stringify(dataArr), function(error, data) {
       if (error) {
