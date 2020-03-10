@@ -102,7 +102,7 @@ exports.drlist = function() {
     var item = data[i];
     //body.push(item.deptcode)
     //if(item.deptcode == 'GS') {
-    console.log('dept create', item.deptcode)
+    //console.log('dept create', item.deptcode)
     getDrlist(item.deptcode);
     //}
   };
