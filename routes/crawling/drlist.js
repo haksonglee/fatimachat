@@ -73,6 +73,7 @@ exports.drlist = function() {
           .attr("data-drcode")
 
         dataArr.push(data);
+        console.log('dept create', data)
         fs.writeFileSync(dataPath2, JSON.stringify(dataArr), function(error, data) {
           if (error) {
             throw error
