@@ -28,11 +28,11 @@ router.post('/', async function(req, res) {
     var search = require('./users/dbuser_search')
     users = await search.dbuser_search(botid); // db connect find trying OK...
     //var users = 'xxx'
-    intent = intent.replace(/\n/g, '');
-    req.session.user = {
-      id: botid,
-      intent: intent
-    };
+    //intent = intent.replace(/\n/g, '');
+    //req.session.user = {
+    //  id: botid,
+    //  intent: intent
+    //};
   } else {
     users = 'xxx'
   }
