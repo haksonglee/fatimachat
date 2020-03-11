@@ -82,7 +82,10 @@ app.use('/api/logout',      require('./routes/users/logout'));
 
 //app.use('/admin', require('./routes/crawling/admin'));
 //app.use('/api/mongodb', require('./routes/mongodb'));
-app.use('/test', require('./test'));
+//app.use('/test', require('./test'));
+
+app.use('/index',require('./routes/index'));
+app.use('/index2',require('./routes/index2'));
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
