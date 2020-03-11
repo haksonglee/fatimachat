@@ -15,6 +15,7 @@ router.post('/', async function(req, res) {
 
 
 if (req.session.user) { console.log('ok......', req.session.user.intent) }
+else{console.log("not found session")}
 
   // 사용자 정보 조회  -fatima 홈페이지 연동
   // patient_name, patient_birth
