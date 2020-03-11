@@ -4,7 +4,7 @@ var router = express.Router();
 //var chatUser = require("../model/post")
 
 //read router
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
 
   req.session.user = {
     id : '88hrklareiowqflsklfds',
