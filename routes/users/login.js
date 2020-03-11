@@ -6,7 +6,7 @@ var responseBody;
 
 router.post('/', async function(req, res) {
 
-  //console.log(req.body.bot)
+  console.log(JSONG.stringfy(req.body.action.params))
   var botids = req.body.bot
   var params = req.body.action.params
   var botid = botids['id']
