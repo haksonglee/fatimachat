@@ -28,7 +28,7 @@ router.post('/', async function(req, res) {
     users = await search.dbuser_search(botid); // db connect find trying OK...
     //var users = 'xxx'
   } else {
-    uses = 'xxx'
+    users = 'xxx'
   }
   if (users === null || users === undefined) {
     //login message
