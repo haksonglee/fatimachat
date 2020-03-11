@@ -5,13 +5,17 @@ var router = express.Router();
 
 //read router
 
-  router.get('/', function(req, res, next) {
+  router.post('/', function(req, res, next) {
 
    if (req.session.user) {
      console.log("pass")
     var id = req.session.user.id
     var intent = req.session.user.intent
-}
     res.end(id + intent)
+}else{
+  console.log("fail")
+  res.end("")
+}
+
     });
 module.exports = router;
