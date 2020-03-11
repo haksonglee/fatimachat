@@ -61,7 +61,7 @@ app.use(session({
   secret : 'blank',
   resave: false,
   saveUninitialized: true,
-  expires : new Date(Date.now() + 86400 * 1000),
+  cookie: {expires : new Date(Date.now() + 86400 * 1000)}, //24시간
   store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
