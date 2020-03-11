@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const http = require('http');
 var mongoose = require('mongoose');
 
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+//var cookieParser = require('cookie-parser');
+//var session = require('express-session');
+//var MongoStore = require('connect-mongo')(session);
 
 /* Prevent Sleep inHeroku Server*/
 setInterval(function() {
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(cookieParser());
+//app.use(cookieParser());
 
 //app.use('/api/simpletext', require('./routes/simpletext'));
 //app.use('/api/webhook', require('./routes/webhook'));
@@ -57,6 +57,7 @@ database.on('disconnected', function() {
   //setInterval(connectDB, 5000);
 })
 
+/*
 app.use(session({
   secret : 'blank',
   resave: false,
@@ -64,6 +65,7 @@ app.use(session({
   cookie: {expires : new Date(Date.now() + 86400 * 1000)}, //24시간
   store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
+*/
 
 app.use('/api/listcard_drinfo', require('./routes/listcard_drinfo'));
 //app.use('/api/card_drlist', require('./routes/card_drlist'));
