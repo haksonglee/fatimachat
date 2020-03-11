@@ -14,6 +14,11 @@ exports.dbuser_search = function(botid) {
     if (err) {
       return handleError(err);
     }
+    if (users === null || users === undefined){
+      //사용자 없음 -> 로그인 메세지
+    } else {
+      //사용자 있음 -> 환영 / 로그아웃 메세지
+    }
     return users
   })
 

@@ -30,10 +30,10 @@ router.post('/', async function(req, res) {
     //login message
     var responseBody = response_json.response_json('welcome')
     intent = intent.replace(/\n/g,'');
-    //req.session.user = {
-    //  id : botid,
-    //  intent : intent
-    //};
+    req.session.user = {
+      id : botid,
+      intent : intent
+    };
     //console.log('first intent = ', req.session.user.intent)
     //var patient_name = responseBody.name;
     //var patient_hospno = responseBody.hospno;
