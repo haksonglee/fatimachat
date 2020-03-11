@@ -23,8 +23,8 @@ router.post('/', async function(req, res) {
 
   var users;
   //사용자 확인
-  console.log(intent)
-  if (intent === '신주화 예약\n') {
+  //console.log(intent)
+  if (intent === '신주화 예약') {
     var search = require('./users/dbuser_search')
     users = await search.dbuser_search(botid); // db connect find trying OK...
     //var users = 'xxx'
