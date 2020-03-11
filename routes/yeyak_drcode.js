@@ -10,7 +10,7 @@ var dept, deptname, drname;
 router.post('/', async function(req, res) {
   //파라미터
   var params = req.body.action.params;
-  var intent =req.body.userRequest.utterance;
+  var intent = req.body.userRequest.utterance;
 
   //console.log(intent)
   //let intent = req.body.intent.name;
@@ -21,18 +21,22 @@ router.post('/', async function(req, res) {
   //console.log("진료과명 : " + deptname)
   //console.log("진료의사 : " + drname)
 
-
+  var users;
   //사용자 확인
-  //var search = require('./users/dbuser_search')
-  //var users = await search.dbuser_search(botid); // db connect find trying OK...
-  var users = 'xxx'
+  if (intent === '신주화 예약\n') {
+    var search = require('./users/dbuser_search')
+    users = await search.dbuser_search(botid); // db connect find trying OK...
+    //var users = 'xxx'
+  } else {
+    uses = 'xxx'
+  }
   if (users === null || users === undefined) {
     //login message
     var responseBody = response_json.response_json('welcome')
-    intent = intent.replace(/\n/g,'');
+    intent = intent.replace(/\n/g, '');
     req.session.user = {
-      id : botid,
-      intent : intent
+      id: botid,
+      intent: intent
     };
     //console.log('first intent = ', req.session.user.intent)
     //var patient_name = responseBody.name;
