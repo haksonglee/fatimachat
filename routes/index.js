@@ -1,20 +1,16 @@
-var express = require('express')
+var express = require("express");
 var router = express.Router();
 
 //var chatUser = require("../model/post")
 
 //read router
-router.post('/', function(req, res, next) {
-
-  req.session.user = {
-    id : '88hrklareiowqflsklfds',
-    intent : '이학송 예약'
-  };
-
-  console.log(req.session.id)
-
-  console.log(new Date(Date.now() + 86400 * 1000))
-  res.end("end")
-  });
+router.get("/", function(req, res) {
+  let data = [
+    { name: "환자명1", birth: "20200101", hospno: "000100001", phone: "0074" },
+    { name: "환자명2", birth: "20200102", hospno: "000200002", phone: "8237" }
+  ];
+  //console.log("data type ", typeof data);
+  res.json(data);
+});
 
 module.exports = router;

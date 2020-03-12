@@ -1,44 +1,37 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
 //const getDrlist = require(__dirname + '/crawling/drlist.js')
-const dataPath = __dirname + '/crawling/drlist.json'
-const response_json = require('./call_response_json')
+const dataPath = __dirname + "/crawling/drlist.json";
+const response_json = require("./call_response_json");
 
-var fs = require('fs')
-var dept, deptname, drname;
+const fs = require("fs");
 
-router.post('/', async function(req, res) {
+const post = router.post("/", async function(req, res) {
   //파라미터
-  var params = req.body.action.params;
-  var intent = req.body.userRequest.utterance;
-
-  //console.log(intent)
-  //let intent = req.body.intent.name;
-  deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
-  drname = params['진료의사']
-  var botids = req.body.bot
-  var botid = botids['id']
+  let params = req.body.action.params;
+  let deptname = params["진료과명"]; //시나리오 필수파라미터 이름 동일해야함
+  let drname = params["진료의사"];
+  let botids = req.body.bot;
+  let botid = botids["id"];
   //console.log("진료과명 : " + deptname)
   //console.log("진료의사 : " + drname)
 
-  var users;
+  let users;
   //사용자 확인
   //console.log(intent)
-  if (intent === '신주화 예약') {
-    var search = require('./users/dbuser_search')
+  // 사용자 확인 ---> mongo db
+  if (
+    botid === "5e1bf6a492690d00019eb692!" ||
+    botid === "5e1bf6a492690d00019eb692"
+  ) {
+    let search = require("./users/dbuser_search");
     users = await search.dbuser_search(botid); // db connect find trying OK...
-    //var users = 'xxx'
-    //intent = intent.replace(/\n/g, '');
-    //req.session.user = {
-    //  id: botid,
-    //  intent: intent
-    //};
-  } else {
-    users = 'xxx'
   }
   if (users === null || users === undefined) {
-    //login message
-    var responseBody = response_json.response_json('welcome')
+    // db에 사용자 정보가 없으며
+    //welcome message -> 로그인
+    let responseBody = response_json.response_json("welcome");
+    res.status(200).send(responseBody);
 
     //console.log('first intent = ', req.session.user.intent)
     //var patient_name = responseBody.name;
@@ -46,39 +39,20 @@ router.post('/', async function(req, res) {
     //console.log(responseBody)
     //responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
     //res.status(200).send(resultdata);
-  } else { // 로그인 확인
-    var string = fs.readFileSync(dataPath, 'utf-8');
-    var data = JSON.parse(string)
-    var body = [];
-    //console.log(data.length)
-    /*
-      for (var i = 0; i < data.length; i++) {
-        var item = data[i];
+  } else {
+    // 로그인 확인
+    let string = fs.readFileSync(dataPath, "utf-8");
+    let data = JSON.parse(string);
+    let body = [];
 
-        if (drname == undefined) {
-          if (item.deptname == '[' + deptname + ']') {
-            item.title = item.title + '  ' + item.deptname
-            dept = item.dept
-            body.push(item)
-          }
-
-        } else {
-          if (item.title == drname) {
-            item.title = item.title + '  ' + item.deptname
-            dept = item.dept
-            item.link.web = item.link.web + '&patient_name='+ patient_name + '&patient_birth=' + patient_birth
-            //console.log(item.link.web)
-            body.push(item)
-          }
-        }
-      }
-    */
-    var drlist_script = require('./call_drlist');
-    var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(deptname, drname, 'dept'))
+    let drlist_script = require("./call_drlist");
+    let drlist_bodydata = JSON.stringify(
+      drlist_script.call_drlist(deptname, drname, "dept")
+    );
     //console.log(drlist_bodydata)
-    responseBody = drlist_bodydata
+    let responseBody = drlist_bodydata;
+    res.status(200).send(responseBody);
   }
-  res.status(200).send(responseBody);
 });
 
 module.exports = router;

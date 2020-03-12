@@ -1,11 +1,11 @@
-const router = require('express').Router();
+function fakeSetTimeout(callback, delay) {
+  callback();
+}
 
-var exex_script = require('./routes/crawling/reservation_department')
+console.log(0);
 
-router.get('/', async function(req, res) {
+setTimeout(function() {
+  console.log("hello");
+}, 0);
 
-  exex_script.reservation_department()
-  res.send({result:"ok"})
-}); // router
-
-module.exports = router;
+console.log(1);
