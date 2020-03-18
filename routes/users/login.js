@@ -1,136 +1,119 @@
-const router = require("express").Router();
-const request = require("request");
+const router      = require("express").Router();
 
 //http://localhost:3000/api/listcard_drlist/
 let response_json = require("../call_response_json");
-
-function request_user() {
-  return new Promise(function(resolve, reject) {
-    request({ uri: "http://localhost:3000/index", json: true }, function(
-      err,
-      res,
-      body
-    ) {
-      if (err) {
-        reject(err);
-      }
-      //let patient_result = body.length;
-      //console.log("pass 00000000000000", patient_result, body);
-      resolve(body);
-    });
-  });
-}
-
-function test() {
-  console.log("skip?");
-}
+let user          = require('./user');
+let ocsuser       = require("./ocsuser_search")
 
 router.post("/", async function(req, res) {
   //console.log(req.body)
-  let botids = req.body.bot;
+  let botUserKey = req.body.userRequest.user.id;
   let params = req.body.action.params;
-  let botid = botids["id"];
-  let patient_name = params["환자명"];
-  let patient_birth = params["생년월일"];
+  //let botid = botids["id"];
+  let input_name = params["환자명"];
+  let input_birth = params["생년월일"];
+  var input_phone = params['휴대폰뒷번호']
 
-  //if (req.session.user) { console.log('ok......', req.session.user.intent) }
-  //else{console.log("not found session")}
+  if (input_phone !== undefined) { // 휴대폰 번호 확인자
+    try {
+      for (var i = 0; i < req.body.contexts.length; i++) {
+        if (req.body.contexts[i].name === 'patient_info') {
+          input_name = req.body.contexts[i].params.환자명.value;
+          input_birth = req.body.contexts[i].params.생년월일.value;
+          console.log('contexts ', input_name, input_birth)
+        }
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  let datachk = new Date(input_birth.substr(0, 4) + '-' + input_birth.substr(4, 2) + '-' + input_birth.substr(6, 2))
+  if (isNaN(datachk.getTime()) || input_birth.length !== 8) {
+    let responseBody = response_json.response_json("type_error");
+    res.status(200).send(responseBody);
+    return
+  }
 
   let patient_result = 0;
+
   // 사용자 정보 조회  -fatima 홈페이지 연동
+  //let patient_data = await ocsuser.request_ocsuser(input_name, input_birth).then(function(body) {
+  //patient_result = body.length;
+  //console.log('check 0 ===> ',  body)
+  //return body
+  //});
 
-  await request_user().then(function(body) {
-    //console.log("done");
-    patient_result = body.length;
-    //console.log("pass 100000000000000", patient_result, "=======", body);
-
-    if (patient_result > 1) {
-      let responseBody = response_json.response_json("login_phone");
-      res.status(200).send(responseBody);
+  // 사용자 정보 조회  -fatima 홈페이지 연동
+  //   patien_name, patient_birth, patient_phone
+  let patient_find = 0;
+  let patient_data;
+  await ocsuser.request_ocsuser(input_name, input_birth).then(function(body) {
+    patient_find = body.length;
+    if (patient_find > 1) {
+      body.forEach((item, index) => {
+        if (item.phone === input_phone) {
+          patient_find = 1
+          patient_data = item
+        }
+      }); //forEach
+    } else {
+      patient_data = body[0]
     }
   });
-
-  console.log("this path is ok")
-  // patient_name, patient_birth
   // 개발로직 여기
-  // 이중번호 확인
-  if (patient_result > 1) {
-    responseBody = response_json.response_json("login_phone");
+
+  console.log("patient_data===>", patient_data, patient_find)
+  if (patient_find > 1) { // 병원시스템 유저 정보 없음
+    responseBody = response_json.response_json("login_phone"); // responseBody
     res.status(200).send(responseBody);
-  } else {
+  } else if (patient_find === 0) { // 병원시스템 유저 정보 없음
+    responseBody = response_json.response_json("login_fail"); // responseBody
+    res.status(200).send(responseBody);
+  } else if (patient_find === 1) { // 이중번호가 아니면서 1건
     // db 로그인 정보
-    let chatUser = require("./dbuser_schema");
     //if (drlist_jsondata.patient_hospno != undefined) {
     let search = require("./dbuser_search");
-    let users = search.dbuser_search(botid); // db connect find trying OK...
-    //console.log("findONe : " + users)
+    let users = await search.dbuser_search(botUserKey); // db connect find trying OK...
+    console.log("findONe : " + users)
     if (users === null || users === undefined) {
       //사용자 정보가 없으면
 
       //병원 시스템 사용자 정보 search ---외부 모듈
       //hospital_ocs_patient_search start
-      let patient_hospno;
-      patient_hospno = "000000001";
-      if (patient_birth === "99999999") {
-        patient_hospno = null;
-      }
-      //hospital_ocs_patient_search end
-      if (patient_hospno === undefined || patient_hospno === null) {
-        // 사용자 정보 없음 -> 다시 로그인,
-        // 병원 처음사용자 => 안내 컨택센터 전화예약
-        // 죄송합니다. 해당 정보의 사용자를 찾지 못했습니다.
-        // 1. 다시 로그인 버튼
-        // 2. 컨택센터 연결 버튼
-        responseBody = response_json.response_json("login_fail"); // responseBody
-      } //if (patient_hospno === undefined)
-      else {
-        // 병원시스템 사용자 정보 확인 -> db등록시작
-        //insert
-        try {
-          let userModel = new chatUser();
-          userModel.id = botid;
-          userModel.name = patient_name;
-          userModel.birth = patient_birth;
-          userModel.hospno = "patient_hospno";
-          userModel.save();
-        } catch (err) {
-          console.log("userModel save error");
-        }
+      user.login_name = patient_data.name;
+      user.login_hospno = patient_data.hospno;
+      //console.log("login_name ==> ", user.login_name, patient_data.name)
+      //console.log("login_hospno ==> ", user.login_hospno , patient_data.hospno)
 
-        responseBody = response_json.response_json("login_ok");
-        responseBody.template.outputs[0].basicCard.title =
-          "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님";
-        /*if (req.session.user) {
-          intent = req.session.user.intent
-
-          req.session.destroy(function() {
-            req.session;
-          })
-          responseBody.template.outputs[0].basicCard.buttons[0].messageText = intent
-        }*/
+      try {
+        let chatUser = require("./dbuser_schema");
+        let userModel = new chatUser();
+        let date = new Date();
+        userModel.id = botUserKey;
+        userModel.name = user.login_name;
+        //userModel.birth = patient_birth;
+        userModel.hospno = user.login_hospno;
+        userModel.recentdate = date
+        userModel.save();
+      } catch (err) {
+        console.log("userModel save error");
       }
+      responseBody = response_json.response_json("login_ok");
+      responseBody.template.outputs[0].basicCard.title =
+        "안녕하세요 " + user.login_name + "(" + user.login_hospno + ") 님";
       res.status(200).send(responseBody);
     } else {
       // 사용자 정보가 있으면
-      //console.log("select ok " + users)
-      patient_name = users.name;
-      patient_hospno = users.hospno;
       responseBody = response_json.response_json("login_ok");
-      //console.log(responseBody)
       responseBody.template.outputs[0].basicCard.title =
-        "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님";
-      /*if (req.session.user) {
-        intent = req.session.user.intent
-
-        req.session.destroy(function() {
-          req.session;
-        })
-        responseBody.template.outputs[0].basicCard.buttons[0].messageText = intent
-      }*/
+        "안녕하세요 " + users.name + "(" + users.hospno + ") 님";
       res.status(200).send(responseBody);
     }
-  } //else 이중번호가 아니면
-  //res.status(200).send(responseBody);
+  } else {
+    res.end("")
+  }
+  //res.status(200).send(responseBody); //내부처리
 }); // router
 
 module.exports = router;

@@ -1,36 +1,33 @@
 const router = require("express").Router();
 
 //const getDrlist = require(__dirname + '/crawling/drlist.js')
-const dataPath = __dirname + "/crawling/drlist.json";
+//const dataPath = __dirname + "/crawling/drlist.json";
 const response_json = require("./call_response_json");
-
-const fs = require("fs");
+//const fs = require("fs");
+let session_user = require('./users/user');
 
 const post = router.post("/", async function(req, res) {
   //파라미터
   let params = req.body.action.params;
   let deptname = params["진료과명"]; //시나리오 필수파라미터 이름 동일해야함
   let drname = params["진료의사"];
-  let botids = req.body.bot;
-  let botid = botids["id"];
-  //console.log("진료과명 : " + deptname)
-  //console.log("진료의사 : " + drname)
+  let yedate = params['예약일자']
+
+  //let intent = req.body.intent.name;
+  let botUserKey = req.body.userRequest.user.id;
+  //let botid = botids["id"];
+
+  //사용자 확인
+  console.log(botUserKey)
+  // 사용자 확인 ---> mongo db
 
   let users;
-  //사용자 확인
-  //console.log(intent)
-  // 사용자 확인 ---> mongo db
-  if (
-    botid === "5e1bf6a492690d00019eb692!" ||
-    botid === "5e1bf6a492690d00019eb692"
-  ) {
-    let search = require("./users/dbuser_search");
-    users = await search.dbuser_search(botid); // db connect find trying OK...
-  }
+  let search = require("./users/dbuser_search");
+  users = await search.dbuser_search(botUserKey); // db connect find trying OK...
   if (users === null || users === undefined) {
     // db에 사용자 정보가 없으며
     //welcome message -> 로그인
-    let responseBody = response_json.response_json("welcome");
+    let responseBody = response_json.response_json("unknown");
     res.status(200).send(responseBody);
 
     //console.log('first intent = ', req.session.user.intent)
@@ -40,18 +37,66 @@ const post = router.post("/", async function(req, res) {
     //responseBody.template.outputs[0].basicCard.title = "안녕하세요 " + patient_name + "(" + patient_hospno + ") 님"
     //res.status(200).send(resultdata);
   } else {
-    // 로그인 확인
-    let string = fs.readFileSync(dataPath, "utf-8");
-    let data = JSON.parse(string);
-    let body = [];
+    session_user.patient_name = users.name;
+    session_user.patient_hospno = users.hospno;
+    // 로그인 ok -> 진료예약
+    //let string = fs.readFileSync(dataPath, "utf-8");
+    //let data = JSON.parse(string);
+    //let body = [];
+    let date = new Date()
+    if (users.recentdate.toLocaleDateString() === date.toLocaleDateString()) {
+      // 당일 재방문
+      console.log("date check", date.toLocaleDateString())
+      let drlist_script = require("./call_drlist");
+      let jsondata = drlist_script.call_drlist(deptname, drname, yedate, "dept");
+      let jsoncnt = jsondata.template.outputs[0].listCard.items.length
+      for (let i = 0; i < jsoncnt; i++) {
+        jsondata.template.outputs[0].listCard.items[i].link.web +=
+          '&name=' + users.name + '&hospno=' + users.hospno
+      }
+      let responseBody = JSON.stringify(jsondata)
+      res.status(200).send(responseBody);
+    } else {
+      //당일 첫방문
+      //db update recentdate
+      let chatUser = require("./users/dbuser_schema");
+      let date = new Date()
+      // try {
+      //   console.log("update start")
+      //   chatUser.updateOne({
+      //     id: botid
+      //   }, {
+      //     $set: {
+      //       recentdate: date,
+      //       name : '수수수'
+      //     }
+      //   }, {multi:true,new:true})
+      // } catch (err) {
+      //   console.log('update error')
+      // }
+      var query = {
+        id: botUserKey
+      };
+      var update = {
+        recentdate: date
+      };
+      var options = {
+        new: false
+      };
+      chatUser.findOneAndUpdate(query, update, options, function(err, users) {
+        // Done!
+        // doc.title = "new title"
+        console.log("users ===> " ,users)
+        responseBody = response_json.response_json("login_ok");
+        responseBody.template.outputs[0].basicCard.title =
+          "안녕하세요 " + users.name + "(" + users.hospno + ") 님";
+        res.status(200).send(responseBody);
+      });
+      //
 
-    let drlist_script = require("./call_drlist");
-    let drlist_bodydata = JSON.stringify(
-      drlist_script.call_drlist(deptname, drname, "dept")
-    );
-    //console.log(drlist_bodydata)
-    let responseBody = drlist_bodydata;
-    res.status(200).send(responseBody);
+    }
+
+
   }
 });
 

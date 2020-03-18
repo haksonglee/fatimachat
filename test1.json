@@ -1,81 +1,28 @@
 {
-  "bot": {
-    "id": "5e1bf6a492690d00019eb692",
-    "name": "창원파티마병원 챗봇"
-  },
-  "intent": {
-    "id": "5e65b4a0ec6bb7000103470e",
-    "name": "핸드폰번호",
-    "extra": {
-      "reason": {
-        "code": 0,
-        "message": "OK"
+  "version": "2.0",
+  "template": {
+    "outputs": [{
+      "listCard": {
+        "header": {
+          "title": "창원파티마병원 의료진",
+          "imageUrl": "https://www.fatimahosp.co.kr/assets/images/sub/sub_visual5.jpg"
+        },
+        "items": [{
+          "dept": "NU",
+          "deptname": "[신경과]",
+          "title": "김샤롬  [신경과]",
+          "description": "파킨슨병, 손떨림, 어지럼증, 손발저림, 뇌졸중",
+          "imageUrl": "https://www.fatimahosp.co.kr/uploads/clinicimg/03723_7869afec3f5262f07aec9dc3396b5764.jpg",
+          "link": {
+            "web": "https://www.fatimahosp.co.kr/pages/department?drcode=03723"
+          }
+        }],
+        "buttons": [{
+          "label": "모바일예약 이동",
+          "action": "webLink",
+          "webLinkUrl": "https://www.fatimahosp.co.kr/pages/department?deptdoctor=MA"
+        }]
       }
-    }
-  },
-  "action": {
-    "id": "5e65ce1fa04f9b00018916e5",
-    "name": "로그인_핸드폰(login_phone)",
-    "params": {
-      "휴대폰뒷번호": "1122"
-    },
-    "detailParams": {
-      "휴대폰뒷번호": {
-        "origin": "1122",
-        "value": "1122"
-      }
-    },
-    "clientExtra": {}
-  },
-  "userRequest": {
-    "block": {
-      "id": "5e65b4a0ec6bb7000103470e",
-      "name": "핸드폰번호"
-    },
-    "user": {
-      "id": "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee1102",
-      "type": "botUserKey",
-      "properties": {
-        "botUserKey": "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee1102",
-        "plusfriendUserKey": "A3TDN4Uek7Yl",
-        "bot_user_key": "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee1102",
-        "plusfriend_user_key": "A3TDN4Uek7Yl"
-      }
-    },
-    "utterance": "1122",
-    "params": {
-      "surface": "Kakaotalk.plusfriend"
-    },
-    "lang": "ko",
-    "timezone": "Asia/Seoul"
-  },
-  "contexts": [{
-    "name": "deptname",
-    "lifespan": 3,
-    "ttl": 3600,
-    "params": {
-      "예약": {
-        "value": "예약",
-        "resolvedValue": "예약"
-      },
-      "진료과명": {
-        "value": "호흡기내과",
-        "resolvedValue": "호흡기내과"
-      }
-    }
-  }, {
-    "name": "patient_info",
-    "lifespan": 4,
-    "ttl": 3600,
-    "params": {
-      "환자명": {
-        "value": "이학송",
-        "resolvedValue": "이학송"
-      },
-      "생년월일": {
-        "value": "19711107",
-        "resolvedValue": "19711107"
-      }
-    }
-  }]
+    }]
+  }
 }

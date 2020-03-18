@@ -19,7 +19,6 @@ router.post('/', function(req, res) {
     var login_pass = 'NO...'
   }
 
-
   // // 1. 로그인 확인 -> 로그인 없을시 로그인 message
   if (login_pass == 'NO') {
     var patient_name;

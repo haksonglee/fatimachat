@@ -1,14 +1,15 @@
-const dataPath = __dirname + '/crawling/reservation_deptlist.json'
-var fs = require('fs')
+//const dataPath = __dirname + '/crawling/reservation_deptlist.json'
+//var fs = require('fs')
 
 exports.call_deptlist = function(intent, yeyakdate) {
 
-  var string = fs.readFileSync(dataPath, 'utf-8');
-  var data = JSON.parse(string)
+  //var string = fs.readFileSync(dataPath, 'utf-8');
+  //var data = JSON.parse(string)
+  const data = require('./crawling/reservation_deptlist.json')
   var body = [];
   let responseBody;
 
-  console.log('intent ', intent)
+  //console.log('intent ', intent)
   if (intent !== '내과분야' && intent !== '내과분야예약') {
     let interdept = {
       "label": "내과분야",

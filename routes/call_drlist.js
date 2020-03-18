@@ -1,39 +1,34 @@
-const dataPath = __dirname + '/crawling/drlist.json'
-var fs = require('fs')
+//const dataPath = __dirname + '/crawling/drlist.json'
+//var fs = require('fs')
 
-exports.call_drlist = function(deptname, drname, gubun) {
+exports.call_drlist = function(deptname, drname, yedate, gubun) {
 
  //gubun 'sang'=> 상병, 'dept' => 진료과
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
-  var string = fs.readFileSync(dataPath, 'utf-8');
-  var data = JSON.parse(string)
-  var body = [];
-  var dept
-  console.log(deptname)
-  console.log(drname)
+  //var string = fs.readFileSync(dataPath, 'utf-8');
+  //var data = JSON.parse(string)
+  const data   = require('./crawling/drlist.json')
 
-  for (var i = 0; i < data.length; i++) {
-    var item = data[i];
-    if (item.deptname == '[' + deptname + ']' && drname == undefined) {
-      dept = item.dept
-      item.title = item.title + '  ' + item.deptname
-      body.push(item)
-      //deptname_or_drname = true
-    } else if (item.deptname == '[' + deptname + ']' && item.title == drname){
-      dept = item.dept
-      item.title = item.title + '  ' + item.deptname
-      body.push(item)
-    } else if (deptname == undefined && item.title == drname){
-      dept = item.dept
-      item.title = item.title + '  ' + item.deptname
-      body.push(item)
-    } else if (gubun == 'sang' && item.description.indexOf(deptname) >= 0){
-      dept = item.dept
-      item.title = item.title + '  ' + item.deptname
-      body.push(item)
-    }
+  // for (var i = 0; i < data.length; i++) {
+  //   var item = data[i];
+  //   dept = item.dept
+  //   item.title = item.title + '  ' + item.deptname
+  //   if (item.deptname === '[' + deptname + ']' && drname === undefined) {
+  //     body.push(item)
+  //     //deptname_or_drname = true
+  //   } else if (item.deptname === '[' + deptname + ']' && item.title === drname + '  ' + item.deptname){
+  //     body.push(item)
+  //   } else if (deptname === undefined && item.title === drname){
+  //     body.push(item)
+  //   } else if (gubun === 'sang' && item.description.indexOf(deptname) >= 0){
+  //     body.push(item)
+  //   }
+  // };
 
-  };
+  var filterbody = data.filter(item => {
+    return item.deptname === '[' + deptname + ']' && (item.title === drname || drname === undefined)
+  })
+  let dept = filterbody.dept
 
   var buttonstr;
   //console.log('deptname = ' + deptname)
@@ -68,7 +63,7 @@ exports.call_drlist = function(deptname, drname, gubun) {
             title: "창원파티마병원 의료진",
             imageUrl: "https://www.fatimahosp.co.kr/assets/images/sub/sub_visual5.jpg"
           },
-          items: body,
+          items: filterbody,
           buttons: [
             buttonstr
           ]

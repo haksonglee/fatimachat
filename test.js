@@ -1,11 +1,5 @@
-function fakeSetTimeout(callback, delay) {
-  callback();
+async function a() {
+  return 1;
 }
 
-console.log(0);
-
-setTimeout(function() {
-  console.log("hello");
-}, 0);
-
-console.log(1);
+console.log('return value is' , a().then(a))

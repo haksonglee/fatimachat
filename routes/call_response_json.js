@@ -2,26 +2,21 @@ exports.response_json = function(gubun) {
   let responseBody;
 
   switch (gubun) {
-    case "welcome":
+    case "unknown":
       responseBody = {
         version: "2.0",
         template: {
-          outputs: [
-            {
-              basicCard: {
-                title: "안녕하세요 창원파티마병원 입니다. ",
-                description:
-                  "예약을 위하여 사용자 정보를 입력해주시기 바랍니다.",
-                buttons: [
-                  {
-                    action: "message",
-                    label: "로그인",
-                    messageText: "로그인"
-                  }
-                ]
-              }
+          outputs: [{
+            basicCard: {
+              title: "안녕하세요 창원파티마병원 입니다. ",
+              description: "예약을 위하여 사용자 정보를 입력해주시기 바랍니다.",
+              buttons: [{
+                action: "message",
+                label: "로그인",
+                messageText: "로그인"
+              }]
             }
-          ]
+          }]
         }
       }; // responseBody
       break;
@@ -29,27 +24,23 @@ exports.response_json = function(gubun) {
       responseBody = {
         version: "2.0",
         template: {
-          outputs: [
-            {
-              basicCard: {
-                title: "죄송합니다. 사용자 정보를 찾을수 없습니다",
-                description:
-                  "병원 처음 방문하신 분은 컨택센터를 이용부탁드립니다.",
-                buttons: [
-                  {
-                    action: "message",
-                    label: "사용자 로그인",
-                    messageText: "로그인"
-                  },
-                  {
-                    action: "phone",
-                    label: "컨택센터 전화예약",
-                    phoneNumber: "055-270-1000"
-                  }
-                ]
-              }
+          outputs: [{
+            basicCard: {
+              title: "죄송합니다. 사용자 정보를 찾을수 없습니다",
+              description: "병원 처음 방문하신 분은 컨택센터를 이용부탁드립니다.",
+              buttons: [{
+                  action: "message",
+                  label: "사용자 로그인",
+                  messageText: "로그인"
+                },
+                {
+                  action: "phone",
+                  label: "컨택센터 전화예약",
+                  phoneNumber: "055-270-1000"
+                }
+              ]
             }
-          ]
+          }]
         }
       }; // responseBody
       break;
@@ -57,31 +48,27 @@ exports.response_json = function(gubun) {
       responseBody = {
         version: "2.0",
         template: {
-          outputs: [
-            {
-              basicCard: {
-                title:
-                  "안녕하세요 " +
-                  "patient_name" +
-                  "(" +
-                  "patient_hospno" +
-                  ") 님",
-                description: "창원파티마병원 예약 시스템 로그인 완료",
-                buttons: [
-                  {
-                    action: "message",
-                    label: "진료예약 계속",
-                    messageText: "진료예약"
-                  },
-                  {
-                    action: "message",
-                    label: "로그아웃(다른 사용자)",
-                    messageText: "로그아웃"
-                  }
-                ]
-              }
+          outputs: [{
+            basicCard: {
+              title: "안녕하세요 " +
+                "patient_name" +
+                "(" +
+                "patient_hospno" +
+                ") 님",
+              description: "창원파티마병원 예약 시스템 로그인 완료",
+              buttons: [{
+                  action: "message",
+                  label: "진료예약 계속",
+                  messageText: "진료예약"
+                },
+                {
+                  action: "message",
+                  label: "로그아웃(다른 사용자)",
+                  messageText: "로그아웃"
+                }
+              ]
             }
-          ]
+          }]
         }
       };
       break;
@@ -89,21 +76,17 @@ exports.response_json = function(gubun) {
       responseBody = {
         version: "2.0",
         template: {
-          outputs: [
-            {
-              basicCard: {
-                title: "로그아웃 완료",
-                description: "예약을 하시려면 다시 로그인 해주세요",
-                buttons: [
-                  {
-                    action: "message",
-                    label: "사용자 로그인",
-                    messageText: "로그인"
-                  }
-                ]
-              }
+          outputs: [{
+            basicCard: {
+              title: "로그아웃 완료",
+              description: "예약을 하시려면 다시 로그인 해주세요",
+              buttons: [{
+                action: "message",
+                label: "사용자 로그인",
+                messageText: "로그인"
+              }]
             }
-          ]
+          }]
         }
       };
       break;
@@ -111,24 +94,37 @@ exports.response_json = function(gubun) {
       responseBody = {
         version: "2.0",
         template: {
-          outputs: [
-            {
-              basicCard: {
-                title: "사용자 추가 정보",
-                description:
-                  "정확한 사용자 확인을 위하여 휴대폰 본인확인을 부탁드립니다",
-                buttons: [
-                  {
-                    action: "message",
-                    label: "휴대폰 본인확인",
-                    messageText: "휴대폰 본인확인"
-                  }
-                ]
-              }
+          outputs: [{
+            basicCard: {
+              title: "사용자 추가 정보",
+              description: "정확한 사용자 확인을 위하여 휴대폰 본인확인을 부탁드립니다",
+              buttons: [{
+                action: "message",
+                label: "휴대폰 본인확인",
+                messageText: "휴대폰 본인확인"
+              }]
             }
-          ]
+          }]
         }
       };
+      break;
+    case "type_error":
+      responseBody = {
+        version: "2.0",
+        template: {
+          outputs: [{
+            basicCard: {
+              title: "유효하지않은 생년월일 입니다. ",
+              description: "생년월일(8자리), (예)19800908 숫자만 입력해주세요",
+              buttons: [{
+                action: "message",
+                label: "로그인",
+                messageText: "로그인"
+              }]
+            }
+          }]
+        }
+      }; // responseBody
       break;
     default:
       responseBody = {
