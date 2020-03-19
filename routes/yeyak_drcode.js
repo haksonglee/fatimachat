@@ -49,10 +49,11 @@ let botUserKey = "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee
       //console.log("date check", date.toLocaleDateString())
       let drlist_script = require("./call_drlist");
       let jsondata = drlist_script.call_drlist(deptname, drname, yedate, "dept");
-      console.log(jsondata)
-      let jsoncnt = jsondata.template.outputs[0].listCard.items.length
+      console.log(deptname, drname)
+      console.log(JSON.stringify(jsondata))
+      let jsoncnt = jsondata.template.outputs[1].listCard.items.length
       for (let i = 0; i < jsoncnt; i++) {
-        jsondata.template.outputs[0].listCard.items[i].link.web +=
+        jsondata.template.outputs[1].listCard.items[i].link.web +=
           '&name=' + users.name + '&hospno=' + users.hospno
       }
       let responseBody = JSON.stringify(jsondata)
