@@ -44,7 +44,7 @@ let botUserKey = "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee
     //let data = JSON.parse(string);
     //let body = [];
     let date = new Date()
-    if (users.recentdate.toLocaleDateString() === date.toLocaleDateString() || users.name = 'blank') {
+    if (users.recentdate.toLocaleDateString() === date.toLocaleDateString() || users.name === 'blank') {
       // 당일 재방문
       //console.log("date check", date.toLocaleDateString())
       let drlist_script = require("./call_drlist");
