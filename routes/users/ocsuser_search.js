@@ -13,7 +13,11 @@ exports.request_ocsuser = function request_ocsuser(input_name, input_birth) {
       if (err) {
         reject(err);
       }
-      let patient_result = body.length;
+      try{
+        let patient_result = body.length;
+      }catch(err){
+        console.log("ocsuser_search error ", err)
+      }
       let patient_data = body.filter(function(item) {
         //console.log('chk1 ' , input_name, input_birth, item.name, item.birth)
         return item.name === input_name && item.birth === input_birth
