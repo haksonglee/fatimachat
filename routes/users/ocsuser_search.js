@@ -11,7 +11,7 @@ exports.request_ocsuser = function request_ocsuser(input_name, input_birth) {
       body
     ) {
       if (err) {
-        reject(err);
+        reject(err); 
       }
       try{
         let patient_result = body.length;
