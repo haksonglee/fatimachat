@@ -6,12 +6,12 @@ exports.request_ocsuser = function request_ocsuser(input_name, input_birth) {
       uri: "http://localhost:3000/index",
       json: true
     }, function(
-      err,
+      err, 
       res,
       body
     ) {
       if (err) {
-        reject(err); 
+        reject(err);
       }
       try{
         let patient_result = body.length;
