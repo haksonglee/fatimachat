@@ -31,7 +31,7 @@ exports.call_drlist = function(deptname, drname, yedate, gubun) {
     return (item.deptname === '[' + deptname + ']' && (item.title === drname || drname === undefined)) ||
            (deptname === undefined && item.title === drname)
   })
-  let dept = filterbody.dept
+  let dept = filterbody[0].dept
 
   var buttonstr;
   //console.log('deptname = ' + deptname)
