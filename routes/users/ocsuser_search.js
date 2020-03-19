@@ -3,10 +3,10 @@ const request = require("request");
 exports.request_ocsuser = function request_ocsuser(input_name, input_birth) {
   return new Promise(function(resolve, reject) {
     request({
-      uri: "http://localhost:3000/index",
+      uri: "http://fatimachat.herokuapp.com/index",
       json: true
     }, function(
-      err, 
+      err,
       res,
       body
     ) {
