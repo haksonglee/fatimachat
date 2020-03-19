@@ -20,7 +20,7 @@ router.post("/", async function(req, res) {
         if (req.body.contexts[i].name === 'patient_info') {
           input_name = req.body.contexts[i].params.환자명.value;
           input_birth = req.body.contexts[i].params.생년월일.value;
-          console.log('contexts ', input_name, input_birth)
+          console.log('contexts ', input_name, input_birth) 
         }
       }
     } catch (e) {
