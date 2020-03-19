@@ -65,6 +65,7 @@ app.use('/api/login', require('./routes/users/login'));
 app.use('/api/logout', require('./routes/users/logout'));
 
 app.use('/index', require('./routes/index'));
+app.use('/test', require('./routes/test'));
 //app.use('/index2',require('./routes/index2'));
 
 var port = process.env.PORT || 3000;

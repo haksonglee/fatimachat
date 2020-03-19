@@ -14,11 +14,11 @@ const post = router.post("/", async function(req, res) {
   let yedate = params['예약일자']
 
   //let intent = req.body.intent.name;
-  let botUserKey = req.body.userRequest.user.id;
+  //let botUserKey = req.body.userRequest.user.id;
   //let botid = botids["id"];
-
+let botUserKey = "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee1102"
   //사용자 확인
-  console.log(botUserKey)
+  //console.log(botUserKey)
   // 사용자 확인 ---> mongo db
 
   let users;
@@ -44,9 +44,9 @@ const post = router.post("/", async function(req, res) {
     //let data = JSON.parse(string);
     //let body = [];
     let date = new Date()
-    if (users.recentdate.toLocaleDateString() === date.toLocaleDateString()) {
+    if (users.recentdate.toLocaleDateString() === date.toLocaleDateString() || users.name = 'blank') {
       // 당일 재방문
-      console.log("date check", date.toLocaleDateString())
+      //console.log("date check", date.toLocaleDateString())
       let drlist_script = require("./call_drlist");
       let jsondata = drlist_script.call_drlist(deptname, drname, yedate, "dept");
       let jsoncnt = jsondata.template.outputs[0].listCard.items.length

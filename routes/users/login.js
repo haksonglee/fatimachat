@@ -63,7 +63,7 @@ router.post("/", async function(req, res) {
   });
   // 개발로직 여기
 
-  console.log("patient_data===>", patient_data, patient_find)
+  //console.log("patient_data===>", patient_data, patient_find)
   if (patient_find > 1) { // 병원시스템 유저 정보 없음
     responseBody = response_json.response_json("login_phone"); // responseBody
     res.status(200).send(responseBody);
@@ -75,7 +75,7 @@ router.post("/", async function(req, res) {
     //if (drlist_jsondata.patient_hospno != undefined) {
     let search = require("./dbuser_search");
     let users = await search.dbuser_search(botUserKey); // db connect find trying OK...
-    console.log("findONe : " + users)
+    //console.log("findONe : " + users)
     if (users === null || users === undefined) {
       //사용자 정보가 없으면
 

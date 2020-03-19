@@ -25,8 +25,11 @@ exports.call_drlist = function(deptname, drname, yedate, gubun) {
   //   }
   // };
 
+
+
   var filterbody = data.filter(item => {
-    return item.deptname === '[' + deptname + ']' && (item.title === drname || drname === undefined)
+    return (item.deptname === '[' + deptname + ']' && (item.title === drname || drname === undefined)) ||
+           (deptname === undefined && item.title === drname)
   })
   let dept = filterbody.dept
 
@@ -64,7 +67,11 @@ exports.call_drlist = function(deptname, drname, yedate, gubun) {
             imageUrl: "https://www.fatimahosp.co.kr/assets/images/sub/sub_visual5.jpg"
           },
           items: filterbody,
-          buttons: [
+          buttons: [{
+            label: "다른 진료과 선택",
+            action: "message",
+            messageText: "진료예약"
+          },
             buttonstr
           ]
         }
