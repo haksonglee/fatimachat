@@ -7,7 +7,7 @@ exports.call_drlist = function(deptname, drname, yedate, gubun) {
   //deptname = params['진료과명'] //시나리오 필수파라미터 이름 동일해야함
   //var string = fs.readFileSync(dataPath, 'utf-8');
   //var data = JSON.parse(string)
-  const data = require('./drlist.json')
+  const data = require('./crawling/drlist.json')
 
   // for (var i = 0; i < data.length; i++) {
   //   var item = data[i];
