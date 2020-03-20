@@ -64,7 +64,7 @@ exports.call_drlist = function(deptname) {
                 "action": "",
                 "messageText": ""
             }]
-            quickbody = JSON.parse(quickbody)
+            //quickbody = JSON.parse(quickbody)
       break;
 
     default:
