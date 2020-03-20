@@ -20,7 +20,7 @@ exports.call_yedate = function(deptname, drname) {
 //console.log(buttonstr1)
 buttonstr1 = JSON.parse(buttonstr1)
 
-let texthelp = '진료예약 시간 안내';
+let texthelp = '';
 let yelink = filterbody[0].link.web
 //console.log(typeof filterbody, filterbody.bodydeptname)
 //console.log('deptname = ' + deptname)
