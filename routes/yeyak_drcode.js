@@ -49,7 +49,7 @@ const post = router.post("/", async function(req, res) {
       let drlist_script = require("./call_drlist");
       let jsondata = drlist_script.call_drlist(deptname);
       //console.log(deptname, drname)
-      console.log(JSON.stringify(jsondata))
+      //console.log(JSON.stringify(jsondata))
       let jsoncnt = jsondata.template.outputs[1].listCard.items.length
       for (let i = 0; i < jsoncnt; i++) {
         jsondata.template.outputs[1].listCard.items[i].link.web +=
