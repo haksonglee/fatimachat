@@ -59,12 +59,12 @@ exports.call_drlist = function(deptname) {
         phoneNumber: "055-270-1000"
       }
       texthelp = "해당 진료과는 전화예약만 가능합니다. 컨텍센터로 연락부탁드립니다."
-      quickbody= {
+      quickbody= [{
                 "label": "",
                 "action": "",
                 "messageText": ""
-            }
-            //quickbody = JSON.parse(quickbody)
+            }]
+            quickbody = JSON.parse(quickbody)
       break;
 
     default:
