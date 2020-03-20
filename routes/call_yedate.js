@@ -6,7 +6,7 @@ exports.call_yedate = function(deptname, drname) {
 
   let tempbody;
   let filterbody = data.filter(item => {
-    return (item.deptname === deptname  && item.title === drname)
+    return (item.deptname === deptname  && item.drname === drname)
   })
 
   let buttonstr1;
@@ -19,7 +19,11 @@ exports.call_yedate = function(deptname, drname) {
 
   //console.log(buttonstr1)
   buttonstr1 = JSON.parse(buttonstr1)
-  let drcode = filterbody[0].drcode
+
+  let drcode;
+  for (let i = 0; i < filterbody.length; i++) {
+    drcode = filterbody[i].drcode
+  }
 
   let texthelp = '';
   let yelink = "https://www.fatimahosp.co.kr/pages/department?drcode=" + drcode
