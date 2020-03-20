@@ -32,8 +32,6 @@ exports.call_drlist = function(deptname) {
       quickbody += tempbody + ','
     }
     //console.log("quickbody", quickbody)
-
-    filterbody[i].title = filterbody[i].title + ' ' + filterbody[i].deptname
   }
 
   quickbody = JSON.parse(quickbody + "]")
