@@ -9,6 +9,7 @@ router.post('/', function(req, res) {
   //var params = req.body.action.params
   var intent = req.body.intent.name;
   console.log('intent', intent)
+  let login_pass;
   // 1. 로그인 정보 확인 -> context 정보 환자명 / 생년월일 확인
   try {
     var patient_name = req.body.contexts[1].params.patient_name.value;
@@ -16,11 +17,12 @@ router.post('/', function(req, res) {
     console.log('patient_name is : ' + patient_name)
     console.log('patient_birth is : ' + patient_birth)
   } catch (e) {
-    var login_pass = 'NO...'
+    login_pass = 'NO...'
   }
 
+  login_pass = 'TEMP'
   // // 1. 로그인 확인 -> 로그인 없을시 로그인 message
-  if (login_pass == 'NO') {
+  if (login_pass === 'NO') {
     var patient_name;
     var patient_birth;
 
