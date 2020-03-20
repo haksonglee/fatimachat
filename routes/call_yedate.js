@@ -22,7 +22,7 @@ buttonstr1 = JSON.parse(buttonstr1)
 let dept = filterbody[0].dept
 
 let texthelp = '';
-//let yelink = filterbody[0].link.web
+let yelink = filterbody[0].link.web
 //console.log(typeof filterbody, filterbody.bodydeptname)
 //console.log('deptname = ' + deptname)
 switch (deptname) {
@@ -44,7 +44,7 @@ switch (deptname) {
     buttonstr2 = {
       label: "모바일예약 이동",
       action: "webLink",
-      webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
+      webLinkUrl: yelink
     }
     //texthelp = "진료를 원하시는 의료진을 선택해주세요."
 }
