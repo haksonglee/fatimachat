@@ -1,14 +1,13 @@
 //const dataPath = __dirname + '/crawling/drlist.json'
 //var fs = require('fs')
 
-exports.call_drlist = function(deptname, drname, gubun) {
+exports.call_diagsearch = function(diagname) {
   const data = require('./crawling/drlist.json')
 
-  let quickbody = "[";
+    let quickbody = "[";
   let tempbody;
   let filterbody = data.filter(item => {
-    return (item.deptname === '[' + deptname + ']' && (item.title === drname || drname === undefined)) ||
-      (deptname === undefined && item.title === drname)
+    return (item.description.indexOf(diagname) >= 0)
   })
 
   let shortdeptname;
@@ -37,23 +36,16 @@ exports.call_drlist = function(deptname, drname, gubun) {
   quickbody = JSON.parse(quickbody + "]")
 
   let buttonstr1;
-  let buttonstr2;
-  if (drname === undefined) {
-    buttonstr1 = `{
+  buttonstr1 = `{
       "label": "다른 진료과 선택",
       "action": "message",
       "messageText": "진료예약" }`
-  } else {
-    buttonstr1 = `{
-        "label": "전체의사 선택",
-        "action": "message",
-        "messageText": "${shortdeptname} 예약" }`
-  }
+
   //console.log(buttonstr1)
   buttonstr1 = JSON.parse(buttonstr1)
 
   //console.log('deptname = ' + deptname)
-  switch (deptname) {
+  switch (shortdeptname) {
     case '피부과':
     case '안과':
     case '비뇨의학과':
@@ -65,7 +57,8 @@ exports.call_drlist = function(deptname, drname, gubun) {
         action: "phone",
         phoneNumber: "055-270-1000"
       }
-      texthelp = "해당 진료과는 전화예약만 가능합니다. 컨텍센터로 연락부탁드립니다."
+      //texthelp = "해당 진료과는 전화예약만 가능합니다. 컨텍센터로 연락부탁드립니다."
+      texthelp = "진료를 원하시는 의료진을 선택해주세요."
       break;
 
     default:
@@ -73,9 +66,6 @@ exports.call_drlist = function(deptname, drname, gubun) {
         label: "모바일예약 이동",
         action: "webLink",
         webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
-      }
-      if (drname === undefined) {} else {
-        buttonstr2.webLinkUrl = drlink_web
       }
       texthelp = "진료를 원하시는 의료진을 선택해주세요."
   }

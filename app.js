@@ -42,7 +42,6 @@ mongoose.connect(databaseUrl, {
     console.log(`DB Connection Error: ${err.message}`);
   });
 
-
 const database = mongoose.connection;
 database.on('error', console.error.bind(console, 'mongoose connection error'));
 database.on('open', function() {
@@ -53,12 +52,13 @@ database.on('disconnected', function() {
   //setInterval(connectDB, 5000);
 })
 
-app.use('/api/listcard_drinfo', require('./routes/listcard_drinfo'));
+//app.use('/api/listcard_drinfo', require('./routes/listcard_drinfo'));
 app.use('/api/listcard_deptlist', require('./routes/listcard_deptlist'));
 app.use('/api/listcard_diaglist', require('./routes/listcard_diaglist'));
 app.use('/api/listcard_drsearch', require('./routes/listcard_drsearch'));
 
-app.use('/api/yeyak_drcode', require('./routes//yeyak_drcode'));
+app.use('/api/yeyak_drcode', require('./routes/yeyak_drcode'));
+app.use('/api/yeyak_date', require('./routes/yeyak_date'));
 
 app.use('/api/login', require('./routes/users/login'));
 //app.use('/api/login_phone', require('./routes/users/login_phone'));
@@ -67,6 +67,15 @@ app.use('/api/logout', require('./routes/users/logout'));
 app.use('/index', require('./routes/index'));
 app.use('/test', require('./routes/test'));
 //app.use('/index2',require('./routes/index2'));
+
+app.use((req, res, next) => {
+  res.status(404).send('not found');
+});
+
+app.use(function(err, req, res) {
+  console.error(err);
+  res.status(500).send('server error');
+});
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {

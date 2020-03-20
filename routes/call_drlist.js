@@ -1,29 +1,28 @@
 //const dataPath = __dirname + '/crawling/drlist.json'
 //var fs = require('fs')
 
-exports.call_drlist = function(deptname, drname, yedate, gubun) {
+exports.call_drlist = function(deptname) {
   const data = require('./crawling/drlist.json')
 
   let quickbody = "[";
   let tempbody;
   let filterbody = data.filter(item => {
-    return (item.deptname === '[' + deptname + ']' && (item.title === drname || drname === undefined)) ||
-      (deptname === undefined && item.title === drname)
+    return (item.deptname === '[' + deptname + ']')
   })
 
-  let shortdeptname;
+  //let shortdeptname;
   let dept;
   let drlink_web;
   //console.log("filterbody.length", filterbody.length)
   for (let i = 0; i < filterbody.length; i++) {
-    shortdeptname = filterbody[i].deptname
+    //shortdeptname = filterbody[i].deptname
     dept = filterbody[i].dept
     drlink_web = filterbody[i].link.web
 
-    shortdeptname = shortdeptname.substring(1, shortdeptname.length - 1)
+    //shortdeptname = shortdeptname.substring(1, shortdeptname.length - 1)
     tempbody = `{ "label": "${filterbody[i].title}",
       "action": "message",
-      "messageText": "${shortdeptname} ${filterbody[i].title} 예약"
+      "messageText": "${deptname} ${filterbody[i].title} 예약"
     }`
     //console.log("tempbody", typeof tempbody)
     if (i === filterbody.length - 1) {
@@ -37,18 +36,11 @@ exports.call_drlist = function(deptname, drname, yedate, gubun) {
   quickbody = JSON.parse(quickbody + "]")
 
   let buttonstr1;
-  let buttonstr2;
-  if (drname === undefined) {
-    buttonstr1 = `{
+  buttonstr1 = `{
       "label": "다른 진료과 선택",
       "action": "message",
       "messageText": "진료예약" }`
-  } else {
-    buttonstr1 = `{
-        "label": "전체의사 선택",
-        "action": "message",
-        "messageText": "${shortdeptname} 예약" }`
-  }
+
   //console.log(buttonstr1)
   buttonstr1 = JSON.parse(buttonstr1)
 
@@ -73,9 +65,6 @@ exports.call_drlist = function(deptname, drname, yedate, gubun) {
         label: "모바일예약 이동",
         action: "webLink",
         webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
-      }
-      if (drname === undefined) {} else {
-        buttonstr2.webLinkUrl = drlink_web
       }
       texthelp = "진료를 원하시는 의료진을 선택해주세요."
   }

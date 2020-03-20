@@ -1,13 +1,13 @@
 const router = require('express').Router();
 
-var diagname = "";
+let diagname = "";
 
 router.post('/', function(req, res) {
-  var params = req.body.action.params
+  let params = req.body.action.params
   diagname = params['상병명'] //시나리오 필수파라미터 이름 동일해야함
 
-  var drlist_script = require('./call_drlist');
-  var drlist_bodydata = JSON.stringify(drlist_script.call_drlist(diagname,'','', 'sang'))
+  let drlist_script = require('./call_diagsearch');
+  let drlist_bodydata = JSON.stringify(drlist_script.call_diagsearch(diagname))
 
   res.status(200).send(drlist_bodydata);
 });

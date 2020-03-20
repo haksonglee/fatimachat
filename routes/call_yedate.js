@@ -1,7 +1,7 @@
 //const dataPath = __dirname + '/crawling/drlist.json'
 //var fs = require('fs')
 
-exports.call_drlist = function(deptname, drname, gubun) {
+exports.call_yedate = function(deptname, drname, gubun) {
   const data = require('./crawling/drlist.json')
 
   let quickbody = "[";
