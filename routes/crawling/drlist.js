@@ -1,5 +1,5 @@
 //drlist.json생성 플로어
-exports.drlist = function() {
+//exports.drlist = function() {
 
   const express = require("express");
   const router = express.Router();
@@ -15,8 +15,8 @@ exports.drlist = function() {
 
   //const getDrlist = require(__dirname + '/drlist.js')
 
-  const dataPath = __dirname + '/deptlist.json'
-  const dataPath2 = __dirname + '/drlist.json'
+  const dataPath = './deptlist.json'
+  const dataPath2 ='./drlist.json'
   console.log('dataPath ' , dataPath)
   var dataArr = [];
 
@@ -65,7 +65,7 @@ exports.drlist = function() {
           imageUrl: $(this)
             .find("div.card-content-img img")
             .attr("src"),
-          link: datai,
+          //link: datai,
         };
 
         var drcode = $(this)
@@ -107,8 +107,8 @@ exports.drlist = function() {
     //}
   };
 
-  return {}
-}
+  //return {}
+//}
 
 //console.log('end dataArr')
 //console.log(body)
