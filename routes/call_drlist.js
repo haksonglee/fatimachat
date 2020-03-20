@@ -18,7 +18,7 @@ exports.call_drlist = function(deptname) {
     //shortdeptname = filterbody[i].deptname
     dept = filterbody[i].dept
     //drlink_web = filterbody[i].link.web
-    filterbody[i].link.web =""
+    //filterbody[i].link.web =""
 
     //shortdeptname = shortdeptname.substring(1, shortdeptname.length - 1)
     tempbody = `{ "label": "${filterbody[i].title}",
