@@ -51,7 +51,7 @@ exports.call_yedate = function(deptname, drname, gubun) {
   }
   //console.log(buttonstr1)
   buttonstr1 = JSON.parse(buttonstr1)
-
+  let texthelp;
   //console.log('deptname = ' + deptname)
   switch (deptname) {
     case '피부과':
