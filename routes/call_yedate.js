@@ -22,7 +22,8 @@ buttonstr1 = JSON.parse(buttonstr1)
 let dept = filterbody[0].dept
 
 let texthelp = '';
-let yelink = filterbody[0].link.web
+let drcode;
+let yelink = "https://www.fatimahosp.co.kr/pages/department?drcode=" + drcode
 //console.log(typeof filterbody, filterbody.bodydeptname)
 //console.log('deptname = ' + deptname)
 switch (deptname) {
