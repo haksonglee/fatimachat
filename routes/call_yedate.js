@@ -1,57 +1,26 @@
 //const dataPath = __dirname + '/crawling/drlist.json'
 //var fs = require('fs')
 
-exports.call_yedate = function(deptname, drname, gubun) {
+exports.call_yedate = function(deptname, drname) {
   const data = require('./crawling/drlist.json')
 
-  let quickbody = "[";
   let tempbody;
   let filterbody = data.filter(item => {
-    return (item.deptname === '[' + deptname + ']' && (item.title === drname || drname === undefined)) ||
-      (deptname === undefined && item.title === drname)
+    return (item.deptname === '[' + deptname + ']' && item.title === drname)
   })
-
-  let shortdeptname;
-  let dept;
-  let drlink_web;
-  //console.log("filterbody.length", filterbody.length)
-  for (let i = 0; i < filterbody.length; i++) {
-    shortdeptname = filterbody[i].deptname
-    dept = filterbody[i].dept
-    drlink_web = filterbody[i].link.web
-
-    shortdeptname = shortdeptname.substring(1, shortdeptname.length - 1)
-    tempbody = `{ "label": "${filterbody[i].title}",
-      "action": "message",
-      "messageText": "${shortdeptname} ${filterbody[i].title} 예약"
-    }`
-    //console.log("tempbody", typeof tempbody)
-    if (i === filterbody.length - 1) {
-      quickbody += tempbody
-    } else {
-      quickbody += tempbody + ','
-    }
-    //console.log("quickbody", quickbody)
-  }
-
-  quickbody = JSON.parse(quickbody + "]")
 
   let buttonstr1;
   let buttonstr2;
-  if (drname === undefined) {
-    buttonstr1 = `{
-      "label": "다른 진료과 선택",
-      "action": "message",
-      "messageText": "진료예약" }`
-  } else {
+
     buttonstr1 = `{
         "label": "전체의사 선택",
         "action": "message",
-        "messageText": "${shortdeptname} 예약" }`
+        "messageText": "${deptname} 예약" }`
   }
   //console.log(buttonstr1)
   buttonstr1 = JSON.parse(buttonstr1)
-  let texthelp;
+
+  let texthelp = '진료예약 시간 안내';
   //console.log('deptname = ' + deptname)
   switch (deptname) {
     case '피부과':
@@ -84,11 +53,7 @@ exports.call_yedate = function(deptname, drname, gubun) {
   const responseBody = {
     version: "2.0",
     template: {
-      outputs: [{
-          simpleText: {
-            text: texthelp
-          }
-        },
+      outputs: [
         {
           listCard: {
             header: {
@@ -101,10 +66,13 @@ exports.call_yedate = function(deptname, drname, gubun) {
               buttonstr2
             ]
           }
-        }
-      ],
-      quickReplies: quickbody
-    }
+        },
+        {
+            simpleText: {
+              text: texthelp
+            }
+          }
+      ]}
   }
 
   return responseBody

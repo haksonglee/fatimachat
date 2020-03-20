@@ -12,12 +12,13 @@ exports.call_drlist = function(deptname) {
 
   //let shortdeptname;
   let dept;
-  let drlink_web;
+  //let drlink_web;
   //console.log("filterbody.length", filterbody.length)
   for (let i = 0; i < filterbody.length; i++) {
     //shortdeptname = filterbody[i].deptname
     dept = filterbody[i].dept
-    drlink_web = filterbody[i].link.web
+    //drlink_web = filterbody[i].link.web
+    filterbody[i].link.web =""
 
     //shortdeptname = shortdeptname.substring(1, shortdeptname.length - 1)
     tempbody = `{ "label": "${filterbody[i].title}",
@@ -50,7 +51,7 @@ exports.call_drlist = function(deptname) {
     case '안과':
     case '비뇨의학과':
     case '정신건강의학과':
-    case '재활의학과': 
+    case '재활의학과':
     case '치과':
       buttonstr2 = {
         label: "컨택센터 전화예약",
@@ -58,6 +59,7 @@ exports.call_drlist = function(deptname) {
         phoneNumber: "055-270-1000"
       }
       texthelp = "해당 진료과는 전화예약만 가능합니다. 컨텍센터로 연락부탁드립니다."
+      quickbody= {}
       break;
 
     default:
@@ -66,7 +68,7 @@ exports.call_drlist = function(deptname) {
         action: "webLink",
         webLinkUrl: "https://www.fatimahosp.co.kr/pages/department?deptdoctor=" + dept
       }
-      texthelp = "진료를 원하시는 의료진을 선택해주세요."
+      texthelp = "예약을 원하시는 의료진을 선택해주세요."
   }
 
 
@@ -75,7 +77,7 @@ exports.call_drlist = function(deptname) {
     template: {
       outputs: [{
           simpleText: {
-            text: texthelp
+              text: texthelp
           }
         },
         {
