@@ -10,13 +10,12 @@ const post = router.post("/", async function(req, res) {
   //파라미터
   let params = req.body.action.params;
   let deptname = params["진료과명"]; //시나리오 필수파라미터 이름 동일해야함
-  let drname = params["진료의사"];
-  let yedate = params['예약일자']
+  //let drname = params["진료의사"];
 
   //let intent = req.body.intent.name;
   //let botUserKey = req.body.userRequest.user.id;
   //let botid = botids["id"];
-let botUserKey = "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee1102"
+  let botUserKey = "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee1102"
   //사용자 확인
   //console.log(botUserKey)
   // 사용자 확인 ---> mongo db
@@ -48,9 +47,9 @@ let botUserKey = "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee
       // 당일 재방문
       //console.log("date check", date.toLocaleDateString())
       let drlist_script = require("./call_drlist");
-      let jsondata = drlist_script.call_drlist(deptname, drname, yedate, "dept");
+      let jsondata = drlist_script.call_drlist(deptname);
       //console.log(deptname, drname)
-      //console.log(JSON.stringify(jsondata))
+      console.log(JSON.stringify(jsondata))
       let jsoncnt = jsondata.template.outputs[1].listCard.items.length
       for (let i = 0; i < jsoncnt; i++) {
         jsondata.template.outputs[1].listCard.items[i].link.web +=
@@ -88,17 +87,14 @@ let botUserKey = "f4a33e57ce3a74d74c0c554e029bcffaa8e51e94ce76d1291d1dfd0be40dee
       chatUser.findOneAndUpdate(query, update, options, function(err, users) {
         // Done!
         // doc.title = "new title"
-        console.log("users ===> " ,users)
+        console.log("users ===> ", users)
         responseBody = response_json.response_json("login_ok");
         responseBody.template.outputs[0].basicCard.title =
           "안녕하세요 " + users.name + "(" + users.hospno + ") 님";
         res.status(200).send(responseBody);
       });
       //
-
     }
-
-
   }
 });
 
