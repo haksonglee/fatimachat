@@ -10,7 +10,7 @@ exports.call_deptlist = function(intent, yeyakdate) {
   let responseBody;
 
   console.log('intent ', intent)
-  if (intent !== '내과분야' && intent !== '내과분야예약') {
+  if (intent !== '진료예약_내과분야선택' && intent !== '내과분야예약') {
     let interdept = {
       "label": "내과분야",
       "action": "message",
@@ -25,7 +25,7 @@ exports.call_deptlist = function(intent, yeyakdate) {
     if (yeyakdate != undefined) {
       item.messageText = item.messageText + ' ' + yeyakdate
     }
-    if (intent === '내과분야' || intent === '내과분야예약') {
+    if (intent === '진료예약_내과분야선택' || intent === '내과분야예약') {
       switch (item.label) {
         case '소화기내과':
         case '호흡기내과':
