@@ -8,7 +8,7 @@ var deptname;
 router.post('/', function(req, res) {
   //var params = req.body.action.params
   var intent = req.body.intent.name;
-  console.log('intent', intent)
+  //console.log('intent', intent)
   let login_pass;
   // 1. 로그인 정보 확인 -> context 정보 환자명 / 생년월일 확인
   try {

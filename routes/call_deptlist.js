@@ -9,7 +9,7 @@ exports.call_deptlist = function(intent, yeyakdate) {
   var body = [];
   let responseBody;
 
-  //console.log('intent ', intent)
+  console.log('intent ', intent)
   if (intent !== '내과분야' && intent !== '내과분야예약') {
     let interdept = {
       "label": "내과분야",
