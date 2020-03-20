@@ -6,7 +6,7 @@ exports.call_yedate = function(deptname, drname) {
 
   let tempbody;
   let filterbody = data.filter(item => {
-    return (item.deptname === '[' + deptname + ']' && item.title === drname)
+    return (item.deptname === deptname  && item.title === drname)
   })
 
   let buttonstr1;

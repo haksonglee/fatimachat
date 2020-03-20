@@ -20,9 +20,9 @@ exports.call_diagsearch = function(diagname) {
     //drlink_web = filterbody[i].link.web
 
     shortdeptname = shortdeptname.substring(1, shortdeptname.length - 1)
-    tempbody = `{ "label": "${filterbody[i].title}",
+    tempbody = `{ "label": "${filterbody[i].drname}",
       "action": "message",
-      "messageText": "${shortdeptname} ${filterbody[i].title} 예약"
+      "messageText": "${shortdeptname} ${filterbody[i].drname} 예약"
     }`
     //console.log("tempbody", typeof tempbody)
     if (i === filterbody.length - 1) {

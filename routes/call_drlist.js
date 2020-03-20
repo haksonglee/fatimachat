@@ -7,7 +7,7 @@ exports.call_drlist = function(deptname) {
   let quickbody = "[";
   let tempbody;
   let filterbody = data.filter(item => {
-    return (item.deptname === '[' + deptname + ']')
+    return (item.deptname === deptname)
   })
 
   //let shortdeptname;
@@ -21,9 +21,9 @@ exports.call_drlist = function(deptname) {
     //filterbody[i].link.web =""
 
     //shortdeptname = shortdeptname.substring(1, shortdeptname.length - 1)
-    tempbody = `{ "label": "${filterbody[i].title}",
+    tempbody = `{ "label": "${filterbody[i].drname}",
       "action": "message",
-      "messageText": "${deptname} ${filterbody[i].title} 예약"
+      "messageText": "${deptname} ${filterbody[i].drname} 예약"
     }`
     //console.log("tempbody", typeof tempbody)
     if (i === filterbody.length - 1) {
