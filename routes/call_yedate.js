@@ -19,10 +19,9 @@ exports.call_yedate = function(deptname, drname) {
 
 //console.log(buttonstr1)
 buttonstr1 = JSON.parse(buttonstr1)
-let dept = filterbody[0].dept
+let drcode = filterbody[0].drcode
 
 let texthelp = '';
-let drcode;
 let yelink = "https://www.fatimahosp.co.kr/pages/department?drcode=" + drcode
 //console.log(typeof filterbody, filterbody.bodydeptname)
 //console.log('deptname = ' + deptname)

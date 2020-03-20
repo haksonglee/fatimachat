@@ -65,7 +65,9 @@
           imageUrl: $(this)
             .find("div.card-content-img img")
             .attr("src"),
-          //link: datai,
+          drcode : $(this)
+          .find("footer.schedule_calendar")
+          .attr("data-drcode")
         };
 
         var drcode = $(this)
