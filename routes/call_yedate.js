@@ -65,7 +65,7 @@ exports.call_yedate = function(deptname, drname, gubun) {
         action: "phone",
         phoneNumber: "055-270-1000"
       }
-      texthelp = "해당 진료과는 전화예약만 가능합니다. 컨텍센터로 연락부탁드립니다."
+      //texthelp = "해당 진료과는 전화예약만 가능합니다. 컨텍센터로 연락부탁드립니다."
       break;
 
     default:
@@ -77,7 +77,7 @@ exports.call_yedate = function(deptname, drname, gubun) {
       if (drname === undefined) {} else {
         buttonstr2.webLinkUrl = drlink_web
       }
-      texthelp = "진료를 원하시는 의료진을 선택해주세요."
+      //texthelp = "진료를 원하시는 의료진을 선택해주세요."
   }
 
 
