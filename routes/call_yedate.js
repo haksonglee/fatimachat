@@ -19,9 +19,6 @@ exports.call_yedate = function(deptname, drname) {
 
   //console.log(buttonstr1)
   buttonstr1 = JSON.parse(buttonstr1)
-  for (let i = 0; i < filterbody.length; i++) {
-    filterbody[i].title = filterbody[i].title + ' ' + filterbody[i].deptname
-  }
   let drcode = filterbody[0].drcode
 
   let texthelp = '';
