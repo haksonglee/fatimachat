@@ -459,15 +459,13 @@
   "deptname": "[신경외과]",
   "title": "최영준",
   "description": "뇌졸중, 두부외상, 뇌동맥류",
-  "imageUrl": "https://www.fatimahosp.co.kr/uploads/clinicimg/20100831015927_2.jpg",
-
+  "imageUrl": "https://www.fatimahosp.co.kr/uploads/clinicimg/20100831015927_2.jpg"
 }, {
   "dept": "NS",
   "deptname": "[신경외과]",
   "title": "유민욱",
   "description": " 뇌혈관질환, 두부외상, 뇌동맥류",
-  "imageUrl": "https://www.fatimahosp.co.kr/uploads/clinicimg/04031_11ca625e90f7186e910cc208a05382f1.jpg",
-  
+  "imageUrl": "https://www.fatimahosp.co.kr/uploads/clinicimg/04031_11ca625e90f7186e910cc208a05382f1.jpg"
 }, {
   "dept": "MB",
   "deptname": "[호흡기내과]",
