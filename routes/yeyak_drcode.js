@@ -51,10 +51,10 @@ const post = router.post("/", async function(req, res) {
       //console.log(deptname, drname)
       //console.log(JSON.stringify(jsondata))
       let jsoncnt = jsondata.template.outputs[1].listCard.items.length
-      for (let i = 0; i < jsoncnt; i++) {
-        jsondata.template.outputs[1].listCard.items[i].link.web +=
-          '&name=' + users.name + '&hospno=' + users.hospno
-      }
+      //for (let i = 0; i < jsoncnt; i++) {
+      //  jsondata.template.outputs[1].listCard.items[i].link.web +=
+      //    '&name=' + users.name + '&hospno=' + users.hospno
+      //}
       let responseBody = JSON.stringify(jsondata)
       res.status(200).send(responseBody);
     } else {
