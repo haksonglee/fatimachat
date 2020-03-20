@@ -17,7 +17,7 @@ exports.call_diagsearch = function(diagname) {
   for (let i = 0; i < filterbody.length; i++) {
     shortdeptname = filterbody[i].deptname
     dept = filterbody[i].dept
-    drlink_web = filterbody[i].link.web
+    //drlink_web = filterbody[i].link.web
 
     shortdeptname = shortdeptname.substring(1, shortdeptname.length - 1)
     tempbody = `{ "label": "${filterbody[i].title}",
@@ -69,7 +69,6 @@ exports.call_diagsearch = function(diagname) {
       }
       texthelp = "진료를 원하시는 의료진을 선택해주세요."
   }
-
 
   const responseBody = {
     version: "2.0",
