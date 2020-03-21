@@ -70,6 +70,7 @@ app.use('/test', require('./routes/test'));
 
 app.use('/', function(req, res, next) {
   console.log('Time:', Date.now());
+  req.send('main page')
 });
 
 app.use((req, res, next) => {
