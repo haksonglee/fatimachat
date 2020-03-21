@@ -68,6 +68,11 @@ app.use('/index', require('./routes/index'));
 app.use('/test', require('./routes/test'));
 //app.use('/index2',require('./routes/index2'));
 
+app.use('/', function(req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+
 app.use((req, res, next) => {
   res.status(404).send('not found');
 });
