@@ -3,3 +3,4 @@ async function a() {
 }
 
 console.log('return value is' , a().then(a))
+ 

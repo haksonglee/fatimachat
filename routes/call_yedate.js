@@ -1,8 +1,9 @@
 //const dataPath = __dirname + '/crawling/drlist.json'
 //var fs = require('fs')
 
-exports.call_yedate = function(deptname, drname) {
+exports.call_yedate = async function(deptname, drname) {
   const data = require('./crawling/drlist.json')
+  let ocsuser = require("./users/ocsuser_search")
 
   let tempbody;
   let filterbody = data.filter(item => {
@@ -21,11 +22,22 @@ exports.call_yedate = function(deptname, drname) {
   buttonstr1 = JSON.parse(buttonstr1)
 
   let drcode;
-  for (let i = 0; i < filterbody.length; i++) {
-    drcode = filterbody[i].drcode
-  }
+  //for (let i = 0; i < filterbody.length; i++) {
+    drcode = filterbody[0].drcode
+  //}
 
-  let texthelp = '';
+  //예약 가능 시간
+  let yetime_list = '';
+  let yetime_find = 0;
+  await ocsuser.request_yetime(drcode).then(function(body) {
+    yetime_find = body.length;
+    for (let i = 0; i< yetime_find; i++) {
+      yetime_list += body[i].yetime + '  ' + body[i].amtime + ' / ' + body[i].pmtime + '\n'
+    }
+  });
+
+  console.log('yetime' , yetime_list)
+
   let yelink = "https://www.fatimahosp.co.kr/pages/department?drcode=" + drcode
   //console.log(typeof filterbody, filterbody.bodydeptname)
   //console.log('deptname = ' + deptname)
@@ -53,8 +65,6 @@ exports.call_yedate = function(deptname, drname) {
       //texthelp = "진료를 원하시는 의료진을 선택해주세요."
   }
 
-
-
   const responseBody = {
     version: "2.0",
     template: {
@@ -73,12 +83,11 @@ exports.call_yedate = function(deptname, drname) {
         },
         {
           simpleText: {
-            text: texthelp
+            text: yetime_list
           }
         }
       ]
     }
   }
-
   return responseBody
 }
